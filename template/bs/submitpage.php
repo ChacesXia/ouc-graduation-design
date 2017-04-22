@@ -99,12 +99,12 @@ if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
 <input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
 <input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span  class="btn"  id=result>状态</span>
 <?php if(isset($OJ_BLOCKLY)&&$OJ_BLOCKLY){ ?>
-	<input type=button class="btn btn-danger" onclick="openBlockly()" value="<?php echo $MSG_BLOCKLY_OPEN?>" style="color:white;background-color:rgb(169,91,128)">
-	<input type=button  class="btn btn-primary" onclick="loadFromBlockly() " value="<?php echo $MSG_BLOCKLY_TEST?>" style="color:white;background-color:rgb(90,164,139)">
+  <input type=button class="btn btn-danger" onclick="openBlockly()" value="<?php echo $MSG_BLOCKLY_OPEN?>" style="color:white;background-color:rgb(169,91,128)">
+  <input type=button  class="btn btn-primary" onclick="loadFromBlockly() " value="<?php echo $MSG_BLOCKLY_TEST?>" style="color:white;background-color:rgb(90,164,139)">
 <?php }?>
 </form>
 <?php if(isset($OJ_BLOCKLY)&&$OJ_BLOCKLY){ ?>
-	<div id="blockly" class="center">Blockly</div>
+  <div id="blockly" class="center">Blockly</div>
 <?php }?>
 </center>
 <script>
@@ -219,18 +219,18 @@ function do_test_run(){
 }
      
   function resume(){
-  	count--;
+    count--;
         var s=document.getElementById('Submit');
         var t=document.getElementById('TestRun');
         if(count<0){
-  		s.disabled=false;
-  		t.disabled=false; 
+      s.disabled=false;
+      t.disabled=false; 
                 s.value="<?php echo $MSG_SUBMIT?>";
-        	t.value="<?php echo $MSG_TR?>";
+          t.value="<?php echo $MSG_TR?>";
                 if( handler_interval) window.clearInterval( handler_interval);
         }else{
-        	s.value="<?php echo $MSG_SUBMIT?>("+count+")";
-        	t.value="<?php echo $MSG_TR?>("+count+")";
+          s.value="<?php echo $MSG_SUBMIT?>("+count+")";
+          t.value="<?php echo $MSG_TR?>("+count+")";
                 window.setTimeout("resume();",1000);
         
         }

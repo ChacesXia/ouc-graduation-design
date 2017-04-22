@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +22,7 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
 <?php
@@ -88,7 +88,7 @@ echo "</tbody></table>";
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
 <script type="text/javascript" src="include/jquery.tablesorter.js"></script>
 <script type="text/javascript">
 $(document).ready(function()
@@ -148,33 +148,33 @@ function metal(){
   try{
   var total=getTotal(rows);
   //alert(total);
-	  for(var i=1;i<rows.length;i++){
-	  	var cell=rows[i].cells[0];
+    for(var i=1;i<rows.length;i++){
+      var cell=rows[i].cells[0];
       var acc=rows[i].cells[3];
       var ac=parseInt(acc.innerHTML);
       if (isNaN(ac)) ac=parseInt(acc.textContent);
                 
                 
-	  	if(cell.innerHTML!="*"&&ac>0){
-	 
-	  	     var r=i;
-	  	     if(r==1){
-	  	       cell.innerHTML="Winner";
+      if(cell.innerHTML!="*"&&ac>0){
+   
+           var r=i;
+           if(r==1){
+             cell.innerHTML="Winner";
                        //cell.style.cssText="background-color:gold;color:red";
                        cell.className="badge btn-warning";
-	  	     }else{
-	  	       cell.innerHTML=r;
-		     }
-	  	     if(r>1&&r<=total*.05+1)
-	  	        cell.className="badge btn-warning";
-	  	     if(r>total*.05+1&&r<=total*.20+1)
-	  	        cell.className="badge";
-	  	     if(r>total*.20+1&&r<=total*.45+1)
-	  	        cell.className="badge btn-danger";
-	  	     if(r>total*.45+1&&ac>0)
-              		cell.className="badge badge-info";
-	  	}
-	  }
+           }else{
+             cell.innerHTML=r;
+         }
+           if(r>1&&r<=total*.05+1)
+              cell.className="badge btn-warning";
+           if(r>total*.05+1&&r<=total*.20+1)
+              cell.className="badge";
+           if(r>total*.20+1&&r<=total*.45+1)
+              cell.className="badge btn-danger";
+           if(r>total*.45+1&&ac>0)
+                  cell.className="badge badge-info";
+      }
+    }
   }catch(e){
      alert(e);
   }
@@ -193,7 +193,7 @@ function add(){
   var tab=$("#rank");
   var row=findrow(tab,solution);
   if(row==null)
-	tab.append(newrow(tab,solution));
+  tab.append(newrow(tab,solution));
   row=findrow(tab,solution);
   update(tab,row,solution);
   replay_index++;
@@ -227,10 +227,10 @@ function colorful(td,ac,num){
   if(ac&&num>200) num=200;
   var rb=ac?num:255-num;
   if(ac){
-//	td.className="well green";
-	td.style="background-color: rgb("+rb+",255,"+rb+");";
+//  td.className="well green";
+  td.style="background-color: rgb("+rb+",255,"+rb+");";
   }else{
-	td.style="background-color: rgb(255,"+rb+","+rb+");";
+  td.style="background-color: rgb(255,"+rb+","+rb+");";
   }
 }
 function update(tab,row,solution){
@@ -240,43 +240,43 @@ function update(tab,row,solution){
  if(old!="") time=parseInt(old);
  if(!(old.charAt(0)=='-'||old=='')) return;
  if(parseInt(solution["result"])==4){
- 	if(old.charAt(0)=='-'||old=='') {
-		var pt=time;
-		time= parseInt(solution["in_date"])-time*1200;
+   if(old.charAt(0)=='-'||old=='') {
+    var pt=time;
+    time= parseInt(solution["in_date"])-time*1200;
 
-        	penalty=str2sec(row.cells[4].innerHTML);
- 		penalty+=time;
- 		row.cells[4].innerHTML=sec2str(penalty);
- 		row.cells[col].innerHTML=sec2str( parseInt(solution["in_date"]));
-		if(pt!=0)
-	 		row.cells[col].innerHTML+="("+pt+")";
- 		colorful(row.cells[col],true,pt);
-	}else{
-		if(row.cells[col].className=="well green");
-	}
-	row.cells[3].innerHTML=parseInt(row.cells[3].innerHTML)+1;
+          penalty=str2sec(row.cells[4].innerHTML);
+     penalty+=time;
+     row.cells[4].innerHTML=sec2str(penalty);
+     row.cells[col].innerHTML=sec2str( parseInt(solution["in_date"]));
+    if(pt!=0)
+       row.cells[col].innerHTML+="("+pt+")";
+     colorful(row.cells[col],true,pt);
+  }else{
+    if(row.cells[col].className=="well green");
+  }
+  row.cells[3].innerHTML=parseInt(row.cells[3].innerHTML)+1;
  }else{
-        	time--;
- 		row.cells[col].innerHTML=time;
- 	colorful(row.cells[col],false,time);
+          time--;
+     row.cells[col].innerHTML=time;
+   colorful(row.cells[col],false,time);
  }
  /*
  if(parseInt(solution["result"])==4){
- 	if(row.cells[col].className!="well green"){
-	}
-	row.cells[col].className="well green";
+   if(row.cells[col].className!="well green"){
+  }
+  row.cells[col].className="well green";
  }else{
- 	if(row.cells[col].className!="well green") 
-		row.cells[col].className="well red";
+   if(row.cells[col].className!="well green") 
+    row.cells[col].className="well red";
  }
 */
 }
 function sort(rows){
    for(var i=1;i<rows.length;i++){
        for(var j=1;j<i;j++){
-	   if(cmp(rows[i],rows[j])){
-		swapNode(rows[i],rows[j]);
- 	   }
+     if(cmp(rows[i],rows[j])){
+    swapNode(rows[i],rows[j]);
+      }
        }
 
    }
@@ -299,10 +299,10 @@ $(node2).fadeToggle("slow");
 }    
 function cmp(a,b){
    if(parseInt(a.cells[3].innerHTML)>parseInt(b.cells[3].innerHTML))
-	return true;
+  return true;
    
    if(parseInt(a.cells[3].innerHTML)==parseInt(b.cells[3].innerHTML))
-	return str2sec(a.cells[4].innerHTML)<str2sec(b.cells[4].innerHTML);
+  return str2sec(a.cells[4].innerHTML)<str2sec(b.cells[4].innerHTML);
 }
  function trim(str){ //删除左右两端的空格
 　　     return str.replace(/(^\s*)|(\s*$)/g, "");
@@ -315,24 +315,24 @@ function newrow(tab,solution){
   var css="grey";
   var time=0;
   if(solution['result']==4){
-	 row+="1";
-	 time=solution['in_date'];
-	 count=sec2str( time);
+   row+="1";
+   time=solution['in_date'];
+   count=sec2str( time);
          css="well green";
   } else{
-	 row+="0";
-	 css="well red";
-	 count=-1;
+   row+="0";
+   css="well red";
+   count=-1;
   }
   row+="</td>";
   var n=tab[0].rows[0].cells.length;
   row+="<td>"+sec2str(time)+"</td>";
 
   for(var i=5;i<n;i++) {
-	if(i-5==solution['num'])
-		row+="<td class='"+css+"'>"+count+"</td>"; 
-	else
-		row+="<td></td>"; 
+  if(i-5==solution['num'])
+    row+="<td class='"+css+"'>"+count+"</td>"; 
+  else
+    row+="<td></td>"; 
   }
   row+="</tr>";
   return row;  
@@ -341,7 +341,7 @@ function findrow(tab,solution){
   var rows=tab[0].rows;
   for(var i=0;i<rows.length;i++){
      if(rows[i].cells[1].innerHTML==solution['user_id']) 
-	return rows[i];
+  return rows[i];
 
   }
   return null;

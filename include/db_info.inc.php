@@ -1,21 +1,22 @@
 <?php @session_start();
-	ini_set("display_errors","Off");  //set this to "On" for debugging  ,especially when no reason blank shows up.
-	ini_set("session.cookie_httponly", 1);   
-	header('X-Frame-Options:SAMEORIGIN');
+  ini_set("display_errors","Off");  //set this to "On" for debugging  ,especially when no reason blank shows up.
+  ini_set("session.cookie_httponly", 1);   
+  header('X-Frame-Options:SAMEORIGIN');
 
 //for people using hustoj out of China , be careful of the last two line of this file !
 
-// connect db 
-static 	$DB_HOST="localhost";
-static 	$DB_NAME="jol";
-static 	$DB_USER="root";
-static 	$DB_PASS="123";
+// 数据库连接配置
+static   $DB_HOST="10.1.1.101";
+static   $DB_NAME="jol";
+static   $DB_USER="root";
+static   $DB_PASS="123";
 
-static 	$OJ_NAME="HUSTOJ";
-static 	$OJ_HOME="./";
-static 	$OJ_ADMIN="root@localhost";
-static 	$OJ_DATA="/home/judge/data";
-static 	$OJ_BBS="discuss3";//"bsae" for phpBB3 bridge or "discuss" for mini-forum
+static   $OJ_NAME="基础教学中心在线编程平台";
+static   $OJ_HOME="./";
+static   $OJ_ADMIN="1217113694@qq.com";
+static   $OJ_DATA="/home/judge/data";
+
+static   $OJ_BBS="discuss3";//"bsae" for phpBB3 bridge or "discuss" for mini-forum
 static  $OJ_ONLINE=false;
 static  $OJ_LANG="en";
 static  $OJ_SIM=false; 
@@ -58,38 +59,38 @@ static  $OJ_RR_ASEC='c4d2988cf5c149fabf8098f32f9b49ed';
 static  $OJ_RR_CBURL='http://192.168.0.108/JudgeOnline/login_renren.php';
 /* qq config here */
 static  $OJ_QQ_AUTH=false;
-static  $OJ_QQ_AKEY='1124518951';
+static  $OJ_QQ_AKEY='1217113694';
 static  $OJ_QQ_ASEC='df709a1253ef8878548920718085e84b';
 static  $OJ_QQ_CBURL='192.168.0.108';
 
 //if(date('H')<5||date('H')>21||isset($_GET['dark'])) $OJ_CSS="dark.css";
 if( strstr($_SERVER['HTTP_ACCEPT_LANGUAGE'],"zh-CN")) {
-        $OJ_LANG="cn";
+  $OJ_LANG="cn";
 }
 if (isset($_SESSION['OJ_LANG'])) $OJ_LANG=$_SESSION['OJ_LANG'];
 global $mysqli;
-	if($OJ_SAE)	{
-		$OJ_DATA="saestor://data/";
-	//  for sae.sina.com.cn
-		$mysqli=mysqli_connect(SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
-		$DB_NAME=SAE_MYSQL_DB;
-	}else{
-		//for normal install
-		if(($mysqli=mysqli_connect($DB_HOST,$DB_USER,$DB_PASS))==null) 
-			die('Could not connect: ' . mysqli_error($mysqli));
-	}
-	// use db
-	mysqli_query($mysqli,"set names utf8");
+if($OJ_SAE)  {
+  $OJ_DATA="saestor://data/";
+  //  for sae.sina.com.cn
+  $mysqli=mysqli_connect(SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
+  $DB_NAME=SAE_MYSQL_DB;
+}else{
+    //for normal install
+  if(($mysqli=mysqli_connect($DB_HOST,$DB_USER,$DB_PASS))==null) 
+    die('Could not connect: ' . mysqli_error($mysqli));
+}
+  // use db
+mysqli_query($mysqli,"set names utf8");
   //if(!$OJ_SAE)mysqli_set_charset("utf8");
-	
-	if(!mysqli_select_db($mysqli,$DB_NAME))
-		die('Can\'t use foo : ' . mysqli_error($mysqli));
-		
-	if(isset($OJ_CSRF)&&$OJ_CSRF&&$OJ_TEMPLATE=="sae"&&basename($_SERVER['PHP_SELF'])!="problem_judge")
-		 require_once('csrf_check.php');
 
-	//sychronize php and mysql server with timezone settings, dafault setting for China
-	//if you are not from China, comment out these two lines or modify them.
-	date_default_timezone_set("PRC");
-	mysqli_query($mysqli,"SET time_zone ='+8:00'");
+if(!mysqli_select_db($mysqli,$DB_NAME))
+  die('Can\'t use foo : ' . mysqli_error($mysqli));
+
+if(isset($OJ_CSRF)&&$OJ_CSRF&&$OJ_TEMPLATE=="sae"&&basename($_SERVER['PHP_SELF'])!="problem_judge")
+  require_once('csrf_check.php');
+
+  //sychronize php and mysql server with timezone settings, dafault setting for China
+  //if you are not from China, comment out these two lines or modify them.
+date_default_timezone_set("PRC");
+mysqli_query($mysqli,"SET time_zone ='+8:00'");
 ?>

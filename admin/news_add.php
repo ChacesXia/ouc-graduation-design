@@ -1,8 +1,8 @@
 <?php require_once ("admin-header.php");
 require_once("../include/check_post_key.php");
 if (!(isset($_SESSION['administrator']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
-	exit(1);
+  echo "<a href='../loginpage.php'>Please Login First!</a>";
+  exit(1);
 }
 ?>
 <?php require_once ("../include/db_info.inc.php");
@@ -15,8 +15,8 @@ $title = $_POST ['title'];
 $content = $_POST ['content'];
 $user_id=$_SESSION['user_id'];
 if (get_magic_quotes_gpc ()) {
-	$title = stripslashes ( $title);
-	$content = stripslashes ( $content );
+  $title = stripslashes ( $title);
+  $content = stripslashes ( $content );
 }
 $title=mysqli_real_escape_string($mysqli,$title);
 $content=mysqli_real_escape_string($mysqli,$content);

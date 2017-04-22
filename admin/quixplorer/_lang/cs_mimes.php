@@ -3,58 +3,58 @@
 // English Mimes Module for v2.3 (translated by the QuiX project)
 
 $GLOBALS["mimes"]=array(
-	// dir, exe, file
-	"dir"	=> "Adresáø",
-	"exe"	=> "Spustitelný soubor",
-	"file"	=> "Soubor",
+  // dir, exe, file
+  "dir"  => "AdresÃ¡Ã¸",
+  "exe"  => "SpustitelnÃ½ soubor",
+  "file"  => "Soubor",
 
-	// text
-	"text"	=> "Textový soubor",
-	
-	// programming
-	"php"	=> "PHP script",
-	"sql"	=> "SQL soubor",
-	"perl"	=> "PERL script",
-	"html"	=> "HTML stránka",
-	"js"	=> "Javascript",
-	"css"	=> "CSS",
-	"cgi"	=> "CGI script",
-	// C++
-	"cpps"	=> "C++ zdrojový soubor",
-	"cpph"	=> "C++ hlavièka",
-	// Java
-	"javas"	=> "Java zdrojový soubor",
-	"javac"	=> "Java hlavní soubor",
-	// Pascal
-	"pas"	=> "Pascal",
-	
-	// images
-	"gif"	=> "GIF",
-	"jpg"	=> "JPG",
-	"bmp"	=> "BMP",
-	"png"	=> "PNG",
-	
-	// compressed
-	"zip"	=> "ZIP Archív",
-	"tar"	=> "TAR Archív",
-	"gzip"	=> "GZIP Archív",
-	"bzip2"	=> "BZIP2 Archív",
-	"rar"	=> "RAR Archív",
-	
-	// music
-	"mp3"	=> "MP3 audio soubor",
-	"wav"	=> "WAV audio soubor",
-	"midi"	=> "MIDI audio soubor",
-	"real"	=> "RealAudio soubor",
-	
-	// movie
-	"mpg"	=> "MPG video soubor",
-	"mov"	=> "MOV video soubor",
-	"avi"	=> "AVI video soubor",
-	"flash"	=> "Flash soubor",
-	
-	// Micosoft / Adobe
-	"word"	=> "Word dokument",
-	"excel"	=> "Excel dokument",
-	"pdf"	=> "PDF soubor"
+  // text
+  "text"  => "TextovÃ½ soubor",
+  
+  // programming
+  "php"  => "PHP script",
+  "sql"  => "SQL soubor",
+  "perl"  => "PERL script",
+  "html"  => "HTML strÃ¡nka",
+  "js"  => "Javascript",
+  "css"  => "CSS",
+  "cgi"  => "CGI script",
+  // C++
+  "cpps"  => "C++ zdrojovÃ½ soubor",
+  "cpph"  => "C++ hlaviÃ¨ka",
+  // Java
+  "javas"  => "Java zdrojovÃ½ soubor",
+  "javac"  => "Java hlavnÃ­ soubor",
+  // Pascal
+  "pas"  => "Pascal",
+  
+  // images
+  "gif"  => "GIF",
+  "jpg"  => "JPG",
+  "bmp"  => "BMP",
+  "png"  => "PNG",
+  
+  // compressed
+  "zip"  => "ZIP ArchÃ­v",
+  "tar"  => "TAR ArchÃ­v",
+  "gzip"  => "GZIP ArchÃ­v",
+  "bzip2"  => "BZIP2 ArchÃ­v",
+  "rar"  => "RAR ArchÃ­v",
+  
+  // music
+  "mp3"  => "MP3 audio soubor",
+  "wav"  => "WAV audio soubor",
+  "midi"  => "MIDI audio soubor",
+  "real"  => "RealAudio soubor",
+  
+  // movie
+  "mpg"  => "MPG video soubor",
+  "mov"  => "MOV video soubor",
+  "avi"  => "AVI video soubor",
+  "flash"  => "Flash soubor",
+  
+  // Micosoft / Adobe
+  "word"  => "Word dokument",
+  "excel"  => "Excel dokument",
+  "pdf"  => "PDF soubor"
 ); ?>

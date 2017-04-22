@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +22,7 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
 <hr>
@@ -32,9 +32,9 @@
 <hr>
 <p><font color=green>Q</font>:What is the compiler the judge is using and what are the compiler options?<br>
   <font color=red>A</font>:The online judge system is running on <a href="http://www.debian.org/">Debian Linux</a>.
-	We are using <a href="http://gcc.gnu.org/">GNU GCC/G++</a> for C/C++ compile,
-	<a href="http://www.freepascal.org">Free Pascal</a> for pascal compile and
-	<a href="http://openjdk.java.net">openjdk-7-jdk</a> for Java. The compile options are:<br>
+  We are using <a href="http://gcc.gnu.org/">GNU GCC/G++</a> for C/C++ compile,
+  <a href="http://www.freepascal.org">Free Pascal</a> for pascal compile and
+  <a href="http://openjdk.java.net">openjdk-7-jdk</a> for Java. The compile options are:<br>
 </p>
 <table border="1">
   <tr>
@@ -75,7 +75,7 @@ int main(){
     int a,b;
     while(cin >> a >> b)
         cout << a+b << endl;
-	return 0;
+  return 0;
 }
 </font></pre>
 Here is a sample solution for problem 1000 using C:<br>
@@ -85,7 +85,7 @@ int main(){
     int a,b;
     while(scanf("%d %d",&amp;a, &amp;b) != EOF)
         printf("%d\n",a+b);
-	return 0;
+  return 0;
 }
 </font></pre>
 Here is a sample solution for problem 1000 using PASCAL:<br>
@@ -107,14 +107,14 @@ Here is a sample solution for problem 1000 using Java:<br>
 <pre><font color="blue">
 import java.util.*;
 public class Main{
-	public static void main(String args[]){
-		Scanner cin = new Scanner(System.in);
-		int a, b;
-		while (cin.hasNext()){
-			a = cin.nextInt(); b = cin.nextInt();
-			System.out.println(a + b);
-		}
-	}
+  public static void main(String args[]){
+    Scanner cin = new Scanner(System.in);
+    int a, b;
+    while (cin.hasNext()){
+      a = cin.nextInt(); b = cin.nextInt();
+      System.out.println(a + b);
+    }
+  }
 }</font></pre>
 
 <hr>
@@ -179,7 +179,7 @@ If you can't, then please <a href=registerpage.php>register</a> an id with passw
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
  <script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
 <script type="text/javascript">
 $(function () {

@@ -11,8 +11,8 @@
 <?php require_once("../include/db_info.inc.php");?>
 <?php require_once("admin-header.php");
 if (!(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
-	exit(1);
+  echo "<a href='../loginpage.php'>Please Login First!</a>";
+  exit(1);
 }
 ?>
 <?php
@@ -53,17 +53,17 @@ include_once("kindeditor.php") ;
 <p>SpecialJudge: N<input type=radio name=spj value='0' checked>Y<input type=radio name=spj value='1'></p>
 <p align=left>Source:<br><textarea name=source rows=1 cols=70></textarea></p>
 <p align=left>contest:
-	<select  name=contest_id>
+  <select  name=contest_id>
 <?php $sql="SELECT `contest_id`,`title` FROM `contest` WHERE `start_time`>NOW() order by `contest_id`";
 $result=mysqli_query($mysqli,$sql);
 echo "<option value=''>none</option>";
 if (mysqli_num_rows($result)==0){
 }else{
-	for (;$row=mysqli_fetch_object($result);)
-		echo "<option value='$row->contest_id'>$row->contest_id $row->title</option>";
+  for (;$row=mysqli_fetch_object($result);)
+    echo "<option value='$row->contest_id'>$row->contest_id $row->title</option>";
 }
 ?>
-	</select>
+  </select>
 </p>
 <div align=center>
 <?php require_once("../include/set_post_key.php");?>

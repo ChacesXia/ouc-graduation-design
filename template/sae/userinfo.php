@@ -1,12 +1,12 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><?php echo $view_title?></title>
+  <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
 </head>
 
 <body>
-	
+  
 <script type="text/javascript" src="include/wz_jsgraphics.js"></script>
 <script type="text/javascript" src="include/pie.js"></script>
 <script language="javascript" type="text/javascript" src="include/jquery-latest.js"></script>
@@ -19,12 +19,12 @@ $(function () {
        foreach($chart_data_all as $k=>$d){
     ?>
         d1.push([<?php echo $k?>, <?php echo $d?>]);
-	<?php }?>
+  <?php }?>
     <?php 
        foreach($chart_data_ac as $k=>$d){
     ?>
         d2.push([<?php echo $k?>, <?php echo $d?>]);
-	<?php }?>
+  <?php }?>
           //var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
 
     // a null signifies separate line segments
@@ -48,7 +48,7 @@ $(function () {
       //alert((new Date()).getTime());
 </script>
 <div id="wrapper">
-	<?php require_once("oj-header.php");?>
+  <?php require_once("oj-header.php");?>
 <div id=main class="span8 offset0">
 <br>
 <center>
@@ -56,7 +56,7 @@ $(function () {
 <caption>
 <?php echo $user."--".htmlentities($nick,ENT_QUOTES,"UTF-8")?>
 <?php
-	echo "<a href=mail.php?to_user=$user>$MSG_MAIL</a>";
+  echo "<a href=mail.php?to_user=$user>$MSG_MAIL</a>";
 ?>
 </caption>
 <tr bgcolor=#D7EBFF><td width=15%><?php echo $MSG_Number?><td width=25% align=center><?php echo $Rank?><td width=70% align=center>Solved Problems List</tr>
@@ -64,10 +64,10 @@ $(function () {
 <td rowspan=14 align=center>
 <script language='javascript'>
 function p(id){document.write("<a href=problem.php?id="+id+">"+id+" </a>");}
-<?php $sql="SELECT DISTINCT `problem_id` FROM `solution` WHERE `user_id`='$user_mysql' AND `result`=4 ORDER BY `problem_id` ASC";	
+<?php $sql="SELECT DISTINCT `problem_id` FROM `solution` WHERE `user_id`='$user_mysql' AND `result`=4 ORDER BY `problem_id` ASC";  
 if (!($result=mysqli_query($mysqli,$sql))) echo mysqli_error($mysqli);
 while ($row=mysqli_fetch_array($result))
-	echo "p($row[0]);";
+  echo "p($row[0]);";
 mysqli_free_result($result);
 ?>
 </script>
@@ -77,36 +77,36 @@ mysqli_free_result($result);
 </tr>
 <tr bgcolor=#D7EBFF><td><?php echo $MSG_SUBMIT?><td align=center><a href='status.php?user_id=<?php echo $user?>'><?php echo $Submit?></a></tr>
 <?php 
-	foreach($view_userstat as $row){
-		
-		//i++;
-		echo "<tr bgcolor=#D7EBFF><td>".$jresult[$row[0]]."<td align=center><a href=status.php?user_id=$user&jresult=".$row[0]." >".$row[1]."</a></tr>";
-	}
-	
-	
+  foreach($view_userstat as $row){
+    
+    //i++;
+    echo "<tr bgcolor=#D7EBFF><td>".$jresult[$row[0]]."<td align=center><a href=status.php?user_id=$user&jresult=".$row[0]." >".$row[1]."</a></tr>";
+  }
+  
+  
 //}
 echo "<tr id=pie bgcolor=#D7EBFF><td>Statistics<td><div id='PieDiv' style='position:relative;height:105px;width:120px;'></div></tr>";
 
 ?>
 <script language="javascript">
-	var y= new Array ();
-	var x = new Array ();
-	var dt=document.getElementById("statics");
-	var data=dt.rows;
-	var n;
-	for(var i=3;dt.rows[i].id!="pie";i++){
-			n=dt.rows[i].cells[0];
-			n=n.innerText || n.textContent;
-			x.push(n);
-			n=dt.rows[i].cells[1].firstChild;
-			n=n.innerText || n.textContent;
-			//alert(n);
-			n=parseInt(n);
-			y.push(n);
-	}
-	var mypie=  new Pie("PieDiv");
-	mypie.drawPie(y,x);
-	//mypie.clearPie();
+  var y= new Array ();
+  var x = new Array ();
+  var dt=document.getElementById("statics");
+  var data=dt.rows;
+  var n;
+  for(var i=3;dt.rows[i].id!="pie";i++){
+      n=dt.rows[i].cells[0];
+      n=n.innerText || n.textContent;
+      x.push(n);
+      n=dt.rows[i].cells[1].firstChild;
+      n=n.innerText || n.textContent;
+      //alert(n);
+      n=parseInt(n);
+      y.push(n);
+  }
+  var mypie=  new Pie("PieDiv");
+  mypie.drawPie(y,x);
+  //mypie.clearPie();
 
 </script> 
 
@@ -117,36 +117,36 @@ echo "<tr id=pie bgcolor=#D7EBFF><td>Statistics<td><div id='PieDiv' style='posit
 <?php
  if(isset($_SESSION['administrator'])){
 
-	 ?><table border=1><tr class=toprow><td>UserID<td>Password<td>IP<td>Time</tr>
-	 <tbody>
-			<?php 
-			$cnt=0;
-			foreach($view_userinfo as $row){
-				if ($cnt) 
-					echo "<tr class='oddrow'>";
-				else
-					echo "<tr class='evenrow'>";
-				foreach($row as $table_cell){
-					echo "<td>";
-					echo "\t".$table_cell;
-					echo "</td>";
-				}
-				
-				echo "</tr>";
-				
-				$cnt=1-$cnt;
-			}
-			?>
-			</tbody>
-			</table>
-	 <?php
+   ?><table border=1><tr class=toprow><td>UserID<td>Password<td>IP<td>Time</tr>
+   <tbody>
+      <?php 
+      $cnt=0;
+      foreach($view_userinfo as $row){
+        if ($cnt) 
+          echo "<tr class='oddrow'>";
+        else
+          echo "<tr class='evenrow'>";
+        foreach($row as $table_cell){
+          echo "<td>";
+          echo "\t".$table_cell;
+          echo "</td>";
+        }
+        
+        echo "</tr>";
+        
+        $cnt=1-$cnt;
+      }
+      ?>
+      </tbody>
+      </table>
+   <?php
 
  }
 
 ?>
 </center>
 <div id=foot>
-	<?php require_once("oj-footer.php");?>
+  <?php require_once("oj-footer.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->

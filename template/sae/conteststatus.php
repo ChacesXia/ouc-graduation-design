@@ -1,36 +1,33 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv='refresh' content='60'>
-	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv='refresh' content='60'>
+  <title><?php echo $view_title?></title>
+  <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
 </head>
 <body>
 <div id="wrapper">
-	<?php require_once("contest-header.php");?>
-<div id=main>
+  <?php require_once("oj-header.php");?>
+  <div id=main>
+    <div id=center>
+      <form id=simform action="status.php" method="get">
+      <?php echo $MSG_PROBLEM_ID?>:<input class="input-small" style="height:24px" type=text size=4 name=problem_id value='<?php echo htmlentities($problem_id,ENT_QUOTES,'UTF-8')?>'>
 
-
-
-<div id=center>
-<?php 
-?>
-<form id=simform action="status.php" method="get">
-<?php echo $MSG_PROBLEM_ID?>:<input class="input-small" style="height:24px" type=text size=4 name=problem_id value='<?php echo htmlentities($problem_id,ENT_QUOTES,'UTF-8')?>'>
-<?php echo $MSG_USER?>:<input  class="input-mini" style="height:24px" type=text size=4 name=user_id value='<?php echo htmlentities($user_id,ENT_QUOTES,'UTF-8')?>'>
-<?php if (isset($cid)) echo "<input type='hidden' name='cid' value='$cid'>";?>
-<?php echo $MSG_LANG?>:<select  class="input-small"  size="1" name="language">
-<?php if (isset($_GET['language'])) $language=intval($_GET['language']);
-else $language=-1;
-if ($language<0||$language>9) $language=-1;
-if ($language==-1) echo "<option value='-1' selected>All</option>";
-else echo "<option value='-1'>All</option>";
-for ($i=0;$i<10;$i++){
-        if ($i==$language) echo "<option value=$i selected>$language_name[$i]</option>";
-        else echo "<option value=$i>$language_name[$i]</option>";
-}
-?>
-</select>
+      <?php echo $MSG_USER?>:<input  class="input-mini" style="height:24px" type=text size=4 name=user_id value='<?php echo htmlentities($user_id,ENT_QUOTES,'UTF-8')?>'>
+      <?php if (isset($cid)) echo "<input type='hidden' name='cid' value='$cid'>";?>
+      <!-- 所用语言 -->
+      <?php echo $MSG_LANG?>:<select  class="input-small"  size="1" name="language">
+      <?php if (isset($_GET['language'])) $language=intval($_GET['language']);
+        else $language=-1;
+        if ($language<0||$language>9) $language=-1;
+        if ($language==-1) echo "<option value='-1' selected>All</option>";
+        else echo "<option value='-1'>All</option>";
+        for ($i=0;$i<10;$i++){
+                if ($i==$language) echo "<option value=$i selected>$language_name[$i]</option>";
+                else echo "<option value=$i>$language_name[$i]</option>";
+        }
+        ?>
+        </select>
 <?php echo $MSG_RESULT?>:<select class="input-small"  size="1" name="jresult">
 <?php if (isset($_GET['jresult'])) $jresult_get=intval($_GET['jresult']);
 else $jresult_get=-1;
@@ -55,16 +52,16 @@ echo "</select>";
                 $showsim=intval($_GET['showsim']);
         else
                 $showsim=0;
-        echo "SIM:
-                        <select name=showsim onchange=\"document.getElementById('simform').submit();\">
-                        <option value=0 ".($showsim==0?'selected':'').">All</option>
-                        <option value=50 ".($showsim==50?'selected':'').">50</option>
-                        <option value=60 ".($showsim==60?'selected':'').">60</option>
-                        <option value=70 ".($showsim==70?'selected':'').">70</option>
-                        <option value=80 ".($showsim==80?'selected':'').">80</option>
-                        <option value=90 ".($showsim==90?'selected':'').">90</option>
-                        <option value=100 ".($showsim==100?'selected':'').">100</option>
-                  </select>";
+        // echo "SIM:
+        //                 <select name=showsim onchange=\"document.getElementById('simform').submit();\">
+        //                 <option value=0 ".($showsim==0?'selected':'').">All</option>
+        //                 <option value=50 ".($showsim==50?'selected':'').">50</option>
+        //                 <option value=60 ".($showsim==60?'selected':'').">60</option>
+        //                 <option value=70 ".($showsim==70?'selected':'').">70</option>
+        //                 <option value=80 ".($showsim==80?'selected':'').">80</option>
+        //                 <option value=90 ".($showsim==90?'selected':'').">90</option>
+        //                 <option value=100 ".($showsim==100?'selected':'').">100</option>
+        //           </select>";
 /*      if (isset($_GET['cid'])) 
                 echo "<input type=hidden name=cid value='".$_GET['cid']."'>";
         if (isset($_GET['language'])) 
@@ -86,36 +83,37 @@ echo "<input class=btn type=submit value='$MSG_SEARCH' /></form>";
 <div id=center>
 <table id=result-tab class="table table-striped content-box-header" align=center width=80%>
 <thead>
-<tr  class='success toprow'>
-<th ><?php echo $MSG_RUNID?>
-<th ><?php echo $MSG_USER?>
-<th ><?php echo $MSG_PROBLEM?>
-<th ><?php echo $MSG_RESULT?>
-<th ><?php echo $MSG_MEMORY?>
-<th ><?php echo $MSG_TIME?>
-<th ><?php echo $MSG_LANG?>
-<th ><?php echo $MSG_CODE_LENGTH?>
-<th ><?php echo $MSG_SUBMIT_TIME?>
-</tr>
+  <tr class='success toprow'>
+    <th ><?php echo $MSG_RUNID?></th>
+    <th ><?php echo $MSG_USER?></th>
+    <th ><?php echo $MSG_PROBLEM?></th>
+    <th ><?php echo $MSG_RESULT?></th>
+    <th ><?php echo $MSG_MEMORY?></th>
+    <th ><?php echo $MSG_TIME?></th>
+    <th ><?php echo $MSG_LANG?></th>
+    <th ><?php echo $MSG_CODE_LENGTH?></th>
+    <th ><?php echo $MSG_SUBMIT_TIME?></th>
+    <th ><?php echo '判题机'?></th>
+  </tr>
 </thead>
 
 <tbody>
-			<?php 
-			$cnt=0;
-			foreach($view_status as $row){
-				echo "<tr>";
-				foreach($row as $table_cell){
-					echo "<td>";
-					echo "\t".$table_cell;
-					echo "</td>";
-				}
-				
-				echo "</tr>";
-				
-				$cnt=1-$cnt;
-			}
-			?>
-			</tbody>
+      <?php 
+      $cnt=0;
+      foreach($view_status as $row){
+        echo "<tr>";
+        foreach($row as $table_cell){
+          echo "<td>";
+          echo "\t".$table_cell;
+          echo "</td>";
+        }
+        
+        echo "</tr>";
+        
+        $cnt=1-$cnt;
+      }
+      ?>
+      </tbody>
 </table>
 
 </div>
@@ -132,7 +130,7 @@ echo "[<a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a>]"
 
 
 <div id=foot>
-	<?php require_once("oj-footer.php");?>
+  <?php require_once("oj-footer.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->

@@ -1,8 +1,8 @@
 <?php 
 
-	$dir=basename(getcwd());
-	if($dir=="discuss3") $path_fix="../";
-	else $path_fix="";
+  $dir=basename(getcwd());
+  if($dir=="discuss3") $path_fix="../";
+  else $path_fix="";
 ?>
 
 <!-- 新 Bootstrap 核心 CSS 文件 -->

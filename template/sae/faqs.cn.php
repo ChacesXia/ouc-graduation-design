@@ -1,17 +1,17 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>常见问题</title>
+  <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
 </head>
 <body>
 <div id="wrapper">
-	<?php require_once("oj-header.php");?>
+  <?php require_once("oj-header.php");?>
 <div id=main>
 
-<hr>
+<!-- <hr> -->
 <center>
-  <font size="+3"><?php echo $OJ_NAME?> Online Judge FAQ</font>
+  <font size="+3"><?php echo $OJ_NAME?> FAQ</font>
 </center>
 <hr>
 <p><font color=green>Q</font>:这个在线裁判系统使用什么样的编译器和编译选项?<br>
@@ -55,21 +55,23 @@ java version "1.6.0_22"<br>
 <pre><font color="blue">
 #include &lt;iostream&gt;
 using namespace std;
+// 注意程序从main方法开始执行
 int main(){
     int a,b;
     while(cin >> a >> b)
         cout << a+b << endl;
-	return 0;
+  return 0;
 }
 </font></pre>
 C:<br>
 <pre><font color="blue">
 #include &lt;stdio.h&gt;
+// 注意程序从main方法开始执行
 int main(){
     int a,b;
     while(scanf("%d %d",&amp;a, &amp;b) != EOF)
         printf("%d\n",a+b);
-	return 0;
+  return 0;
 }
 </font></pre>
  PASCAL:<br>
@@ -90,15 +92,16 @@ end.
 Java:<br>
 <pre><font color="blue">
 import java.util.*;
+// 注意程序从Main主类开始加载
 public class Main{
-	public static void main(String args[]){
-		Scanner cin = new Scanner(System.in);
-		int a, b;
-		while (cin.hasNext()){
-			a = cin.nextInt(); b = cin.nextInt();
-			System.out.println(a + b);
-		}
-	}
+  public static void main(String args[]){
+    Scanner cin = new Scanner(System.in);
+    int a, b;
+    while (cin.hasNext()){
+      a = cin.nextInt(); b = cin.nextInt();
+      System.out.println(a + b);
+    }
+  }
 }</font></pre>
 
 <hr>
@@ -137,27 +140,17 @@ public class Main{
   <br>
 </p>
 <hr>
-<font color=green>Q</font>:如何参加在线比赛?<br>
-<font color=red>A</font>:<a href=registerpage.php>注册</a> 一个帐号，然后就可以练习，点击比赛列表Contests可以看到正在进行的比赛并参加。<br>
+<font color=green>Q</font>:如何参加考试?<br>
+<font color=red>A</font>:<a href=registerpage.php>注册</a> 一个帐号，然后就可以练习，点击考试选项就可以看到正在进行的考试并参加。<br>
 <br>
 <hr>
 <center>
   <font color=green size="+2">其他问题请访问<a href="bbs.php"><?php echo $OJ_NAME?>论坛系统</a></font>
 </center>
 <hr>
-<center>
-  <table width=100% border=0>
-    <tr>
-      <td align=right width=65%>
-      <a href = "index.php"><font color=red><?php echo $OJ_NAME?></font></a> 
-      <a href = "http://code.google.com/p/hustoj/source/detail?r=1981"><font color=red>R1981+</font></a></td>
-    </tr>
-  </table>
-</center>
-<div id=foot>
-	<?php require_once("oj-footer.php");?>
-
-</div><!--end foot-->
+  <div id=foot>
+    <?php require_once("oj-footer.php");?>
+  </div><!--end foot-->
 </div><!--end main-->
 </div><!--end wrapper-->
 </body>

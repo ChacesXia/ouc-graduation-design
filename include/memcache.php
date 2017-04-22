@@ -1,14 +1,14 @@
 <?php
-	require_once("./include/db_info.inc.php");
+  require_once("./include/db_info.inc.php");
         
     # Connect to memcache:
     global $memcache;
     $memcache = new Memcache;
-	if($OJ_SAE)
-				$memcache=memcache_init();
-		else{
-				$memcache->connect($OJ_MEMSERVER,  $OJ_MEMPORT);
-	}
+  if($OJ_SAE)
+        $memcache=memcache_init();
+    else{
+        $memcache->connect($OJ_MEMSERVER,  $OJ_MEMPORT);
+  }
     
 
     //下面两个函数首先都会判断是否有使用memcache，如果有使用，就会调用memcached的set/get命令来保存和获取数据
@@ -27,7 +27,7 @@
 
     # Caching version of mysqli_query($mysqli,)
     function mysql_query_cache($sql, $linkIdentifier = false,$timeout = 4) {
-	$mysqli=$GLOBALS['mysqli'];
+  $mysqli=$GLOBALS['mysqli'];
 
 //首先调用上面的getCache函数，如果返回值不为false的话，就说明是从memcached服务器获取的数据
 //如果返回false，此时就需要直接从数据库中获取数据了。
@@ -43,22 +43,22 @@
             $fields = mysqli_fetch_fields($r);
    //读取数据库，并将结果放入$cache数组中
                 for ($i=0;$row = mysqli_fetch_array($r);$i++) {
-		    $j=0;
-		    foreach($fields as $val){
-			$cache[$i][$val->name]=$row[$j];
-			$j++;	
-		    }
+        $j=0;
+        foreach($fields as $val){
+      $cache[$i][$val->name]=$row[$j];
+      $j++;  
+        }
                 }
 
     //将数据放入memcached服务器中，如果memcached服务器没有开的话，此语句什么也不会做
     //如果开启了服务器的话，数据将会被缓存到memcached服务器中
                 if (!setCache(md5("mysql_query" . $sql), $cache, $timeout)) {
                     # If we get here, there isn’t a memcache daemon running or responding
-		  echo "apt-get install memcached";
+      echo "apt-get install memcached";
                 }
 
         }
-	
+  
         return $cache;
     }
 ?>

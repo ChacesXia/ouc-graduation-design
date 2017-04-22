@@ -1,11 +1,11 @@
 function _dictInit(){
   if(_dict_init==1){
     _dictUpdateStatus();
-  	return true;
+    return true;
   }
   if(! document || ! document.body || !document.body.firstChild){
     setTimeout("_dictInit()",800);
-  	return true;
+    return true;
   }
   var agt = navigator.userAgent.toLowerCase();
   var b='border:none;padding:0px;margin:0px;';
@@ -38,11 +38,11 @@ function _dictInit(){
   h += '</td></tr></table></fieldset></td></tr></table>';
   h += '</td></tr></table>';
   try{
-  	var els=document.getElementsByTagName("*");
-	var zmax=97;
-	for(var i=0;i<els.length;i++){
-	     if(zmax< els[i].style.zIndex) zmax=els[i].style.zIndex
-	}
+    var els=document.getElementsByTagName("*");
+  var zmax=97;
+  for(var i=0;i<els.length;i++){
+       if(zmax< els[i].style.zIndex) zmax=els[i].style.zIndex
+  }
     var el = document.createElement('div');
     el.id='_dict_layer';
     if(typeof el.style == "undefined") return;
@@ -100,8 +100,8 @@ function _dictInit(){
     document.attachEvent("onload", _dictUpdateStatus);
   }else{
     var oldmove = (document.onmousemove) ? document.onmousemove : function () {};
-  	document.onmousemove =  function () {oldmove(); _dictMove();};
-  	var olddblclick = (document.ondblclick) ? document.ondblclick : function () {};
+    document.onmousemove =  function () {oldmove(); _dictMove();};
+    var olddblclick = (document.ondblclick) ? document.ondblclick : function () {};
     document.ondblclick = function () {olddblclick(); _dictQuery();};
     var oldmouseup = (document.onmouseup) ? document.onmouseup : function () {};
     document.onmouseup = function () {oldmouseup(); _dictQuery();};
@@ -122,7 +122,7 @@ function _dictInit(){
   _dict_iframe = _dict_getObj('_dictFrame');
   _dict_mode = 1;
   if( _dict_GetCookie("dicthuaci") == "off"){
-  	_dict_enable = false;
+    _dict_enable = false;
   }
   setTimeout("_dictUpdateStatus()",1000);
   _dictUpdateStatus();
@@ -132,26 +132,26 @@ function _dict_SetCookie(name,value,day) {
 try{
     var domain = document.domain + ":";
     domain = domain.toLowerCase();
-	var arydomain = new Array(".com",".com.cn",".net",".net.cn",".cc",".org",".org.cn",".gov.cn",".info",".biz",".tv",".name");
-	var tmpdomain = "";
-	var strdomain = "";
-	for(var i=0;i<arydomain.length; i++){
-	    tmpdomain = arydomain[i]+":";
-	    if(domain.indexOf(tmpdomain)!=-1){
-			domain = domain.replace(tmpdomain,"");
-			domain = domain.substring(domain.lastIndexOf(".")+1,domain.length);
-			domain = domain + tmpdomain;
-			strdomain = "; domain=." + domain.replace(":","");
-			break;
-		}
-	}
-	if(domain.indexOf("dict.cn:")!=-1){
-  		strdomain = "; domain=.dict.cn";
+  var arydomain = new Array(".com",".com.cn",".net",".net.cn",".cc",".org",".org.cn",".gov.cn",".info",".biz",".tv",".name");
+  var tmpdomain = "";
+  var strdomain = "";
+  for(var i=0;i<arydomain.length; i++){
+      tmpdomain = arydomain[i]+":";
+      if(domain.indexOf(tmpdomain)!=-1){
+      domain = domain.replace(tmpdomain,"");
+      domain = domain.substring(domain.lastIndexOf(".")+1,domain.length);
+      domain = domain + tmpdomain;
+      strdomain = "; domain=." + domain.replace(":","");
+      break;
+    }
+  }
+  if(domain.indexOf("dict.cn:")!=-1){
+      strdomain = "; domain=.dict.cn";
     }
     var date = new Date();
-	date.setTime(date.getTime()+(day*24*60*60*1000));
-	var expires = "; expires="+date.toGMTString();
-	document.cookie = name+"="+value+expires+"; path=/"+strdomain;
+  date.setTime(date.getTime()+(day*24*60*60*1000));
+  var expires = "; expires="+date.toGMTString();
+  document.cookie = name+"="+value+expires+"; path=/"+strdomain;
 }catch(x){;}
 }
 function _dict_GetCookie(name)
@@ -165,10 +165,10 @@ function _dict_GetCookie(name)
     return "";
 }
 function _dict_getObj(id) {
-	if (document.getElementById) return document.getElementById(id);
-	else if (document.all) return document.all[id];
-	else if (document.layers) return document.layers[id];
-	else {return null;}
+  if (document.getElementById) return document.getElementById(id);
+  else if (document.all) return document.all[id];
+  else if (document.layers) return document.layers[id];
+  else {return null;}
 }
 var _dict_hexchars = "0123456789ABCDEF";
 function _dict_toHex(n) {
@@ -214,19 +214,19 @@ function _dict_encodeURIComponentNew(s) {
 
 function _dict_URL(w)
 {
-	var s = "";
-	if (typeof encodeURIComponent == "function")
-	{
-		s = encodeURIComponent(w);
-	}
-	else
-	{
-		s = _dict_encodeURIComponentNew(w);
-	}
-	return s;
+  var s = "";
+  if (typeof encodeURIComponent == "function")
+  {
+    s = encodeURIComponent(w);
+  }
+  else
+  {
+    s = _dict_encodeURIComponentNew(w);
+  }
+  return s;
 }
 function _dictSet(el, htmlCode) {
-	if(!el || 'undefined' == typeof el) return;
+  if(!el || 'undefined' == typeof el) return;
     var ua = navigator.userAgent.toLowerCase();
     if (ua.indexOf('msie') >= 0 && ua.indexOf('opera') < 0) {
         el.innerHTML = '<div style="display:none">for IE</div>' + htmlCode;
@@ -247,10 +247,10 @@ function _dictSet(el, htmlCode) {
 
 function _dictGetSel()
 {
-	if (window.getSelection) return window.getSelection();
-	else if (document.getSelection) return document.getSelection();
-	else if (document.selection) return document.selection.createRange().text;
-	else return '';
+  if (window.getSelection) return window.getSelection();
+  else if (document.getSelection) return document.getSelection();
+  else if (document.selection) return document.selection.createRange().text;
+  else return '';
 }
 
 function _dictGetPos(event){
@@ -277,11 +277,11 @@ _dictClose();
 return true;
 }
 function _dictCheck(e) {
-	if(window.Event){
-	  	if(e.which == 2 || e.which == 3) {_dictClose(); return true;}
-	}else{
-	    if(event.button == 2 || event.button == 3) {_dictClose(); return true;}
-	}
+  if(window.Event){
+      if(e.which == 2 || e.which == 3) {_dictClose(); return true;}
+  }else{
+      if(event.button == 2 || event.button == 3) {_dictClose(); return true;}
+  }
     var cx = 0;
     var cy = 0;
     var obj = _dict_layer;
@@ -296,14 +296,14 @@ function _dictCheck(e) {
         cy += obj.y;
     }
 
- 	_dictGetPos(e);
+   _dictGetPos(e);
     if(_dict_moving>0){
         _dict_startx = _dict_x;
         _dict_starty = _dict_y;
         if(_dict_onmove == 1){
-		   _dict_moving = 2;
+       _dict_moving = 2;
         }else if(_dict_x < cx || _dict_x > (cx + 300) || _dict_y < cy || (!_dict_onlayer && _dict_y > (cy + 100) ) ){
-	    	_dictClose();
+        _dictClose();
         }else{
             _dict_moving = 1;
         }
@@ -312,11 +312,11 @@ function _dictCheck(e) {
 }
 
 function _dictQuery(e)  {
-	if(window.Event){
-	  	if(e.which == 2 || e.which == 3) {_dictClose(); return true;}
-	}else{
-	    if(event.button == 2 || event.button == 3) {_dictClose(); return true;}
-	}
+  if(window.Event){
+      if(e.which == 2 || e.which == 3) {_dictClose(); return true;}
+  }else{
+      if(event.button == 2 || event.button == 3) {_dictClose(); return true;}
+  }
     if(_dict_moving == 1){
         if (_dict_is_ie) {
             window.event.cancelBubble = true;
@@ -354,7 +354,7 @@ function _dictDisplay(){
     _dict_y += 8;
     _dict_x += 16;
     if(_dict_opera){
-    	_dict_x -= 4;
+      _dict_x -= 4;
     }else if(_dict_is_ie){
         if (document.documentElement.offsetHeight && document.body.scrollTop+document.documentElement.scrollTop+document.documentElement.offsetHeight - _dict_y < dy){
             _dict_y = document.body.scrollTop+document.documentElement.scrollTop + document.documentElement.offsetHeight - dy;
@@ -388,33 +388,33 @@ return (s.toString().search(/^-?[0-9]+$/) == 0);
 }
 
 function dictShow(q){
-	if(_dict_mode != 1){
-		_dictSet(_dict_getObj('_dict_title'), '&#21010;&#35789;&#32763;&#35793; - Dict.CN');
-		_dict_mode = 1;
-	}
-	var d = _dict_getObj('_dict_add');
-	if(d){
-		d.href = _dict_host + 'scb/?utf8=1&word=' + q;
-		d.onclick = function(){ _dictScb(q); return false; };
-	}
-	d = _dict_getObj('_dict_detail');
-	if(d) d.href = _dict_host + 'search.php?q='+q;
+  if(_dict_mode != 1){
+    _dictSet(_dict_getObj('_dict_title'), '&#21010;&#35789;&#32763;&#35793; - Dict.CN');
+    _dict_mode = 1;
+  }
+  var d = _dict_getObj('_dict_add');
+  if(d){
+    d.href = _dict_host + 'scb/?utf8=1&word=' + q;
+    d.onclick = function(){ _dictScb(q); return false; };
+  }
+  d = _dict_getObj('_dict_detail');
+  if(d) d.href = _dict_host + 'search.php?q='+q;
     if(_dict_moving==0)_dictDisplay();
     _dict_iframe.src = _dict_host+'mini.php?utf8=1&q='+q;
 }
 function _dictShow(word){
-	var q = _dict_URL(word);
-	if(_dict_mode != 1){
-		_dictSet(_dict_getObj('_dict_title'), '&#21010;&#35789;&#32763;&#35793; - Dict.CN');
-		_dict_mode = 1;
-	}
-	var d = _dict_getObj('_dict_add');
-	if(d){
-		d.href = _dict_host + 'scb/?utf8=1&word=' + q;
-		d.onclick = function(){ _dictScb(q); return false; };
-	}
-	d = _dict_getObj('_dict_detail');
-	if(d) d.href = _dict_host + 'search.php?q='+q;
+  var q = _dict_URL(word);
+  if(_dict_mode != 1){
+    _dictSet(_dict_getObj('_dict_title'), '&#21010;&#35789;&#32763;&#35793; - Dict.CN');
+    _dict_mode = 1;
+  }
+  var d = _dict_getObj('_dict_add');
+  if(d){
+    d.href = _dict_host + 'scb/?utf8=1&word=' + q;
+    d.onclick = function(){ _dictScb(q); return false; };
+  }
+  d = _dict_getObj('_dict_detail');
+  if(d) d.href = _dict_host + 'search.php?q='+q;
     if(_dict_moving==0)_dictDisplay();
     _dict_old_word = word;
     _dict_iframe = false;
@@ -423,121 +423,121 @@ function _dictShow(word){
 
 function _dict_geturl(u,word){
     try{
-    	if(_dict_frametimer){clearTimeout(_dict_frametimer);_dict_frametimer = 0;}
-		if(!_dict_iframe){
-			_dict_frameid ++;
-			_dictSet(_dict_getObj('_dictContent'),'<iframe id="_dictFrame'+_dict_frameid+'" name="_dictFrame'+_dict_frameid+'" HEIGHT="120" src="about:blank" FRAMEBORDER="0" width="100%"></iframe>');
-			_dict_iframe = _dict_getObj('_dictFrame'+_dict_frameid);
-			if(!_dict_iframe){
-				_dict_frametimer = setTimeout(function(){_dict_geturl(u,word)},1000);
-				return;
-			}
-			var iframeWin = window.frames['_dictFrame'+_dict_frameid];
-	        // alert(iframeWin);
-	        iframeWin.document.open();
-	        iframeWin.document.write('<html><body><div><span style="color:#666666;font-weight:bold;">Define </span><span style="color:green;font-weight:bold;">'+word+'</span> :<br /></div><center><img src="'+_dict_host+'imgs/loading.gif" width="80" height="62" /></center></body></html>');
-	        iframeWin.document.close();
-    	}
+      if(_dict_frametimer){clearTimeout(_dict_frametimer);_dict_frametimer = 0;}
+    if(!_dict_iframe){
+      _dict_frameid ++;
+      _dictSet(_dict_getObj('_dictContent'),'<iframe id="_dictFrame'+_dict_frameid+'" name="_dictFrame'+_dict_frameid+'" HEIGHT="120" src="about:blank" FRAMEBORDER="0" width="100%"></iframe>');
+      _dict_iframe = _dict_getObj('_dictFrame'+_dict_frameid);
+      if(!_dict_iframe){
+        _dict_frametimer = setTimeout(function(){_dict_geturl(u,word)},1000);
+        return;
+      }
+      var iframeWin = window.frames['_dictFrame'+_dict_frameid];
+          // alert(iframeWin);
+          iframeWin.document.open();
+          iframeWin.document.write('<html><body><div><span style="color:#666666;font-weight:bold;">Define </span><span style="color:green;font-weight:bold;">'+word+'</span> :<br /></div><center><img src="'+_dict_host+'imgs/loading.gif" width="80" height="62" /></center></body></html>');
+          iframeWin.document.close();
+      }
     }catch(x){
     }
     _dict_iframe.src = u;
 }
 function dictAdd(word,autoclose){
-	autoclose = (typeof autoclose == 'undefined') ? 0 : 1;
-	var q = _dict_URL(word.replace("%27","'"))
-	_dictScb(q, autoclose);
+  autoclose = (typeof autoclose == 'undefined') ? 0 : 1;
+  var q = _dict_URL(word.replace("%27","'"))
+  _dictScb(q, autoclose);
 }
 function _dictScb(word,autoclose){
-	if(word == "") return false;
-	autoclose = (typeof autoclose == 'undefined') ? 0 : 1;
-	if(_dict_mode != 2){
-		_dictSet(_dict_getObj('_dict_title'), '&#28155;&#21152;&#29983;&#35789; - Dict.CN');
-		_dict_mode = 2;
-	}
-	var d = _dict_getObj('_dict_add');
-	if(d){
-		d.href = _dict_host + 'scb/';
-		d.onclick = function(){return true;};
-	}
-	d = _dict_getObj('_dict_detail');
-	if(d) d.href = _dict_host + 'search.php?utf8=1&q='+word;
+  if(word == "") return false;
+  autoclose = (typeof autoclose == 'undefined') ? 0 : 1;
+  if(_dict_mode != 2){
+    _dictSet(_dict_getObj('_dict_title'), '&#28155;&#21152;&#29983;&#35789; - Dict.CN');
+    _dict_mode = 2;
+  }
+  var d = _dict_getObj('_dict_add');
+  if(d){
+    d.href = _dict_host + 'scb/';
+    d.onclick = function(){return true;};
+  }
+  d = _dict_getObj('_dict_detail');
+  if(d) d.href = _dict_host + 'search.php?utf8=1&q='+word;
     if(_dict_moving ==0) _dictDisplay();
     if(autoclose){
-    	_dict_iframe.src = _dict_host+'scb/add.php?utf8=1&autoclose=1&word='+word;
+      _dict_iframe.src = _dict_host+'scb/add.php?utf8=1&autoclose=1&word='+word;
     }else{
-    	_dict_iframe.src = _dict_host+'scb/add.php?utf8=1&word='+word;
+      _dict_iframe.src = _dict_host+'scb/add.php?utf8=1&word='+word;
     }
 }
 
 function _dictScbclose(){
-	_dict_scbtimer = 0;
-	if(_dict_mode==2 && _dict_moving >0){
-		_dictClose();
-	}
+  _dict_scbtimer = 0;
+  if(_dict_mode==2 && _dict_moving >0){
+    _dictClose();
+  }
 }
 var _dict_addscb_fade = {
-	    '_timer':false,
-	    'setopacity':function(el,opaval){
-	        if(opaval<0 || opaval>100 || !el)return false;
-	        try{
-	            el.style.filter="Alpha(Opacity="+opaval+")";
-	            el.style.opacity = opaval/100;
-	        }
-	        catch(e){}
-	        return true;
-	    },
-	    'fading':function(el,opacity_start,step){
-	        var now = opacity_start + step;
-	        if(_dict_addscb_fade.setopacity(el,now))
-	            _dict_addscb_fade._timer = setTimeout(function(){_dict_addscb_fade.fading(el,now,step)},100);
-	        else {
-	        	_dictScbclose();
-	        }
-	    }
-	}
+      '_timer':false,
+      'setopacity':function(el,opaval){
+          if(opaval<0 || opaval>100 || !el)return false;
+          try{
+              el.style.filter="Alpha(Opacity="+opaval+")";
+              el.style.opacity = opaval/100;
+          }
+          catch(e){}
+          return true;
+      },
+      'fading':function(el,opacity_start,step){
+          var now = opacity_start + step;
+          if(_dict_addscb_fade.setopacity(el,now))
+              _dict_addscb_fade._timer = setTimeout(function(){_dict_addscb_fade.fading(el,now,step)},100);
+          else {
+            _dictScbclose();
+          }
+      }
+  }
 function _dictMove(e){
-	try{
-	    if(_dict_moving==2) {
-	    	_dictGetPos(e);
-	        _dict_nx = _dict_x-_dict_startx+_dict_cx;
-	        _dict_ny = _dict_y-_dict_starty+_dict_cy;
-	        if (!_dict_opera && document.documentElement.scrollWidth && document.documentElement.scrollWidth - _dict_nx < 262) {
-	            _dict_nx = document.documentElement.scrollWidth - 262;
-	        }
-	        if(_dict_nx<0) _dict_nx = 0;
-	        if(_dict_ny<0) _dict_ny = 0;
-	        _dict_layer.style.left = _dict_nx+'px';
-	        _dict_layer.style.top = _dict_ny+'px';
-	        _dict_layer.focus();
-	        _dict_layer.blur();
-	    }
+  try{
+      if(_dict_moving==2) {
+        _dictGetPos(e);
+          _dict_nx = _dict_x-_dict_startx+_dict_cx;
+          _dict_ny = _dict_y-_dict_starty+_dict_cy;
+          if (!_dict_opera && document.documentElement.scrollWidth && document.documentElement.scrollWidth - _dict_nx < 262) {
+              _dict_nx = document.documentElement.scrollWidth - 262;
+          }
+          if(_dict_nx<0) _dict_nx = 0;
+          if(_dict_ny<0) _dict_ny = 0;
+          _dict_layer.style.left = _dict_nx+'px';
+          _dict_layer.style.top = _dict_ny+'px';
+          _dict_layer.focus();
+          _dict_layer.blur();
+      }
     }catch (x)
     {
     }
 }
 
 function _dictClose() {
-	if(_dict_addscb_fade._timer){
-		clearTimeout(_dict_addscb_fade._timer);
-		_dict_addscb_fade._timer=false;
-	}
+  if(_dict_addscb_fade._timer){
+    clearTimeout(_dict_addscb_fade._timer);
+    _dict_addscb_fade._timer=false;
+  }
     try
     {
-    	if(_dict_moving){
-		  var scrOfY = 0;
-		  if( document.body && document.body.scrollTop ) {
-		    scrOfY = document.body.scrollTop;
-		  } else if( document.documentElement && document.documentElement.scrollTop) {
-		    scrOfY = document.documentElement.scrollTop;
-		  }
-	       if(scrOfY < 50 &&_dict_mode == 2 && document.f && document.f.q && document.f.q.value) document.f.q.focus();
-	        _dict_moving = 0;
-	        _dict_onmove = 0;
-	        _dict_onlayer = 0;
-	        _dict_mode = 0;
-	        _dict_layer.style.display="none";
-	        setTimeout(function(){_dict_old_word = "";},500);
-		}
+      if(_dict_moving){
+      var scrOfY = 0;
+      if( document.body && document.body.scrollTop ) {
+        scrOfY = document.body.scrollTop;
+      } else if( document.documentElement && document.documentElement.scrollTop) {
+        scrOfY = document.documentElement.scrollTop;
+      }
+         if(scrOfY < 50 &&_dict_mode == 2 && document.f && document.f.q && document.f.q.value) document.f.q.focus();
+          _dict_moving = 0;
+          _dict_onmove = 0;
+          _dict_onlayer = 0;
+          _dict_mode = 0;
+          _dict_layer.style.display="none";
+          setTimeout(function(){_dict_old_word = "";},500);
+    }
     }
     catch (x)
     {
@@ -554,12 +554,12 @@ function _dictRemove() {
         _dict_onlayer = 0;
         _dict_mode = 0;
         if(_dict_onselect){
-	        document.onselectstart = _dict_oldselectstart;
-	  		_dict_onselect = 0;
-	  	}
-    	_dict_enable = false;
-    	_dict_layer.style.display="none";
-		_dict_status.style.display="none";
+          document.onselectstart = _dict_oldselectstart;
+        _dict_onselect = 0;
+      }
+      _dict_enable = false;
+      _dict_layer.style.display="none";
+    _dict_status.style.display="none";
     }
     catch (x)
     {
@@ -574,11 +574,11 @@ function _dictDisable(){
 
 function _dictEnable(){
   if (_dict_enable){
-	_dict_SetCookie("dicthuaci","off",30);
-	_dict_enable = false;
+  _dict_SetCookie("dicthuaci","off",30);
+  _dict_enable = false;
   }else{
     _dict_enable = true;
-	_dict_SetCookie("dicthuaci","",-1);
+  _dict_SetCookie("dicthuaci","",-1);
   }
   _dictUpdateStatus();
 }
@@ -604,41 +604,41 @@ function _dictUpdateStatus(){
     if (_dict_enable){
        _dictSet(d,'[&#21010;&#35789;&#32763;&#35793;&nbsp;<a href="javascript:dictDisable()" title="&#25105;&#35201;&#31105;&#29992;&#21010;&#35789;&#32763;&#35793;">&#24320;&#21551;</a>]');
     }else{
-	   _dictSet(d,'[&#21010;&#35789;&#32763;&#35793;&nbsp;<a href="javascript:dictEnable()" title="&#25105;&#35201;&#24320;&#21551;&#21010;&#35789;&#32763;&#35793;">&#31105;&#29992;</a>]');
+     _dictSet(d,'[&#21010;&#35789;&#32763;&#35793;&nbsp;<a href="javascript:dictEnable()" title="&#25105;&#35201;&#24320;&#21551;&#21010;&#35789;&#32763;&#35793;">&#31105;&#29992;</a>]');
     }
   }
   var h = _dict_getObj('huaci_status');
   if(h){
-  	if(_dict_enable){
-  		h.href = "javascript:dictDisable()";
-  		// h.onclick = function() {dictDisable();return false;};
-  		h.innerHTML = "&#21010;&#35789;&#30050;&#24320;";
-  	}else{
-	    h.href = "javascript:dictEnable()";
-	    // h.onclick = function() {dictEnable();return false;};
-  		h.innerHTML ="&#21010;&#35789;&#30050;&#20851;";
-  	}
+    if(_dict_enable){
+      h.href = "javascript:dictDisable()";
+      // h.onclick = function() {dictDisable();return false;};
+      h.innerHTML = "&#21010;&#35789;&#30050;&#24320;";
+    }else{
+      h.href = "javascript:dictEnable()";
+      // h.onclick = function() {dictEnable();return false;};
+      h.innerHTML ="&#21010;&#35789;&#30050;&#20851;";
+    }
   }
   h = _dict_getObj('huaci0_status');
   if(h && h.tagName && h.tagName.toLowerCase() == "a"){
-  	if(_dict_enable){
-  		h.href = "javascript:dictDisable()";
-  		// h.onclick = function() {dictDisable();return false;};
-  		h.innerHTML = "&#21010;&#35789;&#30050;&#24320;";
-  	}else{
-	    h.href = "javascript:dictEnable()";
-	    // h.onclick = function() {dictEnable();return false;};
-  		h.innerHTML ="&#21010;&#35789;&#30050;&#20851;";
-  	}
+    if(_dict_enable){
+      h.href = "javascript:dictDisable()";
+      // h.onclick = function() {dictDisable();return false;};
+      h.innerHTML = "&#21010;&#35789;&#30050;&#24320;";
+    }else{
+      h.href = "javascript:dictEnable()";
+      // h.onclick = function() {dictEnable();return false;};
+      h.innerHTML ="&#21010;&#35789;&#30050;&#20851;";
+    }
   }
   if(0){
-  	_dict_status.style.display="inline";
-  	_dictSet(_dict_status, _dictStatus());
+    _dict_status.style.display="inline";
+    _dictSet(_dict_status, _dictStatus());
   }
 }
 
 function _dictStatus(){
-	var b='line-height:20px;background-color:#e7f7f7;font-weight:normal;padding:0px;margin:0px;font-size:14px;text-decoration:none;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;';
+  var b='line-height:20px;background-color:#e7f7f7;font-weight:normal;padding:0px;margin:0px;font-size:14px;text-decoration:none;font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;';
     var h='<span style="color:#000000;'+b+'">[<a href="'+_dict_help+'" title="&#25105;&#35201;&#26597;&#30475;&#21010;&#35789;&#24110;&#21161;" target="_blank" style="color:#1A9100;'+b+'">&#21010;&#35789;&#32763;&#35793;</a>&#30050;';
     if (_dict_enable){
       h += '<a href="javascript:dictDisable()" title="&#25105;&#35201;&#31105;&#29992;&#21010;&#35789;&#32763;&#35793;" target="_self" style="color:#1A9100;'+b+'">&#24320;&#21551;</a>';
@@ -650,20 +650,20 @@ function _dictStatus(){
 }
 function _dict_load(){
    if(! document || ! document.body || !document.body.firstChild){
-	  if(document.addEventListener){
-	    window.addEventListener("load", _dictInit, true);
-	  }else if (document.attachEvent) {
-	    window.attachEvent("onload", _dictInit);
-	  }else{
-	    var oldload = (document.onload) ? document.onload : function () {};
-	    window.onload = function () {oldload(); _dictInit();};
-	  }
+    if(document.addEventListener){
+      window.addEventListener("load", _dictInit, true);
+    }else if (document.attachEvent) {
+      window.attachEvent("onload", _dictInit);
+    }else{
+      var oldload = (document.onload) ? document.onload : function () {};
+      window.onload = function () {oldload(); _dictInit();};
+    }
    }else{
-   	  _dictInit();
+       _dictInit();
    }
 }
 function dictInit(){
-	_dictInit();
+  _dictInit();
 }
 if(typeof(_dict_loaded) != "string" || _dict_loaded != "yes"){
 var _dict_is_ie = true;
@@ -700,9 +700,9 @@ _dict_load();
     _dict_enable = true;
     _dictUpdateStatus();
     if(_dict_onselect == 0){
-    	document.onselectstart = function () {if (_dict_moving == 2) return false;};
-  		_dict_onselect = 1;
-  	}
+      document.onselectstart = function () {if (_dict_moving == 2) return false;};
+      _dict_onselect = 1;
+    }
     }catch(x){;}
 }
 dict_enable = false;

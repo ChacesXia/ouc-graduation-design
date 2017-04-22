@@ -5,7 +5,7 @@ if ($_SESSION['getkey']!=$_GET['getkey']){
         history.go(-1);
 </script>
 <?php 
-	exit(1);
+  exit(1);
 }
 else{
    unset($_SESSION['getkey']);

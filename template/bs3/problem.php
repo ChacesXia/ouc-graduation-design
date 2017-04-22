@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,10 +22,10 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-	
+  
 <?php
 if ($pr_flag){
 echo "<title>$MSG_PROBLEM $row->problem_id. -- $row->title</title>";
@@ -102,6 +102,6 @@ echo "</center>";
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
   </body>
 </html>

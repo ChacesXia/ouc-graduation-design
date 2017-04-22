@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,10 +22,10 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-	
+  
 <center>
 <table class="table table-striped" id=statics width=70%>
 <caption>
@@ -39,11 +39,11 @@ echo "<a href=mail.php?to_user=$user>$MSG_MAIL</a>";
 <td rowspan=14 align=center>
 <script language='javascript'>
 function p(id,c){
-	document.write("<a href=problem.php?id="+id+">"+id+" </a>(<a href='status.php?user_id=<?php echo $user?>&problem_id="+id+"'>"+c+"</a>)");
+  document.write("<a href=problem.php?id="+id+">"+id+" </a>(<a href='status.php?user_id=<?php echo $user?>&problem_id="+id+"'>"+c+"</a>)");
 
 }
 <?php $sql="SELECT `problem_id`,count(1) FROM `solution` WHERE `user_id`='$user_mysql' 
-		AND problem_id in (select distinct problem_id from solution where `user_id`='$user_mysql' and result=4) group by `problem_id` ORDER BY `problem_id` ASC";
+    AND problem_id in (select distinct problem_id from solution where `user_id`='$user_mysql' and result=4) group by `problem_id` ORDER BY `problem_id` ASC";
 if (!($result=mysqli_query($mysqli,$sql))) echo mysqli_error($mysqli);
 while ($row=mysqli_fetch_array($result))
 echo "p($row[0],$row[1]);";
@@ -121,7 +121,7 @@ $cnt=1-$cnt;
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
 <script language="javascript" type="text/javascript" src="include/jquery-latest.js"></script>
 <script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
 <script type="text/javascript">

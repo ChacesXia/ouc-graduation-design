@@ -11,9 +11,9 @@ if (!(isset($_SESSION['administrator'])
         exit(1);
 }
 if(isset($_GET['keyword']))
-	$keyword=$_GET['keyword'];
+  $keyword=$_GET['keyword'];
 else
-	$keyword="";
+  $keyword="";
 $keyword=mysqli_real_escape_string($mysqli,$keyword);
 $sql="SELECT max(`problem_id`) as upid FROM `problem`";
 $page_cnt=100;
@@ -74,7 +74,7 @@ for (;$row=mysqli_fetch_object($result);){
                 }
                 if(isset($_SESSION['administrator'])||isset($_SESSION["p".$row->problem_id])){
                         echo "<td><a href=problem_edit.php?id=$row->problem_id&getkey=".$_SESSION['getkey'].">Edit</a>";
-			echo "<td><a href='javascript:phpfm($row->problem_id);'>TestData</a>";
+      echo "<td><a href='javascript:phpfm($row->problem_id);'>TestData</a>";
                 }
         }
         echo "</tr>";

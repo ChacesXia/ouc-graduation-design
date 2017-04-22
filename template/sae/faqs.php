@@ -1,12 +1,12 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><?php echo $view_title?></title>
+  <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
 </head>
 <body>
 <div id="wrapper">
-	<?php require_once("oj-header.php");?>
+  <?php require_once("oj-header.php");?>
 <div id=main>
 <hr>
 <center>
@@ -55,7 +55,7 @@ int main(){
     int a,b;
     while(cin >> a >> b)
         cout << a+b << endl;
-	return 0;
+  return 0;
 }
 </font></pre>
 Here is a sample solution for problem 1000 using C:<br>
@@ -65,7 +65,7 @@ int main(){
     int a,b;
     while(scanf("%d %d",&amp;a, &amp;b) != EOF)
         printf("%d\n",a+b);
-	return 0;
+  return 0;
 }
 </font></pre>
 Here is a sample solution for problem 1000 using PASCAL:<br>
@@ -87,14 +87,14 @@ Here is a sample solution for problem 1000 using Java:<br>
 <pre><font color="blue">
 import java.util.*;
 public class Main{
-	public static void main(String args[]){
-		Scanner cin = new Scanner(System.in);
-		int a, b;
-		while (cin.hasNext()){
-			a = cin.nextInt(); b = cin.nextInt();
-			System.out.println(a + b);
-		}
-	}
+  public static void main(String args[]){
+    Scanner cin = new Scanner(System.in);
+    int a, b;
+    while (cin.hasNext()){
+      a = cin.nextInt(); b = cin.nextInt();
+      System.out.println(a + b);
+    }
+  }
 }</font></pre>
 
 <hr>
@@ -153,7 +153,7 @@ If you can't, then please <a href=registerpage.php>register</a> an id with passw
 </center>
 
 <div id=foot>
-	<?php require_once("oj-footer.php");?>
+  <?php require_once("oj-footer.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->

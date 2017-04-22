@@ -48,7 +48,7 @@ if(array_key_exists('code',$_GET)){
            mysqli_query($mysqli,$sql);
         }
         // login it
-		$_SESSION['user_id']=$uname;
+    $_SESSION['user_id']=$uname;
         // redirect it
         header("Location: ./");
     }else{

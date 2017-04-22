@@ -27,64 +27,64 @@
 ------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------
 Author: The QuiX project
-	quix@free.fr
-	http://www.quix.tk
-	http://quixplorer.sourceforge.net
+  quix@free.fr
+  http://www.quix.tk
+  http://quixplorer.sourceforge.net
 
 Comment:
-	QuiXplorer Version 2.3
-	File-Delete Functions
-	
-	Have Fun...
+  QuiXplorer Version 2.3
+  File-Delete Functions
+  
+  Have Fun...
 ------------------------------------------------------------------------------*/
 require_once("./.include/permissions.php");
 //------------------------------------------------------------------------------
 // delete files/dirs
 function del_items($dir)
 {
-	// check if user is allowed to delete files
-	if (!permissions_grant($dir, NULL, "delete"))
-		show_error($GLOBALS["error_msg"]["accessfunc"]);
-	
-	$cnt=count($GLOBALS['__POST']["selitems"]);
-	$err=false;
-	
-	// delete files & check for errors
-	for($i=0;$i<$cnt;++$i) {
-		$items[$i] = stripslashes($GLOBALS['__POST']["selitems"][$i]);
-		$abs = get_abs_item($dir,$items[$i]);
-	
-		if(!@file_exists(get_abs_item($dir, $items[$i]))) {
-			$error[$i]=$GLOBALS["error_msg"]["itemexist"];
-			$err=true;	continue;
-		}
-		if(!get_show_item($dir, $items[$i])) {
-			$error[$i]=$GLOBALS["error_msg"]["accessitem"];
-			$err=true;	continue;
-		}
-		
-		// Delete
-		$ok=remove(get_abs_item($dir,$items[$i]));
-		
-		if($ok===false) {
-			$error[$i]=$GLOBALS["error_msg"]["delitem"];
-			$err=true;	continue;
-		}
-		
-		$error[$i]=NULL;
-	}
-	
-	if($err) {			// there were errors
-		$err_msg="";
-		for($i=0;$i<$cnt;++$i) {
-			if($error[$i]==NULL) continue;
-			
-			$err_msg .= $items[$i]." : ".$error[$i]."<BR>\n";
-		}
-		show_error($err_msg);
-	}
-	
-	header("Location: ".make_link("list",$dir,NULL));
+  // check if user is allowed to delete files
+  if (!permissions_grant($dir, NULL, "delete"))
+    show_error($GLOBALS["error_msg"]["accessfunc"]);
+  
+  $cnt=count($GLOBALS['__POST']["selitems"]);
+  $err=false;
+  
+  // delete files & check for errors
+  for($i=0;$i<$cnt;++$i) {
+    $items[$i] = stripslashes($GLOBALS['__POST']["selitems"][$i]);
+    $abs = get_abs_item($dir,$items[$i]);
+  
+    if(!@file_exists(get_abs_item($dir, $items[$i]))) {
+      $error[$i]=$GLOBALS["error_msg"]["itemexist"];
+      $err=true;  continue;
+    }
+    if(!get_show_item($dir, $items[$i])) {
+      $error[$i]=$GLOBALS["error_msg"]["accessitem"];
+      $err=true;  continue;
+    }
+    
+    // Delete
+    $ok=remove(get_abs_item($dir,$items[$i]));
+    
+    if($ok===false) {
+      $error[$i]=$GLOBALS["error_msg"]["delitem"];
+      $err=true;  continue;
+    }
+    
+    $error[$i]=NULL;
+  }
+  
+  if($err) {      // there were errors
+    $err_msg="";
+    for($i=0;$i<$cnt;++$i) {
+      if($error[$i]==NULL) continue;
+      
+      $err_msg .= $items[$i]." : ".$error[$i]."<BR>\n";
+    }
+    show_error($err_msg);
+  }
+  
+  header("Location: ".make_link("list",$dir,NULL));
 }
 //------------------------------------------------------------------------------
 ?>

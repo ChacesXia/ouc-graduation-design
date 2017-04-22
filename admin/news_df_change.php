@@ -1,8 +1,8 @@
 <?php require_once("admin-header.php");
 require_once("../include/check_get_key.php");
 if (!(isset($_SESSION['administrator']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
-	exit(1);
+  echo "<a href='../loginpage.php'>Please Login First!</a>";
+  exit(1);
 }
 ?>
 <?php $id=intval($_GET['id']);
@@ -17,5 +17,5 @@ else $sql="update `news` set `defunct`='Y' where `news_id`=$id";
 mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
 ?>
 <script language=javascript>
-	history.go(-1);
+  history.go(-1);
 </script>

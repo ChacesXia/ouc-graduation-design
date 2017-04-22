@@ -1,14 +1,14 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><?php echo $view_title?></title>
+  <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
 </head>
 <body>
 <div id="wrapper">
-	<?php require_once("oj-header.php");?>
+  <?php require_once("oj-header.php");?>
 <div id=main>
-	
+  
 <link href='highlight/styles/shCore.css' rel='stylesheet' type='text/css'/> 
 <link href='highlight/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/> 
 <script src='highlight/scripts/shCore.js' type='text/javascript'></script> 
@@ -31,49 +31,49 @@ SyntaxHighlighter.all();
 </script>
 
 <!-- Requires jQuery -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
-	<!-- Optional jquery.corner for rounded buttons -->
-	<script src="jquery.corner.js" type="text/javascript"></script>
-	
-	<!-- Requires CodeMirror 2.16 -->
-	<script type="text/javascript" src="mergely/codemirror.js"></script>
-	<link type="text/css" rel="stylesheet" href="mergely/codemirror.css" />
-	
-	<!-- Requires Mergely -->
-	<script type="text/javascript" src="mergely/mergely.js"></script>
-	<link type="text/css" rel="stylesheet" href="mergely/mergely.css" />
-	
-	<script type="text/javascript">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+  <!-- Optional jquery.corner for rounded buttons -->
+  <script src="jquery.corner.js" type="text/javascript"></script>
+  
+  <!-- Requires CodeMirror 2.16 -->
+  <script type="text/javascript" src="mergely/codemirror.js"></script>
+  <link type="text/css" rel="stylesheet" href="mergely/codemirror.css" />
+  
+  <!-- Requires Mergely -->
+  <script type="text/javascript" src="mergely/mergely.js"></script>
+  <link type="text/css" rel="stylesheet" href="mergely/mergely.css" />
+  
+  <script type="text/javascript">
 
         $(document).ready(function () {
-			$('#compare').mergely({
-				cmsettings: { readOnly: false, lineWrapping: true }
-			});
-			$.ajax({
-				type: 'GET', async: true, dataType: 'text',
-				url: 'getsource.php?id=<?php echo intval($_GET['left'])?>',
-				success: function (response) {
-					$('#compare').mergely('lhs', response);
-				}
-			});
-			$.ajax({
-				type: 'GET', async: true, dataType: 'text',
-				url: 'getsource.php?id=<?php echo intval($_GET['right'])?>',
-				success: function (response) {
-					$('#compare').mergely('rhs', response);
-				}
-			});
-		});
-	</script>
+      $('#compare').mergely({
+        cmsettings: { readOnly: false, lineWrapping: true }
+      });
+      $.ajax({
+        type: 'GET', async: true, dataType: 'text',
+        url: 'getsource.php?id=<?php echo intval($_GET['left'])?>',
+        success: function (response) {
+          $('#compare').mergely('lhs', response);
+        }
+      });
+      $.ajax({
+        type: 'GET', async: true, dataType: 'text',
+        url: 'getsource.php?id=<?php echo intval($_GET['right'])?>',
+        success: function (response) {
+          $('#compare').mergely('rhs', response);
+        }
+      });
+    });
+  </script>
 
 <div id="mergely-resizer">
-		<div id="compare" >
-		</div>
+    <div id="compare" >
+    </div>
 </div>
 
 
 <div id=foot>
-	<?php require_once("oj-footer.php");?>
+  <?php require_once("oj-footer.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->

@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +22,7 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
 <div align=center class="input-append">
@@ -121,13 +121,13 @@ else
 echo "<tr class='evenrow'>";
 $i=0;
 foreach($row as $table_cell){
-	if($i>3&&$i!=8)
-		echo "<td class='hidden-xs'>";
-	else
-		echo "<td>";
-	echo $table_cell;
-	echo "</td>";
-	$i++;
+  if($i>3&&$i!=8)
+    echo "<td class='hidden-xs'>";
+  else
+    echo "<td>";
+  echo $table_cell;
+  echo "</td>";
+  $i++;
 }
 echo "</tr>";
 $cnt=1-$cnt;
@@ -154,20 +154,20 @@ echo "[<a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a>]"
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
-	<script>
-		var judge_result=[<?php
-		foreach($judge_result as $result){
-		echo "'$result',";
-		}
-		?>''];
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
+  <script>
+    var judge_result=[<?php
+    foreach($judge_result as $result){
+    echo "'$result',";
+    }
+    ?>''];
 
-		var judge_color=[<?php
-		 foreach($judge_color as $result){
-		 echo "'$result',";
-		 }
-		?>''];
-	</script>
-	<script src="template/<?php echo $OJ_TEMPLATE?>/auto_refresh.js" ></script>
+    var judge_color=[<?php
+     foreach($judge_color as $result){
+     echo "'$result',";
+     }
+    ?>''];
+  </script>
+  <script src="template/<?php echo $OJ_TEMPLATE?>/auto_refresh.js" ></script>
   </body>
 </html>

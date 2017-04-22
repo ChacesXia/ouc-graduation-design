@@ -1,8 +1,8 @@
 <?php
 $cache_time=3600;
 $OJ_CACHE_SHARE=false;
-	require_once('oj-header.php'); 
-	require_once("./include/db_info.inc.php");
+  require_once('oj-header.php'); 
+  require_once("./include/db_info.inc.php");
 ?>
 <hr>
 <center>
@@ -48,7 +48,7 @@ int main(){
     int a,b;
     while(cin >> a >> b)
         cout << a+b << endl;
-	return 0;
+  return 0;
 }
 </font></pre>
 C를 이용하여 100번 문제를 짠 예시 코드입니다:<br>
@@ -58,7 +58,7 @@ int main(){
     int a,b;
     while(scanf("%d %d",&amp;a, &amp;b) != EOF)
         printf("%d\n",a+b);
-	return 0;
+  return 0;
 }
 </font></pre>
 PASCAL은 다음과 같이 작성할 수 있습니다.:<br>
@@ -80,14 +80,14 @@ end.
 <pre><font color="blue">
 import java.util.*;
 public class Main{
-	public static void main(String args[]){
-		Scanner cin = new Scanner(System.in);
-		int a, b;
-		while (cin.hasNext()){
-			a = cin.nextInt(), b = cin.nextInt();
-			System.out.println(a + b);
-		}
-	}
+  public static void main(String args[]){
+    Scanner cin = new Scanner(System.in);
+    int a, b;
+    while (cin.hasNext()){
+      a = cin.nextInt(), b = cin.nextInt();
+      System.out.println(a + b);
+    }
+  }
 }</font></pre>
 
 <hr>

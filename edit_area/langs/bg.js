@@ -1,8 +1,8 @@
 /*
- *	Bulgarian translation
- *	Author:		Valentin Hristov
- *	Company:	SOFTKIT Bulgarian
- *	Site:		http://www.softkit-bg.com
+ *  Bulgarian translation
+ *  Author:    Valentin Hristov
+ *  Company:  SOFTKIT Bulgarian
+ *  Site:    http://www.softkit-bg.com
  */
 editAreaLoader.lang["bg"]={
 new_document: "нов документ",

@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +22,7 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
  <center>
@@ -97,8 +97,8 @@ echo"<option value=$i ".( $lastlang==$i?"selected":"").">
 <input id="Submit" class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>" onclick="do_submit();" >
 <input id="TestRun" class="btn btn-info" type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span class="btn" id=result>状态</span>
 <?php if (isset($OJ_BLOCKLY)&&$OJ_BLOCKLY){?>
-	<input id="blockly_loader" type=button class="btn" onclick="openBlockly()" value="<?php echo $MSG_BLOCKLY_OPEN?>" style="color:white;background-color:rgb(169,91,128)">
-	<input id="transrun" type=button  class="btn" onclick="loadFromBlockly() " value="<?php echo $MSG_BLOCKLY_TEST?>" style="display:none;color:white;background-color:rgb(90,164,139)">
+  <input id="blockly_loader" type=button class="btn" onclick="openBlockly()" value="<?php echo $MSG_BLOCKLY_OPEN?>" style="color:white;background-color:rgb(169,91,128)">
+  <input id="transrun" type=button  class="btn" onclick="loadFromBlockly() " value="<?php echo $MSG_BLOCKLY_TEST?>" style="display:none;color:white;background-color:rgb(90,164,139)">
 <div id="blockly" class="center">Blockly</div>
 <?php }?>
 </form>
@@ -111,7 +111,7 @@ echo"<option value=$i ".( $lastlang==$i?"selected":"").">
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
  <script>
 var sid=0;
 var i=0;
@@ -152,11 +152,11 @@ var tag="span";
 if(ra[0]<4) tag="span disabled=true";
 else tag="a";
 {
-	if(ra[0]==11)
-	
-	tb.innerHTML="<"+tag+" href='ceinfo.php?sid="+solution_id+"' class='badge badge-info' target=_blank>"+judge_result[ra[0]]+"</"+tag+">";
-	else
-	tb.innerHTML="<"+tag+" href='reinfo.php?sid="+solution_id+"' class='badge badge-info' target=_blank>"+judge_result[ra[0]]+"</"+tag+">";
+  if(ra[0]==11)
+  
+  tb.innerHTML="<"+tag+" href='ceinfo.php?sid="+solution_id+"' class='badge badge-info' target=_blank>"+judge_result[ra[0]]+"</"+tag+">";
+  else
+  tb.innerHTML="<"+tag+" href='reinfo.php?sid="+solution_id+"' class='badge badge-info' target=_blank>"+judge_result[ra[0]]+"</"+tag+">";
 }
 if(ra[0]<4)tb.innerHTML+=loader;
 tb.innerHTML+="Memory:"+ra[1]+"kb&nbsp;&nbsp;";
@@ -164,8 +164,8 @@ tb.innerHTML+="Time:"+ra[2]+"ms";
 if(ra[0]<4)
 window.setTimeout("fresh_result("+solution_id+")",2000);
 else{
-	window.setTimeout("print_result("+solution_id+")",2000);
-	count=1;
+  window.setTimeout("print_result("+solution_id+")",2000);
+  count=1;
 }
 }
 }

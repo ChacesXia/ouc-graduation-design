@@ -5,8 +5,8 @@ a:hover { color:orange; text-decoration:underline }
 h2{color:blue} 
 
 .toprow{
-	background-color:#1a5cc8;
-	color:#FFFFFF;
+  background-color:#1a5cc8;
+  color:#FFFFFF;
     font-weight:bold;
    white-space: nowrap;
 }
@@ -16,8 +16,8 @@ h2{color:blue}
 .oddrow{background-color:#E5ECF9;white-space: nowrap;}
 .evenrow{background-color:#FFFFFF;white-space: nowrap;}
 body{
-	background-color:#FFFFFF;
-	background-image: url(../image/background.jpg);
+  background-color:#FFFFFF;
+  background-image: url(../image/background.jpg);
 }
 .hd{
 color:#FFFFFF;
@@ -26,15 +26,15 @@ font-weight:bold;
 
 
 .time{
-	text-align: right;
+  text-align: right;
 }
 .ip{
-	text-align: right;
-	padding-right: 5px;
+  text-align: right;
+  padding-right: 5px;
 }
 tr.userinfo{
-	background-color:#FFFFF0;
-	font-size: 16px;
+  background-color:#FFFFF0;
+  font-size: 16px;
 }
 span.yes,.green {
 color:green;
@@ -53,19 +53,19 @@ color:gray;
 }
 
 div.content {
-	height: auto;
-	background:#e4f0f8;
-	margin: 0;
-	padding: 0 20px;
-	font-size: 14px;
-	font-family: Times New Roman;
-	text-align: left
+  height: auto;
+  background:#e4f0f8;
+  margin: 0;
+  padding: 0 20px;
+  font-size: 14px;
+  font-family: Times New Roman;
+  text-align: left
 }
 .sampledata{
     white-space:pre;
     background:#8db8ff;
     font-size: 18px;
-	font-family:Monospace;
+  font-family:Monospace;
 }
 
 #menu{
@@ -74,7 +74,7 @@ left:20px; top:120px;width:215px; height:54px;z-index:1; visibility:visible;
 text-align:left;
 }
 .menu_item{
-//	display:inline;
+//  display:inline;
    font-weight :bold;
 }
 #profile{
@@ -91,9 +91,9 @@ font-size:10;
 color:red;
 }
 #logo{
-	position:absolute; 
-	left:10px; 
-	top:-40px;
+  position:absolute; 
+  left:10px; 
+  top:-40px;
 }
 #broadcast{
 position:absolute; 
@@ -108,7 +108,7 @@ text-align:left;
 }
 
 #main div{
-	text-align:center;
+  text-align:center;
 }
 #submenu{
 position:absolute; 
@@ -116,12 +116,12 @@ left:0px; top:120px;width:150px; height:169px;z-index:5; visibility:visible;
 }
 
 #foot{
-	position:relative; 
-	left:0px; 
-	top:auto;
-	width:width:expression(documentElement.clientWidth-150); 
-	z-index:7; 
-	visibility:visible
-	text-align:center;
+  position:relative; 
+  left:0px; 
+  top:auto;
+  width:width:expression(documentElement.clientWidth-150); 
+  z-index:7; 
+  visibility:visible
+  text-align:center;
 }
 

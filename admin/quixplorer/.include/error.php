@@ -27,26 +27,26 @@
 ------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------
 Author: The QuiX project
-	quix@free.fr
-	http://www.quix.tk
-	http://quixplorer.sourceforge.net
-	
+  quix@free.fr
+  http://www.quix.tk
+  http://quixplorer.sourceforge.net
+  
 Comment:
-	QuiXplorer Version 2.3
-	Error Reporting File
-	
-	Have Fun...
+  QuiXplorer Version 2.3
+  Error Reporting File
+  
+  Have Fun...
 ------------------------------------------------------------------------------*/
 //------------------------------------------------------------------------------
-function show_error($error,$extra=NULL) {		// show error-message
-	show_header($GLOBALS["error_msg"]["error"]);
-	echo "<CENTER><BR>".$GLOBALS["error_msg"]["error"].":"."<BR><BR>\n";
-	echo $error."\n<BR><BR><A HREF=\"javascript:window.history.back()\">";
-	echo $GLOBALS["error_msg"]["back"]."</A>";
-	if($extra!=NULL) echo " - ".$extra;
-	echo "<BR><BR></CENTER>\n";
-	show_footer();
-	exit;
+function show_error($error,$extra=NULL) {    // show error-message
+  show_header($GLOBALS["error_msg"]["error"]);
+  echo "<CENTER><BR>".$GLOBALS["error_msg"]["error"].":"."<BR><BR>\n";
+  echo $error."\n<BR><BR><A HREF=\"javascript:window.history.back()\">";
+  echo $GLOBALS["error_msg"]["back"]."</A>";
+  if($extra!=NULL) echo " - ".$extra;
+  echo "<BR><BR></CENTER>\n";
+  show_footer();
+  exit;
 }
 //------------------------------------------------------------------------------
 ?>

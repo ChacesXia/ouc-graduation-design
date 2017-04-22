@@ -27,44 +27,44 @@
 ------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------
 Author: The QuiX project
-	quix@free.fr
-	http://www.quix.tk
-	http://quixplorer.sourceforge.net
+  quix@free.fr
+  http://www.quix.tk
+  http://quixplorer.sourceforge.net
 
 Comment:
-	QuiXplorer Version 2.3
-	Make Dir/File Functions
-	
-	Have Fun...
+  QuiXplorer Version 2.3
+  Make Dir/File Functions
+  
+  Have Fun...
 ------------------------------------------------------------------------------*/
 require_once("./.include/permissions.php");
 //------------------------------------------------------------------------------
 // make new directory or file
 function make_item ($dir)
 {
-	if (!permissions_grant($dir, NULL, "create"))
-		show_error($GLOBALS["error_msg"]["accessfunc"]);
-	
-	$mkname=$GLOBALS['__POST']["mkname"];
-	$mktype=$GLOBALS['__POST']["mktype"];
-	
-	$mkname=basename(stripslashes($mkname));
-	if($mkname=="") show_error($GLOBALS["error_msg"]["miscnoname"]);
-	
-	$new = get_abs_item($dir,$mkname);
-	if(@file_exists($new)) show_error($mkname.": ".$GLOBALS["error_msg"]["itemdoesexist"]);
-	
-	if($mktype!="file") {
-		$ok=@mkdir($new, 0777);
-		$err=$GLOBALS["error_msg"]["createdir"];
-	} else {
-		$ok=@touch($new);
-		$err=$GLOBALS["error_msg"]["createfile"];
-	}
-	
-	if($ok===false) show_error($err);
-	
-	header("Location: ".make_link("list",$dir,NULL));
+  if (!permissions_grant($dir, NULL, "create"))
+    show_error($GLOBALS["error_msg"]["accessfunc"]);
+  
+  $mkname=$GLOBALS['__POST']["mkname"];
+  $mktype=$GLOBALS['__POST']["mktype"];
+  
+  $mkname=basename(stripslashes($mkname));
+  if($mkname=="") show_error($GLOBALS["error_msg"]["miscnoname"]);
+  
+  $new = get_abs_item($dir,$mkname);
+  if(@file_exists($new)) show_error($mkname.": ".$GLOBALS["error_msg"]["itemdoesexist"]);
+  
+  if($mktype!="file") {
+    $ok=@mkdir($new, 0777);
+    $err=$GLOBALS["error_msg"]["createdir"];
+  } else {
+    $ok=@touch($new);
+    $err=$GLOBALS["error_msg"]["createfile"];
+  }
+  
+  if($ok===false) show_error($err);
+  
+  header("Location: ".make_link("list",$dir,NULL));
 }
 //------------------------------------------------------------------------------
 ?>

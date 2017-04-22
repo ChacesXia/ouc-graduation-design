@@ -77,7 +77,7 @@ echo "<td>".$R[$i][$j];
 }
 echo "</tr>";
 }
-echo "<tr align=center class=evenrow><td>Total";	
+echo "<tr align=center class=evenrow><td>Total";  
 for ($j=0;$j<22;$j++) {
 if(!isset($R[$i][$j])) $R[$i][$j]="";
 echo "<td>".$R[$i][$j];

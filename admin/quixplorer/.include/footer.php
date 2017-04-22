@@ -27,23 +27,23 @@
 ------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------
 Author: The QuiX project
-	quix@free.fr
-	http://www.quix.tk
-	http://quixplorer.sourceforge.net
+  quix@free.fr
+  http://www.quix.tk
+  http://quixplorer.sourceforge.net
 
 Comment:
-	QuiXplorer Version 2.3
-	Footer File
-	
-	Have Fun...
+  QuiXplorer Version 2.3
+  Footer File
+  
+  Have Fun...
 ------------------------------------------------------------------------------*/
 //------------------------------------------------------------------------------
-function show_footer() {			// footer for html-page
-	echo"\n<HR><SMALL><A class=\"title\" href=\"http://quixplorer.sourceforge.net\" target=\"_blank\">";
-	echo "QuiXplorer ".$GLOBALS["version"]."</A> - ";
-	echo "<A href=\"http://quix.tk\" target=\"_blank\">the QuiX project</A></SMALL>";
-	show_login();
-	echo "</center></BODY>\n</HTML>";
+function show_footer() {      // footer for html-page
+  echo"\n<HR><SMALL><A class=\"title\" href=\"http://quixplorer.sourceforge.net\" target=\"_blank\">";
+  echo "QuiXplorer ".$GLOBALS["version"]."</A> - ";
+  echo "<A href=\"http://quix.tk\" target=\"_blank\">the QuiX project</A></SMALL>";
+  show_login();
+  echo "</center></BODY>\n</HTML>";
 }
 //------------------------------------------------------------------------------
 /**
@@ -51,8 +51,8 @@ function show_footer() {			// footer for html-page
   */
 function show_login ()
 {
-	if (login_ok())
-		return;
-	echo '<small> - <a href="' . make_link("login", NULL) . '">' . $GLOBALS['messages']['btnlogin'] . "</a></small>";
+  if (login_ok())
+    return;
+  echo '<small> - <a href="' . make_link("login", NULL) . '">' . $GLOBALS['messages']['btnlogin'] . "</a></small>";
 }
 ?>

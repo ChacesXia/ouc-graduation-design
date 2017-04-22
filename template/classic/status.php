@@ -1,13 +1,13 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta http-equiv='refresh' content='60'>
-	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv='refresh' content='60'>
+  <title><?php echo $view_title?></title>
+  <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
 </head>
 <body>
 <div id="wrapper">
-	<?php require_once("oj-header.php");?>
+  <?php require_once("oj-header.php");?>
 <div id=main>
 
 
@@ -28,9 +28,9 @@ else echo "<option value='-1'>All</option>";
 $i=0;
 foreach ($language_name as $lang){
         if ($i==$language) 
-		echo "<option value=$i selected>$language_name[$i]</option>";
+    echo "<option value=$i selected>$language_name[$i]</option>";
         else 
-		echo "<option value=$i>$language_name[$i]</option>";
+    echo "<option value=$i>$language_name[$i]</option>";
         $i++;
 }
 ?>
@@ -104,25 +104,25 @@ echo "<input type=submit value='$MSG_SEARCH'></form>";
 
 
 <tbody>
-			<?php 
-			$cnt=0;
-			foreach($view_status as $row){
-				if ($cnt) 
-					echo "<tr class='oddrow'>";
-				else
-					echo "<tr class='evenrow'>";
-				foreach($row as $table_cell){
-					echo "<td>";
-					echo "\t".$table_cell;
-					echo "</td>";
-				}
-				
-				echo "</tr>";
-				
-				$cnt=1-$cnt;
-			}
-			?>
-			</tbody>
+      <?php 
+      $cnt=0;
+      foreach($view_status as $row){
+        if ($cnt) 
+          echo "<tr class='oddrow'>";
+        else
+          echo "<tr class='evenrow'>";
+        foreach($row as $table_cell){
+          echo "<td>";
+          echo "\t".$table_cell;
+          echo "</td>";
+        }
+        
+        echo "</tr>";
+        
+        $cnt=1-$cnt;
+      }
+      ?>
+      </tbody>
 </table>
 
 </div>
@@ -140,7 +140,7 @@ echo "[<a href=status.php?".$str2."&top=".$bottom."&prevtop=$top>Next Page</a>]"
 
 
 <div id=foot>
-	<?php require_once("oj-footer.php");?>
+  <?php require_once("oj-footer.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->

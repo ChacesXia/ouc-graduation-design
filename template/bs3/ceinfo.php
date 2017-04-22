@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,7 +23,7 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
  <div class="brush:c" id='source' name="source"></div>
@@ -175,7 +175,7 @@ document.getElementById("errexp").innerHTML=expmsg;
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
 <script src='highlight/scripts/shCore.js' type='text/javascript'></script>
 <script src='highlight/scripts/shBrushCpp.js' type='text/javascript'></script>
 <script src='highlight/scripts/shBrushCss.js' type='text/javascript'></script>
@@ -191,16 +191,16 @@ document.getElementById("errexp").innerHTML=expmsg;
 
 <script>
 $(document).ready(function(){
-	$("#source").load("showsource2.php?id=<?php echo $id?>",function(response,status,xhr){
+  $("#source").load("showsource2.php?id=<?php echo $id?>",function(response,status,xhr){
 
-   	if(status=="success"){
-		SyntaxHighlighter.config.bloggerMode = false;
-		SyntaxHighlighter.config.clipboardSwf = 'highlight/scripts/clipboard.swf';
-		SyntaxHighlighter.highlight();
-		explain();
-   	}
+     if(status=="success"){
+    SyntaxHighlighter.config.bloggerMode = false;
+    SyntaxHighlighter.config.clipboardSwf = 'highlight/scripts/clipboard.swf';
+    SyntaxHighlighter.highlight();
+    explain();
+     }
 
-	});
+  });
 
 });
 </script>

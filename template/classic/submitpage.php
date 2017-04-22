@@ -227,18 +227,18 @@ if(typeof(eAL) != "undefined"){   eAL.toggle("source");eAL.toggle("source");}
      }
      
   function resume(){
-  	count--;
+    count--;
         var s=document.getElementById('Submit');
         var t=document.getElementById('TestRun');
         if(count<0){
-  		s.disabled=false;
-  		t.disabled=false; 
+      s.disabled=false;
+      t.disabled=false; 
                 s.value="<?php echo $MSG_SUBMIT?>";
-        	t.value="<?php echo $MSG_TR?>";
+          t.value="<?php echo $MSG_TR?>";
                 window.clearInterval(intervalId);
         }else{
-        	s.value="<?php echo $MSG_SUBMIT?>("+count+")";
-        	t.value="<?php echo $MSG_TR?>("+count+")";
+          s.value="<?php echo $MSG_SUBMIT?>("+count+")";
+          t.value="<?php echo $MSG_TR?>("+count+")";
         
         }
   }

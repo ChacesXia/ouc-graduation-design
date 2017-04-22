@@ -1,14 +1,14 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title><?php echo $view_title?></title>
-	<link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><?php echo $view_title?></title>
+  <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
 </head>
 <body>
 <div id="wrapper">
-	<?php require_once("oj-header.php");?>
+  <?php require_once("oj-header.php");?>
 <div id=main>
-	
+  
 <pre id='errtxt' class="alert alert-error"><?php echo $view_reinfo?></pre>
 <div id='errexp'>Explain:</div>
 
@@ -102,23 +102,23 @@
    function explain(){
      //alert("asdf");
        var errmsg=document.getElementById("errtxt").innerHTML;
-	   var expmsg="辅助解释：<br>";
-	   for(var i=0;i<pats.length;i++){
-		   var pat=pats[i];
-		   var exp=exps[i];
-		   var ret=pat.exec(errmsg);
-		   if(ret){
-		      expmsg+=ret+":"+exp+"<br>";
-		   }
-	   }
-	   document.getElementById("errexp").innerHTML=expmsg;
+     var expmsg="辅助解释：<br>";
+     for(var i=0;i<pats.length;i++){
+       var pat=pats[i];
+       var exp=exps[i];
+       var ret=pat.exec(errmsg);
+       if(ret){
+          expmsg+=ret+":"+exp+"<br>";
+       }
+     }
+     document.getElementById("errexp").innerHTML=expmsg;
      //alert(expmsg);
    }
    explain();
  
  </script>
 <div id=foot>
-	<?php require_once("oj-footer.php");?>
+  <?php require_once("oj-footer.php");?>
 
 </div><!--end foot-->
 </div><!--end main-->

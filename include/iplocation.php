@@ -190,7 +190,7 @@ return $location;
 */
 function __construct($filename = "./include/QQWry.Dat") 
 {
-	$this->init($filename);
+  $this->init($filename);
 }
 function init($filename){
 if (($this->fp = @fopen($filename, 'rb')) !== false) {

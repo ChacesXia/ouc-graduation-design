@@ -43,22 +43,22 @@
 */
 // +--------------------------------------------------
 // | Header and Globals
-// +--------------------------------------------------	
+// +--------------------------------------------------  
 @session_start();
 if (!(isset($_SESSION['administrator'])
       ||isset($_SESSION['problem_editor'])
      )){
-	echo $_SESSION['administrator'];
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
-	exit(1);
+  echo $_SESSION['administrator'];
+  echo "<a href='../loginpage.php'>Please Login First!</a>";
+  exit(1);
 }
 require_once("../include/db_info.inc.php");
     $charset = "UTF-8";
     //@setlocale(LC_CTYPE, 'C');
     header("Pragma: no-cache");
     header("Cache-Control: no-store");
-	header("Content-Type: text/html; charset=".$charset);
-	//@ini_set('default_charset', $charset);
+  header("Content-Type: text/html; charset=".$charset);
+  //@ini_set('default_charset', $charset);
     if (@get_magic_quotes_gpc()) {
         function stripslashes_deep($value){
             return is_array($value)? array_map('stripslashes_deep', $value):$value;
@@ -67,7 +67,7 @@ require_once("../include/db_info.inc.php");
         $_GET = array_map('stripslashes_deep', $_GET);
         $_COOKIE = array_map('stripslashes_deep', $_COOKIE);
     }
-	// Server Vars
+  // Server Vars
     function get_client_ip() {
         $ipaddress = '';
         if ($_SERVER['HTTP_CLIENT_IP']) $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
@@ -76,14 +76,14 @@ require_once("../include/db_info.inc.php");
         else if($_SERVER['HTTP_FORWARDED_FOR']) $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
         else if($_SERVER['HTTP_FORWARDED']) $ipaddress = $_SERVER['HTTP_FORWARDED'];
         else if($_SERVER['REMOTE_ADDR']) $ipaddress = $_SERVER['REMOTE_ADDR'];
-		// proxy transparente não esconde o IP local, colocando ele após o IP da rede, separado por vírgula
-		if (strpos($ipaddress, ',') !== false) {
-		    $ips = explode(',', $ipaddress);
-		    $ipaddress = trim($ips[0]);
-		}
-		if ($ipaddress == '::1') $ipaddress = '';
+    // proxy transparente não esconde o IP local, colocando ele após o IP da rede, separado por vírgula
+    if (strpos($ipaddress, ',') !== false) {
+        $ips = explode(',', $ipaddress);
+        $ipaddress = trim($ips[0]);
+    }
+    if ($ipaddress == '::1') $ipaddress = '';
         return $ipaddress;
-    }		
+    }    
     $ip = get_client_ip();
     $islinux = !(strtoupper(substr(PHP_OS, 0, 3)) === 'WIN');
     function getServerURL() {
@@ -97,16 +97,16 @@ require_once("../include/db_info.inc.php");
     }
     $url = getCompleteURL();
     $url_info = parse_url($url);
-	if( !isset($_SERVER['DOCUMENT_ROOT']) ) {
-		if ( isset($_SERVER['SCRIPT_FILENAME']) ) $path = $_SERVER['SCRIPT_FILENAME'];
-		elseif ( isset($_SERVER['PATH_TRANSLATED']) ) $path = str_replace('\\\\', '\\', $_SERVER['PATH_TRANSLATED']);
-		$_SERVER['DOCUMENT_ROOT'] = str_replace( '\\', '/', substr($path, 0, 0-strlen($_SERVER['PHP_SELF'])));
-	}
-	$doc_root = str_replace('//','/',str_replace(DIRECTORY_SEPARATOR,'/',$_SERVER["DOCUMENT_ROOT"]));
+  if( !isset($_SERVER['DOCUMENT_ROOT']) ) {
+    if ( isset($_SERVER['SCRIPT_FILENAME']) ) $path = $_SERVER['SCRIPT_FILENAME'];
+    elseif ( isset($_SERVER['PATH_TRANSLATED']) ) $path = str_replace('\\\\', '\\', $_SERVER['PATH_TRANSLATED']);
+    $_SERVER['DOCUMENT_ROOT'] = str_replace( '\\', '/', substr($path, 0, 0-strlen($_SERVER['PHP_SELF'])));
+  }
+  $doc_root = str_replace('//','/',str_replace(DIRECTORY_SEPARATOR,'/',$_SERVER["DOCUMENT_ROOT"]));
     $fm_self = $doc_root.$_SERVER["PHP_SELF"];
     $path_info = pathinfo($fm_self);
-	// Register Globals
-	$blockKeys = array('_SERVER','_SESSION','_GET','_POST','_COOKIE','charset','ip','islinux','url','url_info','doc_root','fm_self','path_info');
+  // Register Globals
+  $blockKeys = array('_SERVER','_SESSION','_GET','_POST','_COOKIE','charset','ip','islinux','url','url_info','doc_root','fm_self','path_info');
     foreach ($_GET as $key => $val) if (array_search($key,$blockKeys) === false) $$key=$val;
     foreach ($_POST as $key => $val) if (array_search($key,$blockKeys) === false) $$key=$val;
     foreach ($_COOKIE as $key => $val) if (array_search($key,$blockKeys) === false) $$key=$val;
@@ -121,12 +121,12 @@ require_once("../include/db_info.inc.php");
         case 2: error_reporting(E_ALL); @ini_set("display_errors",1); break;
     }
     if(isset($_GET['pid'])){
-		$current_dir="$OJ_DATA/".intval($_GET['pid'])."/";
+    $current_dir="$OJ_DATA/".intval($_GET['pid'])."/";
     }else{
-	$pid=explode("/",$current_dir);
-	$pid=$pid[count($pid)-2];
+  $pid=explode("/",$current_dir);
+  $pid=$pid[count($pid)-2];
 
-	$current_dir="$OJ_DATA/".intval($pid)."/";
+  $current_dir="$OJ_DATA/".intval($pid)."/";
     }
     if (!isset($current_dir)){
         $current_dir = $path_info["dirname"]."/";
@@ -470,7 +470,7 @@ function et($tag){
     $pt['Seconds'] = 'seg';
     $pt['ErrorReport'] = 'Error Reporting';
 
-	// Spanish - by Sh Studios
+  // Spanish - by Sh Studios
     $es['Version'] = 'Versión';
     $es['DocRoot'] = 'Raiz del programa';
     $es['FLRoot'] = 'Raiz del administrador de archivos';
@@ -579,7 +579,7 @@ function et($tag){
     $es['Seconds'] = 'seg';
     $es['ErrorReport'] = 'Reporte de error';
 
-	// Korean - by Airplanez
+  // Korean - by Airplanez
     $kr['Version'] = '버전';
     $kr['DocRoot'] = '웹서버 루트';
     $kr['FLRoot'] = '파일 매니저 루트';
@@ -897,7 +897,7 @@ function et($tag){
     $de2['Seconds'] = 'Sekunden';
     $de2['ErrorReport'] = 'Fehler berichten';
 
-	// German - by Mathias Rothe
+  // German - by Mathias Rothe
     $de3['Version'] = 'Version';
     $de3['DocRoot'] = 'Dokumenten Root';
     $de3['FLRoot'] = 'Datei Manager Root';
@@ -947,7 +947,7 @@ function et($tag){
     $de3['File'] = 'Datei';
     $de3['File_s'] = 'Datei(en)';
     $de3['Dir_s'] = 'Ordner';
-	$de3['To'] = 'nach';
+  $de3['To'] = 'nach';
     $de3['Destination'] = 'Ziel';
     $de3['Configurations'] = 'Konfiguration';
     $de3['JSError'] = 'JavaScript Error';
@@ -1115,7 +1115,7 @@ function et($tag){
     $fr1['Seconds'] = 'sec';
     $fr1['ErrorReport'] = 'Rapport d\'erreur';
 
-	// French - by Sharky
+  // French - by Sharky
     $fr2['Version'] = 'Version';
     $fr2['DocRoot'] = 'Racine document';
     $fr2['FLRoot'] = 'Gestion des fichiers racine';
@@ -1333,114 +1333,114 @@ function et($tag){
     $fr3['Seconds'] = 'sec';
     $fr3['ErrorReport'] = 'Erreur de compte rendu';
 
-	// Dutch - by Leon Buijs
-	$nl['Version'] = 'Versie';
-	$nl['DocRoot'] = 'Document Root';
-	$nl['FLRoot'] = 'File Manager Root';
-	$nl['Name'] = 'Naam';
-	$nl['And'] = 'en';
-	$nl['Enter'] = 'Enter';
-	$nl['Send'] = 'Verzend';
-	$nl['Refresh'] = 'Vernieuw';
-	$nl['SaveConfig'] = 'Configuratie opslaan';
-	$nl['SavePass'] = 'Wachtwoord opslaan';
-	$nl['SaveFile'] = 'Bestand opslaan';
-	$nl['Save'] = 'Opslaan';
-	$nl['Leave'] = 'Verlaten';
-	$nl['Edit'] = 'Wijzigen';
-	$nl['View'] = 'Toon';
-	$nl['Config'] = 'Configuratie';
-	$nl['Ren'] = 'Naam wijzigen';
-	$nl['Rem'] = 'Verwijderen';
-	$nl['Compress'] = 'Comprimeren';
-	$nl['Decompress'] = 'Decomprimeren';
-	$nl['ResolveIDs'] = 'Resolve IDs';
-	$nl['Move'] = 'Verplaats';
-	$nl['Copy'] = 'Kopieer';
-	$nl['ServerInfo'] = 'Serverinformatie';
-	$nl['CreateDir'] = 'Nieuwe map';
-	$nl['CreateArq'] = 'Nieuw bestand';
-	$nl['ExecCmd'] = 'Commando uitvoeren';
-	$nl['Upload'] = 'Upload';
-	$nl['UploadEnd'] = 'Upload voltooid';
+  // Dutch - by Leon Buijs
+  $nl['Version'] = 'Versie';
+  $nl['DocRoot'] = 'Document Root';
+  $nl['FLRoot'] = 'File Manager Root';
+  $nl['Name'] = 'Naam';
+  $nl['And'] = 'en';
+  $nl['Enter'] = 'Enter';
+  $nl['Send'] = 'Verzend';
+  $nl['Refresh'] = 'Vernieuw';
+  $nl['SaveConfig'] = 'Configuratie opslaan';
+  $nl['SavePass'] = 'Wachtwoord opslaan';
+  $nl['SaveFile'] = 'Bestand opslaan';
+  $nl['Save'] = 'Opslaan';
+  $nl['Leave'] = 'Verlaten';
+  $nl['Edit'] = 'Wijzigen';
+  $nl['View'] = 'Toon';
+  $nl['Config'] = 'Configuratie';
+  $nl['Ren'] = 'Naam wijzigen';
+  $nl['Rem'] = 'Verwijderen';
+  $nl['Compress'] = 'Comprimeren';
+  $nl['Decompress'] = 'Decomprimeren';
+  $nl['ResolveIDs'] = 'Resolve IDs';
+  $nl['Move'] = 'Verplaats';
+  $nl['Copy'] = 'Kopieer';
+  $nl['ServerInfo'] = 'Serverinformatie';
+  $nl['CreateDir'] = 'Nieuwe map';
+  $nl['CreateArq'] = 'Nieuw bestand';
+  $nl['ExecCmd'] = 'Commando uitvoeren';
+  $nl['Upload'] = 'Upload';
+  $nl['UploadEnd'] = 'Upload voltooid';
     $nl['Perm'] = 'Rechten';
-	$nl['Perms'] = 'Rechten';
-	$nl['Owner'] = 'Eigenaar';
-	$nl['Group'] = 'Groep';
-	$nl['Other'] = 'Anderen';
-	$nl['Size'] = 'Grootte';
-	$nl['Date'] = 'Datum';
-	$nl['Type'] = 'Type';
-	$nl['Free'] = 'free';
-	$nl['Shell'] = 'Shell';
-	$nl['Read'] = 'Lezen';
-	$nl['Write'] = 'Schrijven';
-	$nl['Exec'] = 'Uitvoeren';
-	$nl['Apply'] = 'Toepassen';
-	$nl['StickyBit'] = 'Sticky Bit';
-	$nl['Pass'] = 'Wachtwoord';
-	$nl['Lang'] = 'Taal';
-	$nl['File'] = 'Bestand';
-	$nl['File_s'] = 'bestand(en)';
-	$nl['Dir_s'] = 'map(pen)';
-	$nl['To'] = 'naar';
-	$nl['Destination'] = 'Bestemming';
-	$nl['Configurations'] = 'Instellingen';
-	$nl['JSError'] = 'Javascriptfout';
-	$nl['NoSel'] = 'Er zijn geen bestanden geselecteerd';
-	$nl['SelDir'] = 'Kies de bestemming in de boom aan de linker kant';
-	$nl['TypeDir'] = 'Voer de mapnaam in';
-	$nl['TypeArq'] = 'Voer de bestandsnaam in';
-	$nl['TypeCmd'] = 'Voer het commando in';
-	$nl['TypeArqComp'] = 'Voer de bestandsnaam in.\\nDe extensie zal het compressietype bepalen.\\nEx:\\nnome.zip\\nnome.tar\\nnome.bzip\\nnome.gzip';
-	$nl['RemSel'] = 'VERWIJDER geselecteerde itens';
-	$nl['NoDestDir'] = 'Er is geen doelmap geselecteerd';
-	$nl['DestEqOrig'] = 'Bron- en doelmap zijn hetzelfde';
-	$nl['InvalidDest'] = 'Doelmap is ongeldig';
-	$nl['NoNewPerm'] = 'Nieuwe rechten niet geset';
-	$nl['CopyTo'] = 'KOPIEER naar';
-	$nl['MoveTo'] = 'VERPLAATS naar';
-	$nl['AlterPermTo'] = 'VERANDER RECHTEN in';
-	$nl['ConfExec'] = 'Bevestig UITVOEREN';
-	$nl['ConfRem'] = 'Bevestig VERWIJDEREN';
-	$nl['EmptyDir'] = 'Lege map';
-	$nl['IOError'] = 'I/O Error';
-	$nl['FileMan'] = 'PHP File Manager';
-	$nl['TypePass'] = 'Voer het wachtwoord in';
-	$nl['InvPass'] = 'Ongeldig wachtwoord';
-	$nl['ReadDenied'] = 'Leestoegang ontzegd';
-	$nl['FileNotFound'] = 'Bestand niet gevonden';
-	$nl['AutoClose'] = 'Sluit na voltooien';
-	$nl['OutDocRoot'] = 'Bestand buiten DOCUMENT_ROOT';
-	$nl['NoCmd'] = 'Error: Command not informed';
-	$nl['ConfTrySave'] = 'Bestand zonder schrijfrechten.\\nProbeer een andere manier';
-	$nl['ConfSaved'] = 'Instellingen opgeslagen';
-	$nl['PassSaved'] = 'Wachtwoord opgeslagen';
-	$nl['FileDirExists'] = 'Bestand of map bestaat al';
-	$nl['NoPhpinfo'] = 'Functie \'phpinfo\' is uitgeschakeld';
-	$nl['NoReturn'] = 'no return';
-	$nl['FileSent'] = 'Bestand verzonden';
-	$nl['SpaceLimReached'] = 'Opslagruimtelimiet bereikt';
-	$nl['InvExt'] = 'Ongeldige extensie';
-	$nl['FileNoOverw'] = 'Bestand kan niet worden overgeschreven';
-	$nl['FileOverw'] = 'Bestand overgeschreven';
-	$nl['FileIgnored'] = 'Bestand genegeerd';
-	$nl['ChkVer'] = 'Controleer nieuwe versie';
-	$nl['ChkVerAvailable'] = 'Nieuwe versie, klik hier om de download te starten';
-	$nl['ChkVerNotAvailable'] = 'Geen nieuwe versie beschikbaar';
-	$nl['ChkVerError'] = 'Verbindingsfout.';
-	$nl['Website'] = 'Website';
-	$nl['SendingForm'] = 'Bestanden worden verzonden. Even geduld...';
-	$nl['NoFileSel'] = 'Geen bestanden geselecteerd';
-	$nl['SelAll'] = 'Alles';
-	$nl['SelNone'] = 'Geen';
-	$nl['SelInverse'] = 'Keer om';
-	$nl['Selected_s'] = 'geselecteerd';
-	$nl['Total'] = 'totaal';
-	$nl['Partition'] = 'Partitie';
-	$nl['RenderTime'] = 'Tijd voor maken van deze pagina';
-	$nl['Seconds'] = 'sec';
-	$nl['ErrorReport'] = 'Foutenrapport';
+  $nl['Perms'] = 'Rechten';
+  $nl['Owner'] = 'Eigenaar';
+  $nl['Group'] = 'Groep';
+  $nl['Other'] = 'Anderen';
+  $nl['Size'] = 'Grootte';
+  $nl['Date'] = 'Datum';
+  $nl['Type'] = 'Type';
+  $nl['Free'] = 'free';
+  $nl['Shell'] = 'Shell';
+  $nl['Read'] = 'Lezen';
+  $nl['Write'] = 'Schrijven';
+  $nl['Exec'] = 'Uitvoeren';
+  $nl['Apply'] = 'Toepassen';
+  $nl['StickyBit'] = 'Sticky Bit';
+  $nl['Pass'] = 'Wachtwoord';
+  $nl['Lang'] = 'Taal';
+  $nl['File'] = 'Bestand';
+  $nl['File_s'] = 'bestand(en)';
+  $nl['Dir_s'] = 'map(pen)';
+  $nl['To'] = 'naar';
+  $nl['Destination'] = 'Bestemming';
+  $nl['Configurations'] = 'Instellingen';
+  $nl['JSError'] = 'Javascriptfout';
+  $nl['NoSel'] = 'Er zijn geen bestanden geselecteerd';
+  $nl['SelDir'] = 'Kies de bestemming in de boom aan de linker kant';
+  $nl['TypeDir'] = 'Voer de mapnaam in';
+  $nl['TypeArq'] = 'Voer de bestandsnaam in';
+  $nl['TypeCmd'] = 'Voer het commando in';
+  $nl['TypeArqComp'] = 'Voer de bestandsnaam in.\\nDe extensie zal het compressietype bepalen.\\nEx:\\nnome.zip\\nnome.tar\\nnome.bzip\\nnome.gzip';
+  $nl['RemSel'] = 'VERWIJDER geselecteerde itens';
+  $nl['NoDestDir'] = 'Er is geen doelmap geselecteerd';
+  $nl['DestEqOrig'] = 'Bron- en doelmap zijn hetzelfde';
+  $nl['InvalidDest'] = 'Doelmap is ongeldig';
+  $nl['NoNewPerm'] = 'Nieuwe rechten niet geset';
+  $nl['CopyTo'] = 'KOPIEER naar';
+  $nl['MoveTo'] = 'VERPLAATS naar';
+  $nl['AlterPermTo'] = 'VERANDER RECHTEN in';
+  $nl['ConfExec'] = 'Bevestig UITVOEREN';
+  $nl['ConfRem'] = 'Bevestig VERWIJDEREN';
+  $nl['EmptyDir'] = 'Lege map';
+  $nl['IOError'] = 'I/O Error';
+  $nl['FileMan'] = 'PHP File Manager';
+  $nl['TypePass'] = 'Voer het wachtwoord in';
+  $nl['InvPass'] = 'Ongeldig wachtwoord';
+  $nl['ReadDenied'] = 'Leestoegang ontzegd';
+  $nl['FileNotFound'] = 'Bestand niet gevonden';
+  $nl['AutoClose'] = 'Sluit na voltooien';
+  $nl['OutDocRoot'] = 'Bestand buiten DOCUMENT_ROOT';
+  $nl['NoCmd'] = 'Error: Command not informed';
+  $nl['ConfTrySave'] = 'Bestand zonder schrijfrechten.\\nProbeer een andere manier';
+  $nl['ConfSaved'] = 'Instellingen opgeslagen';
+  $nl['PassSaved'] = 'Wachtwoord opgeslagen';
+  $nl['FileDirExists'] = 'Bestand of map bestaat al';
+  $nl['NoPhpinfo'] = 'Functie \'phpinfo\' is uitgeschakeld';
+  $nl['NoReturn'] = 'no return';
+  $nl['FileSent'] = 'Bestand verzonden';
+  $nl['SpaceLimReached'] = 'Opslagruimtelimiet bereikt';
+  $nl['InvExt'] = 'Ongeldige extensie';
+  $nl['FileNoOverw'] = 'Bestand kan niet worden overgeschreven';
+  $nl['FileOverw'] = 'Bestand overgeschreven';
+  $nl['FileIgnored'] = 'Bestand genegeerd';
+  $nl['ChkVer'] = 'Controleer nieuwe versie';
+  $nl['ChkVerAvailable'] = 'Nieuwe versie, klik hier om de download te starten';
+  $nl['ChkVerNotAvailable'] = 'Geen nieuwe versie beschikbaar';
+  $nl['ChkVerError'] = 'Verbindingsfout.';
+  $nl['Website'] = 'Website';
+  $nl['SendingForm'] = 'Bestanden worden verzonden. Even geduld...';
+  $nl['NoFileSel'] = 'Geen bestanden geselecteerd';
+  $nl['SelAll'] = 'Alles';
+  $nl['SelNone'] = 'Geen';
+  $nl['SelInverse'] = 'Keer om';
+  $nl['Selected_s'] = 'geselecteerd';
+  $nl['Total'] = 'totaal';
+  $nl['Partition'] = 'Partitie';
+  $nl['RenderTime'] = 'Tijd voor maken van deze pagina';
+  $nl['Seconds'] = 'sec';
+  $nl['ErrorReport'] = 'Foutenrapport';
 
     // Italian - by Valerio Capello
     $it1['Version'] = 'Versione';
@@ -1769,7 +1769,7 @@ function et($tag){
     $it3['Seconds'] = 'sec';
     $it3['ErrorReport'] = 'Error Reporting';
 
-	// Italian - by Gianni
+  // Italian - by Gianni
     $it4['Version'] = 'Versione';
     $it4['DocRoot'] = 'Root documenti';
     $it4['FLRoot'] = 'Root file manager';
@@ -1987,116 +1987,116 @@ function et($tag){
     $tr['Seconds'] = 'Saniye';
     $tr['ErrorReport'] = 'Hata raporu';
 
-	// Россия - Евгений Рашев
-	$ru['Version']='Версия';
-	$ru['DocRoot']='Документ Root ';
-	$ru['FLRoot']='Файловый менеджер';
-	$ru['Name']='Имя';
-	$ru['And']='и';
-	$ru['Enter']='Enter';
-	$ru['Send']='Отправить';
-	$ru['Refresh']='Обновить';
-	$ru['SaveConfig']='Сохранить конфигурацию';
-	$ru['SavePass']='Сохранить пароль';
-	$ru['SaveFile']='Сохранить файл ';
-	$ru['Save']='Сохранить';
-	$ru['Leave']='Оставь';
-	$ru['Edit']='Изменить';
-	$ru['View']='Просмотр';
-	$ru['Config']='Настройки';
-	$ru['Ren']='Переименовать';
-	$ru['Rem']='Удалить';
-	$ru['Compress']='Сжать';
-	$ru['Decompress']='Распаковать';
-	$ru['ResolveIDs']='Определять id';
-	$ru['Move']='Переместить';
-	$ru['Copy']='Копировать';
-	$ru['ServerInfo']='Инфо о сервере';
-	$ru['CreateDir']='Создать папку';
-	$ru['CreateArq']='Создайте файл ';
-	$ru['ExecCmd']='Выполнить';
-	$ru['Upload']='Загрузить';
-	$ru['UploadEnd']='Загружено';
-	$ru['Perm']='Права';
-	$ru['Perms']='Разрешения';
-	$ru['Owner']='Владелец';
-	$ru['Group']='Группа';
-	$ru['Other']='Другие';
-	$ru['Size']='Размер';
-	$ru['Date']='Дата';
-	$ru['Type']='Тип';
-	$ru['Free']='Свободно';
-	$ru['Shell']='Shell';
-	$ru['Read']='Читать';
-	$ru['Write']='Писать';
-	$ru['Exec']='Выполнять';
-	$ru['Apply']='Применить';
-	$ru['StickyBit']='StickyBit';
-	$ru['Pass']='Пароль';
-	$ru['Lang']='Язык';
-	$ru['File']='Файл';
-	$ru['File_s']='Файл..';
-	$ru['Dir_s']='Пап..';
-	$ru['To']='в';
-	$ru['Destination']='Назначение';
-	$ru['Configurations']='Конфигурация';
-	$ru['JSError']='Ошибка JavaScript';
-	$ru['NoSel']='нет выбранных элементов';
-	$ru['SelDir']='Выберите папку назначения на левом дереве ';
-	$ru['TypeDir']='Введите имя каталога ';
-	$ru['TypeArq']='Введите имя файла';
-	$ru['TypeCmd']='Введите команду ';
-	$ru['TypeArqComp']='Введите имя файла ,расширение\\n это позволит определить тип сжатия \\n Пример:.. \\n nome.zip \\n nome.tar \\n nome.bzip \\n nome.gzip ';
-	$ru['RemSel']='Удалить выбранные элементы';
-	$ru['NoDestDir']='нет выбранного каталога назначения';
-	$ru['DestEqOrig']='Происхождение и назначение каталогов равны ';
-	$ru['InvalidDest']='Назначение каталога недействительно';
-	$ru['NoNewPerm']='Новые разрешения не установлены';
-	$ru['CopyTo']='Копировать в ';
-	$ru['MoveTo']='Переместить в';
-	$ru['AlterPermTo']='Изменение разрешений в ';
-	$ru['ConfExec']='Подтвердить ВЫПОЛНИТЬ ';
-	$ru['ConfRem']='Подтвердить УДАЛЕНИЕ';
-	$ru['EmptyDir']='Пустой каталог ';
-	$ru['IOError']='I/O Error';
-	$ru['FileMan']='PHP Файловый менеджер ';
-	$ru['TypePass']='Введите пароль';
-	$ru['InvPass']='Неверный пароль';
-	$ru['ReadDenied']='Доступ запрещен ';
-	$ru['FileNotFound']='Файл не найден';
-	$ru['AutoClose']='Закрыть полностью ';
-	$ru['OutDocRoot']='Файлы за пределами DOCUMENT_ROOT';
-	$ru['NoCmd']='Ошибка: Не поддерживаемая команда';
-	$ru['ConfTrySave']='Файл без прав на запись. \\n Сохранить в любом случае. ';
-	$ru['ConfSaved']='Конфигурация сохранена';
-	$ru['PassSaved']='Пароль сохранен';
-	$ru['FileDirExists']='Файл или каталог уже существует';
-	$ru['NoPhpinfo']='Функция PHPInfo отключена';
-	$ru['NoReturn']='Нет возврата';
-	$ru['FileSent']='Файл отправлен';
-	$ru['SpaceLimReached']='Достигнут предел Пространства';
-	$ru['InvExt']='Неверное расширение';
-	$ru['FileNoOverw']='Файл не может быть перезаписан ';
-	$ru['FileOverw']='Файл перезаписывается';
-	$ru['FileIgnored']='Файл игнорируется';
-	$ru['ChkVer']='Проверить обновление';
-	$ru['ChkVerAvailable']=' Доступна новая версия, нажмите здесь, чтобы начать загрузку! ';
-	$ru['ChkVerNotAvailable']='Нет новой версии. :(';
-	$ru['ChkVerError']='Ошибка подключения. ';
-	$ru['Website']='Сайт';
-	$ru['SendingForm']='Отправка файлов, пожалуйста, подождите ';
-	$ru['NoFileSel']='Нет выбранных файлов';
-	$ru['SelAll']='Выделить все';
-	$ru['SelNone']='Отмена';
-	$ru['SelInverse']='Обратить';
-	$ru['Selected_s']='Выбран';
-	$ru['Total']='Всего';
-	$ru['Partition']='Раздел';
-	$ru['RenderTime']='Скрипт выполнен за';
-	$ru['Seconds']='Секунд';
-	$ru['ErrorReport']='Отчет об ошибках';
+  // Россия - Евгений Рашев
+  $ru['Version']='Версия';
+  $ru['DocRoot']='Документ Root ';
+  $ru['FLRoot']='Файловый менеджер';
+  $ru['Name']='Имя';
+  $ru['And']='и';
+  $ru['Enter']='Enter';
+  $ru['Send']='Отправить';
+  $ru['Refresh']='Обновить';
+  $ru['SaveConfig']='Сохранить конфигурацию';
+  $ru['SavePass']='Сохранить пароль';
+  $ru['SaveFile']='Сохранить файл ';
+  $ru['Save']='Сохранить';
+  $ru['Leave']='Оставь';
+  $ru['Edit']='Изменить';
+  $ru['View']='Просмотр';
+  $ru['Config']='Настройки';
+  $ru['Ren']='Переименовать';
+  $ru['Rem']='Удалить';
+  $ru['Compress']='Сжать';
+  $ru['Decompress']='Распаковать';
+  $ru['ResolveIDs']='Определять id';
+  $ru['Move']='Переместить';
+  $ru['Copy']='Копировать';
+  $ru['ServerInfo']='Инфо о сервере';
+  $ru['CreateDir']='Создать папку';
+  $ru['CreateArq']='Создайте файл ';
+  $ru['ExecCmd']='Выполнить';
+  $ru['Upload']='Загрузить';
+  $ru['UploadEnd']='Загружено';
+  $ru['Perm']='Права';
+  $ru['Perms']='Разрешения';
+  $ru['Owner']='Владелец';
+  $ru['Group']='Группа';
+  $ru['Other']='Другие';
+  $ru['Size']='Размер';
+  $ru['Date']='Дата';
+  $ru['Type']='Тип';
+  $ru['Free']='Свободно';
+  $ru['Shell']='Shell';
+  $ru['Read']='Читать';
+  $ru['Write']='Писать';
+  $ru['Exec']='Выполнять';
+  $ru['Apply']='Применить';
+  $ru['StickyBit']='StickyBit';
+  $ru['Pass']='Пароль';
+  $ru['Lang']='Язык';
+  $ru['File']='Файл';
+  $ru['File_s']='Файл..';
+  $ru['Dir_s']='Пап..';
+  $ru['To']='в';
+  $ru['Destination']='Назначение';
+  $ru['Configurations']='Конфигурация';
+  $ru['JSError']='Ошибка JavaScript';
+  $ru['NoSel']='нет выбранных элементов';
+  $ru['SelDir']='Выберите папку назначения на левом дереве ';
+  $ru['TypeDir']='Введите имя каталога ';
+  $ru['TypeArq']='Введите имя файла';
+  $ru['TypeCmd']='Введите команду ';
+  $ru['TypeArqComp']='Введите имя файла ,расширение\\n это позволит определить тип сжатия \\n Пример:.. \\n nome.zip \\n nome.tar \\n nome.bzip \\n nome.gzip ';
+  $ru['RemSel']='Удалить выбранные элементы';
+  $ru['NoDestDir']='нет выбранного каталога назначения';
+  $ru['DestEqOrig']='Происхождение и назначение каталогов равны ';
+  $ru['InvalidDest']='Назначение каталога недействительно';
+  $ru['NoNewPerm']='Новые разрешения не установлены';
+  $ru['CopyTo']='Копировать в ';
+  $ru['MoveTo']='Переместить в';
+  $ru['AlterPermTo']='Изменение разрешений в ';
+  $ru['ConfExec']='Подтвердить ВЫПОЛНИТЬ ';
+  $ru['ConfRem']='Подтвердить УДАЛЕНИЕ';
+  $ru['EmptyDir']='Пустой каталог ';
+  $ru['IOError']='I/O Error';
+  $ru['FileMan']='PHP Файловый менеджер ';
+  $ru['TypePass']='Введите пароль';
+  $ru['InvPass']='Неверный пароль';
+  $ru['ReadDenied']='Доступ запрещен ';
+  $ru['FileNotFound']='Файл не найден';
+  $ru['AutoClose']='Закрыть полностью ';
+  $ru['OutDocRoot']='Файлы за пределами DOCUMENT_ROOT';
+  $ru['NoCmd']='Ошибка: Не поддерживаемая команда';
+  $ru['ConfTrySave']='Файл без прав на запись. \\n Сохранить в любом случае. ';
+  $ru['ConfSaved']='Конфигурация сохранена';
+  $ru['PassSaved']='Пароль сохранен';
+  $ru['FileDirExists']='Файл или каталог уже существует';
+  $ru['NoPhpinfo']='Функция PHPInfo отключена';
+  $ru['NoReturn']='Нет возврата';
+  $ru['FileSent']='Файл отправлен';
+  $ru['SpaceLimReached']='Достигнут предел Пространства';
+  $ru['InvExt']='Неверное расширение';
+  $ru['FileNoOverw']='Файл не может быть перезаписан ';
+  $ru['FileOverw']='Файл перезаписывается';
+  $ru['FileIgnored']='Файл игнорируется';
+  $ru['ChkVer']='Проверить обновление';
+  $ru['ChkVerAvailable']=' Доступна новая версия, нажмите здесь, чтобы начать загрузку! ';
+  $ru['ChkVerNotAvailable']='Нет новой версии. :(';
+  $ru['ChkVerError']='Ошибка подключения. ';
+  $ru['Website']='Сайт';
+  $ru['SendingForm']='Отправка файлов, пожалуйста, подождите ';
+  $ru['NoFileSel']='Нет выбранных файлов';
+  $ru['SelAll']='Выделить все';
+  $ru['SelNone']='Отмена';
+  $ru['SelInverse']='Обратить';
+  $ru['Selected_s']='Выбран';
+  $ru['Total']='Всего';
+  $ru['Partition']='Раздел';
+  $ru['RenderTime']='Скрипт выполнен за';
+  $ru['Seconds']='Секунд';
+  $ru['ErrorReport']='Отчет об ошибках';
 
-	// Catalan - by Pere Borràs AKA @Norl
+  // Catalan - by Pere Borràs AKA @Norl
     $cat['Version'] = 'Versió';
     $cat['DocRoot'] = 'Arrel del programa';
     $cat['FLRoot'] = 'Arrel de l`administrador d`arxius';
@@ -2345,10 +2345,10 @@ function zip_extract(){
 // | Data Formating
 // +--------------------------------------------------
 function html_encode($str){
-	global $charSet;
-	$str = preg_replace(array('/&/', '/</', '/>/', '/"/'), array('&amp;', '&lt;', '&gt;', '&quot;'), $str);  // Bypass PHP to allow any charset!!
+  global $charSet;
+  $str = preg_replace(array('/&/', '/</', '/>/', '/"/'), array('&amp;', '&lt;', '&gt;', '&quot;'), $str);  // Bypass PHP to allow any charset!!
     $str = htmlentities($str, ENT_QUOTES, $charSet, false);
-	return $str;
+  return $str;
 }
 function rep($x,$y){
   if ($x) {
@@ -2478,11 +2478,11 @@ function get_group($arg) {
     return $arg;
 }
 function uppercase($str){
-	global $charset;
+  global $charset;
     return mb_strtoupper($str, $charset);
 }
 function lowercase($str){
-	global $charset;
+  global $charset;
     return mb_strtolower($str, $charset);
 }
 // +--------------------------------------------------
@@ -2491,11 +2491,11 @@ function lowercase($str){
 function html_header($header=""){
     global $charset,$fm_color;
     echo "
-	<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-	<html xmlns=\"http://www.w3.org/1999/xhtml\">
+  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+  <html xmlns=\"http://www.w3.org/1999/xhtml\">
     <head>    
-    <meta http-equiv=\"content-type\" content=\"text/html; charset=".$charset."\" />	
-	<title>...:::: ".et('FileMan')."</title>
+    <meta http-equiv=\"content-type\" content=\"text/html; charset=".$charset."\" />  
+  <title>...:::: ".et('FileMan')."</title>
     <script language=\"Javascript\" type=\"text/javascript\">
     <!--
         function Is(){
@@ -2568,7 +2568,7 @@ function html_header($header=""){
             }else return false;
             return true;
         }
-	var flag = ".(($setflag)?"true":"false")."
+  var flag = ".(($setflag)?"true":"false")."
         function set_flag(arg) {
             flag = arg;
         }
@@ -2780,9 +2780,9 @@ function show_tree(){
     <!--
         // Disable text selection, binding the onmousedown, but not for some elements, it must work.
         function disableTextSelection(e){
-			var type = String(e.target.type);
-			return (type.indexOf('select') != -1 || type.indexOf('button') != -1 || type.indexOf('input') != -1 || type.indexOf('radio') != -1);
-		}
+      var type = String(e.target.type);
+      return (type.indexOf('select') != -1 || type.indexOf('button') != -1 || type.indexOf('input') != -1 || type.indexOf('radio') != -1);
+    }
         function enableTextSelection(){return true}
         if (is.ie) document.onselectstart=new Function('return false')
         else {
@@ -2821,12 +2821,12 @@ function show_tree(){
         echo "<select name=drive onchange=\"set_fm_current_root(this.value)\">";
         $aux="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         for($x=0;$x<strlen($aux);$x++){
-			if ($handle = opendir($aux[$x].":/")){
-    			@closedir($handle);
-	            if (strstr(uppercase($fm_current_root),$aux[$x].":/")) $is_sel="selected";
-	            else $is_sel="";
-	            echo "<option $is_sel value=\"".$aux[$x].":/\">".$aux[$x].":/";
-			}
+      if ($handle = opendir($aux[$x].":/")){
+          @closedir($handle);
+              if (strstr(uppercase($fm_current_root),$aux[$x].":/")) $is_sel="selected";
+              else $is_sel="";
+              echo "<option $is_sel value=\"".$aux[$x].":/\">".$aux[$x].":/";
+      }
         }
         echo "</select> ";
     }
@@ -2862,9 +2862,9 @@ function dir_list_form() {
         $entry_list = array();
         while ($file = readdir($opdir)) {
           if (($file != ".")&&($file != "..")){
-			$entry_list[$entry_count]["size"] = 0;
-			$entry_list[$entry_count]["sizet"] = 0;
-			$entry_list[$entry_count]["type"] = "none";
+      $entry_list[$entry_count]["size"] = 0;
+      $entry_list[$entry_count]["sizet"] = 0;
+      $entry_list[$entry_count]["type"] = "none";
             if (is_file($current_dir.$file)){
                 $ext = lowercase(strrchr($file,"."));
                 $entry_list[$entry_count]["type"] = "file";
@@ -3029,8 +3029,8 @@ function dir_list_form() {
             } else {
                 multipleSelection = (e.which == 1);
             }
-			var type = String(e.target.type);
-			return (type.indexOf('select') != -1 || type.indexOf('button') != -1 || type.indexOf('input') != -1 || type.indexOf('radio') != -1);
+      var type = String(e.target.type);
+      return (type.indexOf('select') != -1 || type.indexOf('button') != -1 || type.indexOf('input') != -1 || type.indexOf('radio') != -1);
         }
         function switch_flag_off(e) {
             if (is.ie){
@@ -3091,7 +3091,7 @@ function dir_list_form() {
         }
         // Select all/none/inverse
         function selectANI(Butt){
-        	cancel_copy_move();
+          cancel_copy_move();
             for(var x=0;x<". (integer)count($entry_list).";x++){
                 var Row = document.getElementById('entry'+x);
                 var newClassName = null;
@@ -3208,13 +3208,13 @@ function dir_list_form() {
                 set_flag(true);
             }
         }
-		function set_sel_dir_warn(b){
-        	document.getElementById(\"sel_dir_warn\").style.display=(b?'':'none');
-		}
-		function cancel_copy_move(){
-           	set_sel_dir_warn(false);
-           	set_flag(false);
-		}
+    function set_sel_dir_warn(b){
+          document.getElementById(\"sel_dir_warn\").style.display=(b?'':'none');
+    }
+    function cancel_copy_move(){
+             set_sel_dir_warn(false);
+             set_flag(false);
+    }
         function chmod_form(){
             cancel_copy_move();
             document.form_action.dir_dest.value='';
@@ -3230,18 +3230,18 @@ function dir_list_form() {
             cancel_copy_move();
             if (!is_anything_selected()) alert('".et('NoSel').".');
             else {
-            	document.form_action.dir_dest.value='';
-            	document.form_action.chmod_arg.value=arg;
-            	test(9);
-			}
+              document.form_action.dir_dest.value='';
+              document.form_action.chmod_arg.value=arg;
+              test(9);
+      }
         }
         function test_action(){
             if (document.form_action.action.value != 0) return true;
             else return false;
         }
         function test_prompt(arg){
-        	cancel_copy_move();
-			var erro='';
+          cancel_copy_move();
+      var erro='';
             var conf='';
             if (arg == 1){
                 document.form_action.cmd_arg.value = prompt('".et('TypeDir').".');
@@ -3279,7 +3279,7 @@ function dir_list_form() {
             alert(str);
         }
         function test(arg){
-        	cancel_copy_move();
+          cancel_copy_move();
             var erro='';
             var conf='';
             if (arg == 4){
@@ -3311,7 +3311,7 @@ function dir_list_form() {
                     document.form_action.submit();
                 } else {
                     set_sel_dir_warn(false);
-				}
+        }
             } else {
                 document.form_action.action.value = arg;
                 document.form_action.submit();
@@ -3363,7 +3363,7 @@ function dir_list_form() {
             $out .= "
                 </nobr></td>
                 </tr>
-				<tr>
+        <tr>
                 <td bgcolor=\"#DDDDDD\" colspan=50 id=\"sel_dir_warn\" style=\"display:none\"><nobr><font color=\"red\">".et('SelDir')."...</font></nobr></td>
                 </tr>";
             $file_count = 0;
@@ -3704,12 +3704,12 @@ function chmod_form(){
     function sticky_change(){
         document.chmod_form.sticky.checked = !(document.chmod_form.sticky.checked);
     }
-	function apply_chmod(){
+  function apply_chmod(){
         if (confirm('".et('AlterPermTo')." \\' '+document.chmod_form.t_total.value+' \\' ?\\n')){
             window.opener.set_chmod_arg(document.chmod_form.t_total.value);
-			window.close();
-		}
-	}
+      window.close();
+    }
+  }
 
     window.onload=octalchange
     window.moveTo((window.screen.width-400)/2,((window.screen.height-200)/2)-20);
@@ -3871,64 +3871,64 @@ function get_mime_type($ext = ''){
 }
 function view(){
     global $doc_root,$path_info,$url_info,$current_dir,$islinux,$filename,$passthru;
-	if (intval($passthru)){
-	    $file = $current_dir.$filename;
-	    if(file_exists($file)){
-	        $is_denied = false;
-	        foreach($download_ext_filter as $key=>$ext){
-	            if (preg_match($ext,$filename)){
-	                $is_denied = true;
-	                break;
-	            }
-	        }
-	        if (!$is_denied){
+  if (intval($passthru)){
+      $file = $current_dir.$filename;
+      if(file_exists($file)){
+          $is_denied = false;
+          foreach($download_ext_filter as $key=>$ext){
+              if (preg_match($ext,$filename)){
+                  $is_denied = true;
+                  break;
+              }
+          }
+          if (!$is_denied){
                 if ($fh = fopen("$file", "rb")){
-	                fclose($fh);
-					$ext = pathinfo($file, PATHINFO_EXTENSION);
-					$ctype = get_mime_type($ext);
-					if ($ctype == "application/octet-stream") $ctype = "text/plain";
-					header("Pragma: public");
-					header("Expires: 0");
-					header("Connection: close");
-					header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-					header("Cache-Control: public");
-					header("Content-Description: File Transfer");
-					header("Content-Type: ".$ctype);
-				    header("Content-Disposition: inline; filename=\"".pathinfo($file, PATHINFO_BASENAME)."\";");
-					header("Content-Transfer-Encoding: binary");
-					header("Content-Length: ".filesize($file));
-					@readfile($file);
-					exit();
-	            } else alert(et('ReadDenied').": ".$file);
-	        } else alert(et('ReadDenied').": ".$file);
-	    } else alert(et('FileNotFound').": ".$file);
+                  fclose($fh);
+          $ext = pathinfo($file, PATHINFO_EXTENSION);
+          $ctype = get_mime_type($ext);
+          if ($ctype == "application/octet-stream") $ctype = "text/plain";
+          header("Pragma: public");
+          header("Expires: 0");
+          header("Connection: close");
+          header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+          header("Cache-Control: public");
+          header("Content-Description: File Transfer");
+          header("Content-Type: ".$ctype);
+            header("Content-Disposition: inline; filename=\"".pathinfo($file, PATHINFO_BASENAME)."\";");
+          header("Content-Transfer-Encoding: binary");
+          header("Content-Length: ".filesize($file));
+          @readfile($file);
+          exit();
+              } else alert(et('ReadDenied').": ".$file);
+          } else alert(et('ReadDenied').": ".$file);
+      } else alert(et('FileNotFound').": ".$file);
         echo "
-	    <script language=\"Javascript\" type=\"text/javascript\">
-	    <!--
-	        window.close();
-	    //-->
-	    </script>";
-	} else {
-	    html_header();
-	    echo "<body marginwidth=\"0\" marginheight=\"0\">";
-	    $is_reachable_thru_webserver = (stristr($current_dir,$doc_root)!==false);
-	    if ($is_reachable_thru_webserver){
-	        $url = $url_info["scheme"]."://".$url_info["host"];
-	        if (strlen($url_info["port"])) $url .= ":".$url_info["port"];
-	        // Malditas variaveis de sistema!! No windows doc_root é sempre em lowercase... cadê o str_ireplace() ??
-	        $url .= str_replace($doc_root,"","/".$current_dir).$filename;
-	    } else {
-			$url = addslashes($path_info["basename"])."?action=4&current_dir=".addslashes($current_dir)."&filename=".addslashes($filename)."&passthru=1";
-	    }
+      <script language=\"Javascript\" type=\"text/javascript\">
+      <!--
+          window.close();
+      //-->
+      </script>";
+  } else {
+      html_header();
+      echo "<body marginwidth=\"0\" marginheight=\"0\">";
+      $is_reachable_thru_webserver = (stristr($current_dir,$doc_root)!==false);
+      if ($is_reachable_thru_webserver){
+          $url = $url_info["scheme"]."://".$url_info["host"];
+          if (strlen($url_info["port"])) $url .= ":".$url_info["port"];
+          // Malditas variaveis de sistema!! No windows doc_root é sempre em lowercase... cadê o str_ireplace() ??
+          $url .= str_replace($doc_root,"","/".$current_dir).$filename;
+      } else {
+      $url = addslashes($path_info["basename"])."?action=4&current_dir=".addslashes($current_dir)."&filename=".addslashes($filename)."&passthru=1";
+      }
         echo "
-	    <script language=\"Javascript\" type=\"text/javascript\">
-	    <!--
-        	window.moveTo((window.screen.width-800)/2,((window.screen.height-600)/2)-20);
-	        document.location.href='$url';
-	    //-->
-	    </script>
-    	</body>\n</html>";
-	}
+      <script language=\"Javascript\" type=\"text/javascript\">
+      <!--
+          window.moveTo((window.screen.width-800)/2,((window.screen.height-600)/2)-20);
+          document.location.href='$url';
+      //-->
+      </script>
+      </body>\n</html>";
+  }
 }
 function edit_file_form(){
     global $current_dir,$filename,$file_data,$save_file,$path_info;
@@ -3992,7 +3992,7 @@ function config_form(){
                 if (is_array($data)&&count($data)){
                     $ChkVerWarning .= "<a href=\"JavaScript:open_win('http://sourceforge.net')\">
                     <img src=\"http://sourceforge.net/sflogo.php?group_id=114392&type=1\" width=\"88\" height=\"31\" style=\"border: 1px solid #AAAAAA\" alt=\"SourceForge.net Logo\" />
-					</a>";
+          </a>";
                     if (str_replace(".","",$data['version'])>str_replace(".","",$cfg->data['version'])) $ChkVerWarning .= "<td><a href=\"JavaScript:open_win('http://prdownloads.sourceforge.net/phpfm/phpFileManager-".$data['version'].".zip?download')\"><font color=green>".et('ChkVerAvailable')."</font></a>";
                     else $ChkVerWarning .= "<td><font color=red>".et('ChkVerNotAvailable')."</font>";
                 } else $ChkVerWarning .= "<td><font color=red>".et('ChkVerError')."</font>";
@@ -4041,79 +4041,79 @@ function config_form(){
     <tr><td colspan=2 align=center><b>".uppercase(et('Configurations'))."</b></td></tr>
     </table>
     <table border=0 cellspacing=0 cellpadding=5 align=center width=\"100%\">
-	<form>
+  <form>
     <tr><td align=right width=\"1%\">".et('Version').":<td>$version (".get_size($fm_self).")</td></tr>
     <tr><td align=right>".et('Website').":<td><a href=\"JavaScript:open_win('http://phpfm.sf.net')\">http://phpfm.sf.net</a>&nbsp;&nbsp;&nbsp;<input type=button value=\"".et('ChkVer')."\" onclick=\"test_config_form(1)\"></td></tr>
-	</form>";
+  </form>";
     if (strlen($ChkVerWarning)) echo $ChkVerWarning.$data['warnings'];
     echo "
- 	<style type=\"text/css\">
-		.buymeabeer {
-		    background: url('http://phpfm.sf.net/img/buymeabeer.png') 0 0 no-repeat;
-		    text-indent: -9999px;
-		    width: 128px;
-		    height: 31px;
+   <style type=\"text/css\">
+    .buymeabeer {
+        background: url('http://phpfm.sf.net/img/buymeabeer.png') 0 0 no-repeat;
+        text-indent: -9999px;
+        width: 128px;
+        height: 31px;
             border: none;
-   			cursor: hand;
-   			cursor: pointer;
-		}
-		.buymeabeer:hover {
-		    background: url('http://phpfm.sf.net/img/buymeabeer.png') 0 -31px no-repeat;
-		}
-	</style>
-	<tr><td align=right>Like this project?</td><td>
-	<form name=\"buymeabeer_form\" action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\">
-		<input type=\"hidden\" name=\"cmd\" value=\"_xclick\">
-		<input type=\"hidden\" name=\"business\" value=\"dulldusk@gmail.com\">
-		<input type=\"hidden\" name=\"lc\" value=\"BR\">
-		<input type=\"hidden\" name=\"item_name\" value=\"A Beer\">
-		<input type=\"hidden\" name=\"button_subtype\" value=\"services\">
-		<input type=\"hidden\" name=\"currency_code\" value=\"USD\">
-		<input type=\"hidden\" name=\"tax_rate\" value=\"0.000\">
-		<input type=\"hidden\" name=\"shipping\" value=\"0.00\">
-		<input type=\"hidden\" name=\"bn\" value=\"PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest\">
+         cursor: hand;
+         cursor: pointer;
+    }
+    .buymeabeer:hover {
+        background: url('http://phpfm.sf.net/img/buymeabeer.png') 0 -31px no-repeat;
+    }
+  </style>
+  <tr><td align=right>Like this project?</td><td>
+  <form name=\"buymeabeer_form\" action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\">
+    <input type=\"hidden\" name=\"cmd\" value=\"_xclick\">
+    <input type=\"hidden\" name=\"business\" value=\"dulldusk@gmail.com\">
+    <input type=\"hidden\" name=\"lc\" value=\"BR\">
+    <input type=\"hidden\" name=\"item_name\" value=\"A Beer\">
+    <input type=\"hidden\" name=\"button_subtype\" value=\"services\">
+    <input type=\"hidden\" name=\"currency_code\" value=\"USD\">
+    <input type=\"hidden\" name=\"tax_rate\" value=\"0.000\">
+    <input type=\"hidden\" name=\"shipping\" value=\"0.00\">
+    <input type=\"hidden\" name=\"bn\" value=\"PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest\">
         <input type=\"submit\" class=\"buymeabeer\" value=\"buy me a beer\">
-	        <input type=\"hidden\" name=\"buyer_credit_promo_code\" value=\"\">
-	        <input type=\"hidden\" name=\"buyer_credit_product_category\" value=\"\">
-	        <input type=\"hidden\" name=\"buyer_credit_shipping_method\" value=\"\">
-	        <input type=\"hidden\" name=\"buyer_credit_user_address_change\" value=\"\">
-	        <input type=\"hidden\" name=\"tax\" value=\"0\">
-			<input type=\"hidden\" name=\"no_shipping\" value=\"1\">
-	        <input type=\"hidden\" name=\"return\" value=\"http://phpfm.sf.net\">
-	        <input type=\"hidden\" name=\"cancel_return\" value=\"http://phpfm.sf.net\">
-	</form>
-	</td></tr>
+          <input type=\"hidden\" name=\"buyer_credit_promo_code\" value=\"\">
+          <input type=\"hidden\" name=\"buyer_credit_product_category\" value=\"\">
+          <input type=\"hidden\" name=\"buyer_credit_shipping_method\" value=\"\">
+          <input type=\"hidden\" name=\"buyer_credit_user_address_change\" value=\"\">
+          <input type=\"hidden\" name=\"tax\" value=\"0\">
+      <input type=\"hidden\" name=\"no_shipping\" value=\"1\">
+          <input type=\"hidden\" name=\"return\" value=\"http://phpfm.sf.net\">
+          <input type=\"hidden\" name=\"cancel_return\" value=\"http://phpfm.sf.net\">
+  </form>
+  </td></tr>
     <form name=\"config_form\" action=\"".$path_info["basename"]."\" method=\"post\">
     <input type=hidden name=action value=2>
     <input type=hidden name=config_action value=0>
     <tr><td align=right width=1><nobr>".et('DocRoot').":</nobr><td>".$doc_root."</td></tr>
     <tr><td align=right><nobr>".et('FLRoot').":</nobr><td><input type=text size=60 name=newfm_root value=\"".$cfg->data['fm_root']."\" onkeypress=\"enterSubmit(event,'test_config_form(2)')\"></td></tr>
     <tr><td align=right>".et('Lang').":<td>
-	<select name=newlang>
-    	<option value=cat>Catalan - by Pere Borràs AKA @Norl
+  <select name=newlang>
+      <option value=cat>Catalan - by Pere Borràs AKA @Norl
         <option value=nl>Dutch - by Leon Buijs
-		<option value=en>English - by Fabricio Seger Kolling
-		<option value=fr1>French - by Jean Bilwes
+    <option value=en>English - by Fabricio Seger Kolling
+    <option value=fr1>French - by Jean Bilwes
         <option value=fr2>French - by Sharky
         <option value=fr3>French - by Michel Lainey
-		<option value=de1>German - by Guido Ogrzal
+    <option value=de1>German - by Guido Ogrzal
         <option value=de2>German - by AXL
         <option value=de3>German - by Mathias Rothe
         <option value=it1>Italian - by Valerio Capello
         <option value=it2>Italian - by Federico Corrà
         <option value=it3>Italian - by Luca Zorzi
         <option value=it4>Italian - by Gianni
-		<option value=kr>Korean - by Airplanez	
-		<option value=pt>Portuguese - by Fabricio Seger Kolling
-		<option value=es>Spanish - by Sh Studios
+    <option value=kr>Korean - by Airplanez  
+    <option value=pt>Portuguese - by Fabricio Seger Kolling
+    <option value=es>Spanish - by Sh Studios
         <option value=ru>Russian - by Евгений Рашев
         <option value=tr>Turkish - by Necdet Yazilimlari
-	</select></td></tr>
+  </select></td></tr>
     <tr><td align=right>".et('ErrorReport').":<td><select name=newerror>
-	<option value=\"0\">Disabled
-	<option value=\"1\">Show Errors
-	<option value=\"2\">Show Errors, Warnings and Notices
-	</select></td></tr>
+  <option value=\"0\">Disabled
+  <option value=\"1\">Show Errors
+  <option value=\"2\">Show Errors, Warnings and Notices
+  </select></td></tr>
     <tr><td> <td><input type=button value=\"".et('SaveConfig')."\" onclick=\"test_config_form(2)\">";
     if (strlen($Warning1)) echo " <font color=red>$Warning1</font>";
     echo "
@@ -4155,23 +4155,23 @@ function config_form(){
 function server_info(){
     if (!@phpinfo()) echo et('NoPhpinfo')."...";
     echo "<br><br>";
-	    $a=ini_get_all();
-	    $output="<table border=1 cellspacing=0 cellpadding=4 align=center>";
-	    $output.="<tr><th colspan=2>ini_get_all()</td></tr>";
-	    while(list($key, $value)=each($a)) {
-	        list($k, $v)= each($a[$key]);
-	        $output.="<tr><td align=right>$key</td><td>$v</td></tr>";
-	    }
-	    $output.="</table>";
-	echo $output;
+      $a=ini_get_all();
+      $output="<table border=1 cellspacing=0 cellpadding=4 align=center>";
+      $output.="<tr><th colspan=2>ini_get_all()</td></tr>";
+      while(list($key, $value)=each($a)) {
+          list($k, $v)= each($a[$key]);
+          $output.="<tr><td align=right>$key</td><td>$v</td></tr>";
+      }
+      $output.="</table>";
+  echo $output;
     echo "<br><br>";
-	    $output="<table border=1 cellspacing=0 cellpadding=4 align=center>";
-	    $output.="<tr><th colspan=2>\$_SERVER</td></tr>";
-	    foreach ($_SERVER as $k=>$v) {
-	        $output.="<tr><td align=right>$k</td><td>$v</td></tr>";
-	    }
-	    $output.="</table>";
-	echo $output;
+      $output="<table border=1 cellspacing=0 cellpadding=4 align=center>";
+      $output.="<tr><th colspan=2>\$_SERVER</td></tr>";
+      foreach ($_SERVER as $k=>$v) {
+          $output.="<tr><td align=right>$k</td><td>$v</td></tr>";
+      }
+      $output.="</table>";
+  echo $output;
     echo "<br><br>";
     echo "<table border=1 cellspacing=0 cellpadding=4 align=center>";
     $safe_mode=trim(ini_get("safe_mode"));

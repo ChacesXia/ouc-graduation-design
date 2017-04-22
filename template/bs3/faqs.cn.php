@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");?>      
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +22,7 @@
   <body>
 
     <div class="container">
-    <?php include("template/$OJ_TEMPLATE/nav.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
 <hr>
@@ -32,9 +32,9 @@
 <hr>
 <p><font color=green>Q</font>:这个在线裁判系统使用什么样的编译器和编译选项?<br>
   <font color=red>A</font>:系统运行于<a href="http://www.debian.org/">Debian</a>/<a href="http://www.ubuntu.com">Ubuntu</a>
-	Linux. 使用<a href="http://gcc.gnu.org/">GNU GCC/G++</a> 作为C/C++编译器,
-	<a href="http://www.freepascal.org">Free Pascal</a> 作为pascal 编译器 ，用
-	<a href="http://openjdk.java.net/">openjdk-7</a> 编译 Java. 对应的编译选项如下:<br>
+  Linux. 使用<a href="http://gcc.gnu.org/">GNU GCC/G++</a> 作为C/C++编译器,
+  <a href="http://www.freepascal.org">Free Pascal</a> 作为pascal 编译器 ，用
+  <a href="http://openjdk.java.net/">openjdk-7</a> 编译 Java. 对应的编译选项如下:<br>
 </p>
 <table border="1">
   <tr>
@@ -78,7 +78,7 @@ int main(){
     int a,b;
     while(cin >> a >> b)
         cout << a+b << endl;
-	return 0;
+  return 0;
 }
 </font></pre>
 C:<br>
@@ -88,7 +88,7 @@ int main(){
     int a,b;
     while(scanf("%d %d",&amp;a, &amp;b) != EOF)
         printf("%d\n",a+b);
-	return 0;
+  return 0;
 }
 </font></pre>
  PASCAL:<br>
@@ -110,14 +110,14 @@ Java:<br>
 <pre><font color="blue">
 import java.util.*;
 public class Main{
-	public static void main(String args[]){
-		Scanner cin = new Scanner(System.in);
-		int a, b;
-		while (cin.hasNext()){
-			a = cin.nextInt(); b = cin.nextInt();
-			System.out.println(a + b);
-		}
-	}
+  public static void main(String args[]){
+    Scanner cin = new Scanner(System.in);
+    int a, b;
+    while (cin.hasNext()){
+      a = cin.nextInt(); b = cin.nextInt();
+      System.out.println(a + b);
+    }
+  }
 }</font></pre>
 
 <hr>
@@ -181,7 +181,7 @@ public class Main{
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <?php include("template/$OJ_TEMPLATE/js.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/js.php");?>      
  <script language="javascript" type="text/javascript" src="include/jquery.flot.js"></script>
 <script type="text/javascript">
 $(function () {

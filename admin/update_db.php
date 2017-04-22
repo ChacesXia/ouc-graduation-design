@@ -1,8 +1,8 @@
 <?php require("admin-header.php");
 
 if (!(isset($_SESSION['administrator']))){
-	echo "<a href='../loginpage.php'>Please Login First!</a>";
-	exit(1);
+  echo "<a href='../loginpage.php'>Please Login First!</a>";
+  exit(1);
 }?>
 <?php $tsql=Array();
 $csql=Array();
@@ -68,7 +68,7 @@ CREATE TABLE `mail` (
   PRIMARY KEY  (`mail_id`),
   KEY `uid` (`to_user`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000 ;";
-$tsql[5]="ALTER TABLE `solution` MODIFY COLUMN `user_id` CHAR(48)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,	DROP COLUMN `className`,MODIFY COLUMN `ip` CHAR(15)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;";
+$tsql[5]="ALTER TABLE `solution` MODIFY COLUMN `user_id` CHAR(48)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,  DROP COLUMN `className`,MODIFY COLUMN `ip` CHAR(15)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;";
 $csql[5]="";
 
 $tsql[6]="select langmask from contest limit 1;";
@@ -137,29 +137,29 @@ $csql[24]="alter table solution modify column pass_rate decimal(3,2) NOT NULL DE
 
 
 if(isset($_POST['do'])){
-	require_once("../include/check_post_key.php");
-	echo "Executing...<br>";
-	for($i=0;isset($tsql[$i]);$i++){
-		if(!$res=mysqli_query($mysqli,$tsql[$i])){
-				echo $csql[$i]."<br>";
-				mysqli_query($mysqli,$csql[$i]);
-		}else{
-				echo mysqli_error($mysqli)."<br>";
-		}
-		
-	}
+  require_once("../include/check_post_key.php");
+  echo "Executing...<br>";
+  for($i=0;isset($tsql[$i]);$i++){
+    if(!$res=mysqli_query($mysqli,$tsql[$i])){
+        echo $csql[$i]."<br>";
+        mysqli_query($mysqli,$csql[$i]);
+    }else{
+        echo mysqli_error($mysqli)."<br>";
+    }
+    
+  }
 }
 ?>
 <b>Update DataBase</b>
-	Create New Tables ,drop useless columes.
-	<b>Necessary for using plagiarism detection.</b>
-	<form action='update_db.php' method=post>
-		<?php require_once("../include/set_post_key.php");?>
-		<input type='hidden' name='do' value='do'>
-		<input type=submit value=Update>
-	</form>
-	
-<?php if (file_exists("update_pw.php")) {	?>
+  Create New Tables ,drop useless columes.
+  <b>Necessary for using plagiarism detection.</b>
+  <form action='update_db.php' method=post>
+    <?php require_once("../include/set_post_key.php");?>
+    <input type='hidden' name='do' value='do'>
+    <input type=submit value=Update>
+  </form>
+  
+<?php if (file_exists("update_pw.php")) {  ?>
    <a href="update_pw.php">Upgrade all users password storage form to get more security.</a>
    * only do once !
 <?php }?>

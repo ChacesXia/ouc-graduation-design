@@ -7,8 +7,8 @@
 
 .menu-btn{
 
-	text-decoration: none;
-	padding: 5px 10px;
+  text-decoration: none;
+  padding: 5px 10px;
     display: list-item;
     background: #242a2f;
     min-width: 168px;
@@ -31,21 +31,21 @@
 }
 
 .top-space{
-	margin-top: 52px;
+  margin-top: 52px;
 }
 
 body{
-	background-image: url("../image/back.png");
-	opacity: 0.95;
+  background-image: url("../image/back.png");
+  opacity: 0.95;
 }
 
 .menu-group{
-	padding-top: 15px;
+  padding-top: 15px;
 }
 
 .col{
-	background:#f9f9f9;
-	-webkit-border-radius: 5px;
+  background:#f9f9f9;
+  -webkit-border-radius: 5px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     box-shadow: 0 0 18px 0 #242a2f;
@@ -55,19 +55,19 @@ body{
 }
 
 .align-center{
-	left:auto;
-	text-align:center;
-	text-align:-webkit-center;
-	vertical-align: center;
+  left:auto;
+  text-align:center;
+  text-align:-webkit-center;
+  vertical-align: center;
 
 }
 
 .clear-float{
-	float: none;
+  float: none;
 }
 
 .btn-group .btn{
-	float: none;
+  float: none;
 }
 
 div .bottom-space{

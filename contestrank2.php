@@ -164,9 +164,9 @@ for ($i=0;$i<$rows_cnt;$i++){
                 $user_name=$n_user;
         }
         if(time()<$end_time&&$lock<$row['in_date']+$start_time)
-        	   $U[$user_cnt]->Add($row['num'],$row['in_date'],0);
+             $U[$user_cnt]->Add($row['num'],$row['in_date'],0);
         else
-        	   $U[$user_cnt]->Add($row['num'],$row['in_date'],intval($row['result']));
+             $U[$user_cnt]->Add($row['num'],$row['in_date'],intval($row['result']));
        
 }
 $solution_json= json_encode($result);

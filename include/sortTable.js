@@ -18,12 +18,12 @@
             function generateCompareTRs(iCol, sDataType) {
         
                 return  function compareTRs(oTR1, oTR2) {
-					        var td1=oTR1.cells[iCol].firstChild;
-					        var td2=oTR2.cells[iCol].firstChild;
-					        
-							td1=td1.innerText || td1.textContent;
-							td2=td2.innerText || td2.textContent;
-							
+                  var td1=oTR1.cells[iCol].firstChild;
+                  var td2=oTR2.cells[iCol].firstChild;
+                  
+              td1=td1.innerText || td1.textContent;
+              td2=td2.innerText || td2.textContent;
+              
 
                             var vValue1 = convert(td1, sDataType);
                             var vValue2 = convert(td2, sDataType);
@@ -60,10 +60,10 @@
         
                 var oFragment = document.createDocumentFragment();
                 for (var i=0; i < aTRs.length; i++) {
-					if(i%2==0)
-						aTRs[i].className='evenrow';
-					else
-						aTRs[i].className='oddrow';
+          if(i%2==0)
+            aTRs[i].className='evenrow';
+          else
+            aTRs[i].className='oddrow';
                     oFragment.appendChild(aTRs[i]);
                 }
        

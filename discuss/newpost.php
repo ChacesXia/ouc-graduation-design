@@ -1,12 +1,12 @@
 <?php
-	require_once("oj-header.php");
+  require_once("oj-header.php");
 
-	echo "<title>HUST Online Judge WebBoard >> New Thread</title>";
-	if (!isset($_SESSION['user_id'])){
-		echo "<a href=../loginpage.php>Please Login First</a>";
-		require_once("../oj-footer.php");
-		exit(0);
-	}
+  echo "<title>HUST Online Judge WebBoard >> New Thread</title>";
+  if (!isset($_SESSION['user_id'])){
+    echo "<a href=../loginpage.php>Please Login First</a>";
+    require_once("../oj-footer.php");
+    exit(0);
+  }
 ?>
 
 <center>
