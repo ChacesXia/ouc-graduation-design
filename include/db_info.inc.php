@@ -16,7 +16,7 @@ static   $OJ_HOME="./";
 static   $OJ_ADMIN="1217113694@qq.com";
 static   $OJ_DATA="/home/judge/data";
 
-static   $OJ_BBS="discuss3";//"bsae" for phpBB3 bridge or "discuss" for mini-forum
+static   $OJ_BBS="discuss";//"bsae" for phpBB3 bridge or "discuss" for mini-forum
 static  $OJ_ONLINE=false;
 static  $OJ_LANG="en";
 static  $OJ_SIM=false; 

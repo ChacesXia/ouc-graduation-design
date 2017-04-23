@@ -10,8 +10,7 @@
         if(isset($_GET['id']))
                 require_once("oj-header.php");
         else
-                require_once("contest-header.php");
-       
+                require_once("oj-header.php");
         ?>
 <div id=main>
         <center>
@@ -21,30 +20,25 @@ if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE'))
    $OJ_EDITE_AREA=false;
 }
 
-
-
 if($OJ_EDITE_AREA){
 ?>
 <script language="Javascript" type="text/javascript" src="edit_area/edit_area_full.js"></script>
 <script language="Javascript" type="text/javascript">
-
 editAreaLoader.init({
-                id: "source"            
-                ,start_highlight: true
-                ,allow_resize: "both"
-                ,allow_toggle: true
-                ,word_wrap: true
-                ,language: "en"
-                ,syntax: "cpp"  
-                        ,font_size: "8"
-                ,syntax_selection_allow: "basic,c,cpp,java,pas,perl,php,python,ruby"
-                        ,toolbar: "search, go_to_line, fullscreen, |, undo, redo, |, select_font,syntax_selection,|, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help"          
+                id: "source",
+                start_highlight: true,
+                allow_resize: "both",
+                allow_toggle: true,
+                word_wrap: true,
+                language: "en",
+                syntax: "c",
+                font_size: "10",
+                syntax_selection_allow: "c,cpp,java,python,pas,perl,php,ruby",
+                toolbar: "search, go_to_line, fullscreen, |, undo, redo, |, select_font,syntax_selection,|, change_smooth_selection, highlight, reset_highlight, word_wrap, |, help"          
         });
 </script>
 <?php }?>
-<script src="include/checksource.js">
-
-</script>
+<script src="include/checksource.js"> </script>
 <form id=frmSolution action="submit.php" method="post"
 <?php if($OJ_LANG=="cn"){?>
  onsubmit="return checksource(document.getElementById('source').value);"
@@ -57,11 +51,12 @@ Problem <span class=blue><b><?php echo $id?></b></span>
 $PID="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 if ($pid>25) $pid=25;
 ?>
-Problem <span class=blue><b><?php echo $PID[$pid]?></b></span> of Contest <span class=blue><b><?php echo $cid?></b></span><br>
+Problem <span class=blue><b><?php echo $PID[$pid]?></b></span> of Test <span class=blue><b><?php echo $cid?></b></span><br>
 <input id="cid" type='hidden' value='<?php echo $cid?>' name="cid">
 <input id="pid" type='hidden' value='<?php echo $pid?>' name="pid">
 <?php }?>
-Language:
+
+编程语言:
 <select id="language" name="language">
 <?php
 $lang_count=count($language_ext);
@@ -75,12 +70,9 @@ $lang_count=count($language_ext);
 if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
  else $lastlang=0;
  for($i=0;$i<$lang_count;$i++){
-                if($lang&(1<<$i))
-                 echo"<option value=$i ".( $lastlang==$i?"selected":"").">
-                        ".$language_name[$i]."
-                 </option>";
+    if($lang&(1<<$i))
+     echo"<option value=$i ".( $lastlang==$i?"selected":"").">".$language_name[$i]."</option>";
   }
-
 ?>
 </select>
 <br>

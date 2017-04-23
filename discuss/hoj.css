@@ -1,3 +1,4 @@
+@import url(../bootstrap/css/bootstrap.css);
 a:link{color:blue;text-decoration:none;}
 a:visited{color:blue;text-decoration:none;}
 a:hover{color:cyan;}
@@ -5,16 +6,19 @@ h2{
   color:blue;
 }
 .toprow{
-  background-color:#8080FF;
+  background-color:#8010FF;
   color:#FFFFFF;
-    font-weight:bold;
+  font-weight:bold;
 }
 .toprow td{font-size:80%;}
 .toprow a:link{color:white;text-decoration:none;}
 .toprow a:visited{color:white;text-decoration:none;}
 .toprow a:hover{color:cyan;}
 
-.oddrow{background-color:#F3F9FF;}
+.oddrow{
+  /*background-color:#F3F9FF;*/
+  border-color: #F3F9FF;
+}
 .oddrow td{font-size:80%;}
 .evenrow{background-color:#F0FFF0;}
 .evenrow td{font-size:80%;}

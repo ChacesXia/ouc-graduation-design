@@ -14,7 +14,6 @@
                 require_once("../oj-footer.php");
                 exit(0);
         }
-        
         if (strlen($_POST['title'])>60){
                 require_once("oj-header.php");
                 echo "Your title is too long!";

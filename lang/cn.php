@@ -1,6 +1,6 @@
 <?php
   $MSG_FAQ="常见问答";
-  $MSG_BBS="讨论版";
+  $MSG_BBS="BBS-论坛";
   $MSG_HOME="主页";
   $MSG_PROBLEMS="问题";
   $MSG_STATUS="状态";

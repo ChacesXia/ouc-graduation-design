@@ -87,7 +87,21 @@ begin
      end; 
 end.
 </font></pre>
-<br><br>
+
+Python:<br>
+<pre><font color="blue"> 
+import string
+while True:
+    try:
+        s = raw_input()
+        arr = string.split(s,' ')
+        a = int(arr[0])
+        b = int(arr[1])
+        c = int(arr[2])
+        print a + b + c
+    except EOFError:
+        exit(0)
+</font></pre>
 
 Java:<br>
 <pre><font color="blue">

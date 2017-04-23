@@ -3,16 +3,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title><?php echo $view_title?></title>
   <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
-        
-        <link rel="next" href="submitpage.php?<?php
-        
-        if ($pr_flag){
-    echo "id=$id";
-  }else{
-    echo "cid=$cid&pid=$pid&langmask=$langmask";
-  }
-        
-        ?>">
+  <link rel="next" href="submitpage.php?"<?php
+    if ($pr_flag){
+      echo "id=$id";
+    }else{
+      echo "cid=$cid&pid=$pid&langmask=$langmask";
+    }?>
 </head>
 <body>
 <div id="wrapper">
@@ -20,13 +16,10 @@
   if(isset($_GET['id']))
     require_once("oj-header.php");
   else
-    require_once("contest-header.php");
-  
+    require_once("oj-header.php");
   ?>
-<div id=main>
-  
+<div id=main> 
   <?php
-  
   if ($pr_flag){
     echo "<title>$MSG_PROBLEM $row->problem_id. -- $row->title</title>";
     echo "<center><h2>$id: $row->title</h2>";
@@ -83,16 +76,14 @@
     echo "[<a href='submitpage.php?cid=$cid&pid=$pid&langmask=$langmask'>$MSG_SUBMIT</a>]";
   }
   echo "[<a href='problemstatus.php?id=".$row->problem_id."'>$MSG_STATUS</a>]";
-
   echo "[<a href='bbs.php?pid=".$row->problem_id."$ucid'>$MSG_BBS</a>]";
-  echo "</center>";
-  
-  
-  ?>
+  echo "</center>";  
+?>
+
 <div id=foot>
   <?php require_once("oj-footer.php");?>
-
 </div><!--end foot-->
+
 </div><!--end main-->
 </div><!--end wrapper-->
 </body>

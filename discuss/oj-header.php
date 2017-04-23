@@ -1,6 +1,5 @@
 <?php 
   require('../include/db_info.inc.php');
-
 ?>
 <html>
 <head>
@@ -60,10 +59,7 @@
     <i class="icon-comment"></i><?php echo $MSG_BBS?></a>
     <a  class='btn <?php if ($url=="problemset.php") echo " $ACTIVE";?>' href="../problemset.php">
     <i class="icon-question-sign"></i><?php echo $MSG_PROBLEMS?></a>
-    
-    <a  class='btn <?php if ($url=="submitpage.php") echo " $ACTIVE";?>' href="../submitpage.php">
-    <i class="icon-pencil"></i><?php echo "编辑器"?></a>
-    
+        
     <a  class='btn <?php if ($url=="status.php") echo "  $ACTIVE";?>' href="../status.php">
     <i class="icon-check"></i><?php echo $MSG_STATUS?></a>
     
@@ -73,8 +69,8 @@
     <a class='btn <?php if ($url=="contest.php") echo "  $ACTIVE";?>'  href="../contest.php">
     <i class="icon-fire"></i><?php echo checkcontest($MSG_CONTEST)?></a>
     
-    <a class='btn <?php if ($url=="recent-contest.php") echo " $ACTIVE";?>' href="../recent-contest.php">
-    <i class="icon-share"></i><?php echo "$MSG_RECENT_CONTEST"?></a>
+<!--     <a class='btn <?php if ($url=="recent-contest.php") echo " $ACTIVE";?>' href="../recent-contest.php">
+    <i class="icon-share"></i><?php echo "$MSG_RECENT_CONTEST"?></a> -->
     
     <a class='btn <?php if ($url==(isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php")) echo " $ACTIVE";?>' href="../<?php echo isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php"?>">
                 <i class="icon-info-sign"></i><?php echo "$MSG_FAQ"?></a>
@@ -111,15 +107,13 @@
 
 </div><!--end profile-->
 </div><!--end subhead-->
-<div id=broadcast>
+<!-- <div id=broadcast>
 <?php echo "<marquee id=broadcast scrollamount=1 direction=up scrolldelay=250>";
   echo "<font color=red>";
   echo file_get_contents($OJ_SAE?"saestor://web/msg.txt":"../admin/msg.txt");
   echo "</font>";
   echo "</marquee>";
-
-
 ?>
-</div><!--end broadcast-->
+</div> -->
  
-<div id=main>
+<!-- <div id=main> -->
