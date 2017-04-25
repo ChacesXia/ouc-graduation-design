@@ -40,7 +40,7 @@ input{
 body {
     background-color: #ffffff;
     color:#336699;
-    background-image: url("/image/bg2.png");
+    background-image: url("./image/bg2.png");
    /* background-repeat: no-repeat;*/
 }
 .oddrow {

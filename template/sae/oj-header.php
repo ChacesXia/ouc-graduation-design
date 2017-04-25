@@ -48,7 +48,7 @@
 
 <!-- <div id=broadcast class="container">
     <marquee id=broadcast scrollamount=1 direction=up scrolldelay=250 onMouseOver='this.stop()' onMouseOut='this.start()';>
-    <?php echo $view_marquee_msg?>
+    <?php //echo $view_marquee_msg?>
     </marquee>
 </div> -->
 
