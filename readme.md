@@ -1,8 +1,8 @@
 
 ### 总体架构 ###
-HUSTOJ分为两大部分，core和web，分别对应判题和数据管理两大功能。
+改系统分为两大部分，core和web，分别对应判题模块和web模块两大功能。
 core和web之间数据交换有两种方式：
-1. 通过数据库，轮询。
+1. 通过数据库，轮询。（true）
 2. 通过wget实现的http请求。
 
 两种方式的选择在判题端的配置文件/home/judge/etc/judge.conf中，HTTP_JUDGE=1则启用后者，默认为前者。
@@ -44,7 +44,7 @@ judge_client  2001 5 /home/judge/demo debug
 这个模式可以帮助调试题目数据，发现数据问题和了解提交RE的详细错误原因
 
 
-### sim模块 ###
+### sim模块（未使用） ###
 
 当配置为启用抄袭检查时，judge_client将调用sim，判断相似性结果，并写回数据库或web端。
 sim为第三方应用程序，可进行语法分析判断文本相似度，通过检验的程序将由judge_client复制进题目数据的ac目录，成为新的参考样本。
@@ -61,10 +61,9 @@ ptrace工具
 解决方法:
 
 1. 注释改行:
-[https://github.com/zhblue/hustoj/blob/master/trunk/core/judge_client/judge_client.cc#L943](https://github.com/zhblue/hustoj/blob/master/trunk/core/judge_client/judge_client.cc#L943)
+[https://github.com/ChacesXia/ouc-graduation-design/blob/master/core_judge/judge_client.cc#L917](https://github.com/ChacesXia/ouc-graduation-design/blob/master/core_judge/judge_client.cc#L917)
 
 2. 重新编译替代源程序
-
 
 #### 2./bin/ld connot find -lstdc++  ####
 
