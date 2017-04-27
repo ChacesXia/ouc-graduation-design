@@ -1,5 +1,5 @@
 <div id=head>
-    <h2><img id=logo src="<?php echo "template/".$OJ_TEMPLATE?>/image/logo.png">
+    <h2><img width=160 id=logo src="<?php echo "template/".$OJ_TEMPLATE?>/image/logo.png">
         <span class="red"><?php echo $OJ_NAME?></span>
     </h2>
 </div><!--end head-->

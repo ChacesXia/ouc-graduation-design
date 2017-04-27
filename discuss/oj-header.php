@@ -46,7 +46,7 @@
 <body>
 <div id="wrapper">
 <div id=head>
-<h2><img id=logo src=../image/logo.png><font color="red"> <?php echo $OJ_NAME?> </font></h2>
+<h2><img id=logo width=160 src=../image/logo.png><font color="red"> <?php echo $OJ_NAME?> </font></h2>
 </div><!--end head-->
 <div id=subhead> 
 <div id=menu class=navbar>
