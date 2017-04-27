@@ -47,7 +47,9 @@
         <center>
           <div id=submission style="width:600px;height:300px" ></div>
         </center>
+        <br>
         <?php echo $view_news?>
+        <br>
         <div id=foot >
           <?php require_once("oj-footer.php");?>
         </div><!--end foot-->

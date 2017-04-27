@@ -20,7 +20,7 @@ if (!$result){
   $view_news= "<h3>查询失败，无消息!</h3>";
   $view_news.= mysqli_error($mysqli);
 }else{
-  $view_news.= "<table width=96% margin-top=20px;>";
+  $view_news.= "<table width=100% margin-top=20px;>";
   while ($row=mysqli_fetch_object($result)){
     $view_news.= "
     <tr >
@@ -32,11 +32,6 @@ if (!$result){
       </td>
     </tr>
     ";
-        // $view_news.= "
-        // <tr>
-        //   <td>
-        //     <td>".$row->content."</tr>
-        //       ";
   }
   mysqli_free_result($result);
   $view_news.= "</table>";

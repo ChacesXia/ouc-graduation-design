@@ -11,10 +11,9 @@
     $sql = "select * from news where news_id =".$news_id;
     $result=mysqli_query($mysqli,$sql);
     $news=mysqli_fetch_object($result);
-    require("template/".$OJ_TEMPLATE."/newsdetail.php");
   }
 /////////////////////////Template
-
+require("template/".$OJ_TEMPLATE."/newsdetail.php");
 /////////////////////////Common foot
 if(file_exists('./include/cache_end.php'))
   require_once('./include/cache_end.php');
