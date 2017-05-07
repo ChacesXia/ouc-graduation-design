@@ -39,7 +39,8 @@ if (!$result){
 $view_apc_info="";
 
 // 提交的日期和数量
-  $sql=  "SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution`  group by md order by md desc limit 100";
+  $user_id = $_SESSION['user_id'];
+  $sql=  "SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution` where `user_id` = $user_id  group by md order by md desc limit 100";
   $result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
   $chart_data_all= array();
 //echo $sql;
@@ -48,7 +49,7 @@ $view_apc_info="";
     $chart_data_all[$row['md']]=$row['c'];
   }
 // 解决的日期和数量
-  $sql=  "SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution` where result=4 group by md order by md desc limit 100";
+  $sql=  "SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution` where result=4 and `user_id` = $user_id group by md order by md desc limit 100";
   $result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
   $chart_data_ac= array();
 //echo $sql;
