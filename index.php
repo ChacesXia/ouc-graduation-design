@@ -5,7 +5,7 @@ $OJ_CACHE_SHARE=false;
 require_once('./include/cache_start.php');
 require_once('./include/db_info.inc.php');
 require_once('./include/setlang.php');
-$view_title= "中心自己的系统";
+$view_title= "教育系OJ系统";
 
 //MAIN
 

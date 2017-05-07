@@ -1,4 +1,6 @@
+/*@import url(../../bootstrap/css/bootstrap.css);*/
 @import url(../../bootstrap/css/bootstrap.css);
+/*@import url(https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css);*/
 a {
     color: #1A5CC8;
     text-decoration: none;
@@ -195,4 +197,5 @@ div.content {
     position: static;
     vertical-align: middle;
 }
+
 

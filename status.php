@@ -37,7 +37,7 @@ if (isset($_GET['cid'])){
     $row=mysqli_fetch_array($result);
     $start_time=strtotime($row[0]);
     $title=$row[1];
-    $end_time=strtotime($row[2]);       
+    $end_time=strtotime($row[2]);
   }
   $lock_time=$end_time-($end_time-$start_time)*$OJ_RANK_LOCK_PERCENT;
   //$lock_time=date("Y-m-d H:i:s",$lock_time);
@@ -47,10 +47,9 @@ if (isset($_GET['cid'])){
           //$lock_time=date("Y-m-d H:i:s",$lock_time);
           //echo $time_sql;
    $lock=true;
- }else{
-   $lock=false;
- }
-
+   }else{
+     $lock=false;
+    }
         //require_once("contest-header.php");
 }else{
         //require_once("oj-header.php");
@@ -134,7 +133,6 @@ if($OJ_SIM){
   }
         //$sql=$sql.$order_str." LIMIT 20";
 }
-
 $sql=$sql.$order_str." LIMIT 20";
 //echo $sql;
 
@@ -143,12 +141,11 @@ if($OJ_MEMCACHE){
   $result = mysql_query_cache($sql);// or die("Error! ".mysqli_error($mysqli));
   if($result) $rows_cnt=count($result);
   else $rows_cnt=0;
-}else{
-
+  }else{
   $result = mysqli_query($mysqli,$sql);// or die("Error! ".mysqli_error($mysqli));
   if($result) $rows_cnt=mysqli_num_rows($result);
   else $rows_cnt=0;
-}
+  }
 $top=$bottom=-1;
 $cnt=0;
 if ($start_first){
@@ -169,7 +166,6 @@ for ($i=0;$i<$rows_cnt;$i++){
     $row=mysqli_fetch_array($result);
         //$view_status[$i]=$row;
   if($i==0&&$row['result']<4) $last=$row['solution_id'];
-
   
   if ($top==-1) $top=$row['solution_id'];
   $bottom=$row['solution_id'];
@@ -179,16 +175,13 @@ for ($i=0;$i<$rows_cnt;$i++){
   (isset($_SESSION['user_id'])&&!strcmp($row['user_id'],$_SESSION['user_id']));
 
   $cnt=1-$cnt;
-  
 
   $view_status[$i][0]=$row['solution_id'];
-
   if ($row['contest_id']>0) {
     $view_status[$i][1]= "<a href='contestrank.php?cid=".$row['contest_id']."&user_id=".$row['user_id']."#".$row['user_id']."'>".$row['user_id']."</a>";
   }else{
     $view_status[$i][1]= "<a href='userinfo.php?user=".$row['user_id']."'>".$row['user_id']."</a>";
   }
-
   if ($row['contest_id']>0) {
     $view_status[$i][2]= "<div class=center><a href='problem.php?cid=".$row['contest_id']."&pid=".$row['num']."'>";
     if(isset($cid)){
@@ -200,38 +193,29 @@ for ($i=0;$i<$rows_cnt;$i++){
   }else{
     $view_status[$i][2]= "<div class=center><a href='problem.php?id=".$row['problem_id']."'>".$row['problem_id']."</a></div>";
   }
-
   $view_status[$i][3]="";
   if (intval($row['result'])==11 && ((isset($_SESSION['user_id'])&&$row['user_id']==$_SESSION['user_id']) || isset($_SESSION['source_browser']))){
     $view_status[$i][3].= "<a href='ceinfo.php?sid=".$row['solution_id']."' class='".$judge_color[$row['result']]."'  title='$MSG_Click_Detail'>".$MSG_Compile_Error."</a>";
   }else if ((((intval($row['result'])==5||intval($row['result'])==6)&&$OJ_SHOW_DIFF)||$row['result']==10||$row['result']==13) && ((isset($_SESSION['user_id'])&&$row['user_id']==$_SESSION['user_id']) || isset($_SESSION['source_browser']))){
     $view_status[$i][3].= "<a href='reinfo.php?sid=".$row['solution_id']."' class='".$judge_color[$row['result']]."' title='$MSG_Click_Detail'>".$judge_result[$row['result']]."</a>";
-
   }else{
     if(!$lock||$lock_time>$row['in_date']||$row['user_id']==$_SESSION['user_id']){
       if($OJ_SIM&&$row['sim']>80&&$row['sim_s_id']!=$row['s_id']) {
         $view_status[$i][3].= "<span class='".$judge_color[$row['result']]."'>*".$judge_result[$row['result']]."</span>";
-
         if( isset($_SESSION['source_browser'])){
-
           $view_status[$i][3].= "<a href=comparesource.php?left=".$row['sim_s_id']."&right=".$row['solution_id']."  class='btn btn-info'  target=original>".$row['sim_s_id']."(".$row['sim']."%)</a>";
         }else{
-
           $view_status[$i][3].= "<span class='btn btn-info'>".$row['sim_s_id']."</span>";
-
         }
         if(isset($_GET['showsim'])&&isset($row[13])){
           $view_status[$i][3].= "$row[13]";
-
         }
       }else{
-
         $view_status[$i][3]= "<span class='".$judge_color[$row['result']]."'>".$judge_result[$row['result']]."</span>";
       }
     }else{
       echo "<td>----";
     }
-
   }
   if ($row['result']!=4&&isset($row['pass_rate'])&&$row['pass_rate']>0&&$row['pass_rate']<.98)
     $view_status[$i][3].="<span class='btn btn-info'>". (100-$row['pass_rate']*100)."%</span>";
@@ -240,13 +224,7 @@ for ($i=0;$i<$rows_cnt;$i++){
    <input type=hidden name=sid value='".$row['solution_id']."'>";
    $view_status[$i][3].="</form>";
  }
-
-
-
-
  if ($flag){
-
-
   if ($row['result']>=4){
     $view_status[$i][4]= "<div id=center class=red>".$row['memory']."</div>";
     $view_status[$i][5]= "<div id=center class=red>".$row['time']."</div>";
@@ -257,10 +235,13 @@ for ($i=0;$i<$rows_cnt;$i++){
 
   }
         //echo $row['result'];
+  // 查询当前用户是不是管理员
+  $user = $_SESSION['user_id'];
+  $sql = "select * from privilege where user_id = $user and rightstr = administrator";
+  // 
   if (!(isset($_SESSION['user_id'])&&strtolower($row['user_id'])==strtolower($_SESSION['user_id']) || isset($_SESSION['source_browser']))){
     $view_status[$i][6]=$language_name[$row['language']];
   }else{
-
     $view_status[$i][6]= "<a target=_blank href=showsource.php?id=".$row['solution_id'].">".$language_name[$row['language']]."</a>";
     if($row["problem_id"]>0){
       if (isset($cid)) {
@@ -270,7 +251,7 @@ for ($i=0;$i<$rows_cnt;$i++){
       }
     }
   }
-  $view_status[$i][7]= $row['code_length']." B";
+  $view_status[$i][7]= $row['code_length']." Byte";
 
 }else
 {
@@ -279,32 +260,20 @@ for ($i=0;$i<$rows_cnt;$i++){
   $view_status[$i][6]="----";
   $view_status[$i][7]="----";
 }
-$view_status[$i][8]= $row['in_date'];
-$view_status[$i][9]= $row['judger'];
-
-
-
-
+  $view_status[$i][8]= $row['in_date'];
+  $view_status[$i][9]= $row['judger'];
 }
-if(!$OJ_MEMCACHE && $result)mysqli_free_result($result);
-
-
-
-
-
-
-
-
+  if(!$OJ_MEMCACHE && $result)mysqli_free_result($result);
 ?>
 
 <?php
-/////////////////////////Template
-if (isset($_GET['cid']))
-  require("template/".$OJ_TEMPLATE."/conteststatus.php");
-else
-  require("template/".$OJ_TEMPLATE."/status.php");
-/////////////////////////Common foot
-if(file_exists('./include/cache_end.php'))
-  require_once('./include/cache_end.php');
+  /////////////////////////Template
+  if (isset($_GET['cid']))
+    require("template/".$OJ_TEMPLATE."/conteststatus.php");
+  else
+    require("template/".$OJ_TEMPLATE."/status.php");
+  /////////////////////////Common foot
+  if(file_exists('./include/cache_end.php'))
+    require_once('./include/cache_end.php');
 ?>
 

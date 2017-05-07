@@ -10,8 +10,6 @@ if (!(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor']))){
 <?php require_once ("../include/problem.php");
 ?>
 <?php // contest_id
-
-
 $title = $_POST ['title'];
 $time_limit = $_POST ['time_limit'];
 $memory_limit = $_POST ['memory_limit'];
@@ -25,6 +23,8 @@ $test_output = $_POST ['test_output'];
 $hint = $_POST ['hint'];
 $source = $_POST ['source'];
 $spj = $_POST ['spj'];
+$user = $_SESSION['user_id'];
+
 if (get_magic_quotes_gpc ()) {
   $title = stripslashes ( $title);
   $time_limit = stripslashes ( $time_limit);
@@ -42,7 +42,7 @@ if (get_magic_quotes_gpc ()) {
   $source = stripslashes ( $source );
 }
 //echo "->".$OJ_DATA."<-"; 
-$pid=addproblem ( $title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $OJ_DATA );
+$pid=addproblem ( $title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $OJ_DATA, $user);
 $basedir = "$OJ_DATA/$pid";
 mkdir ( $basedir );
 if(strlen($sample_output)&&!strlen($sample_input)) $sample_input="0";

@@ -24,28 +24,32 @@
     // a null signifies separate line segments
     var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
     
-    $.plot($("#submission"), [ 
-     {label:"<?php echo $MSG_SUBMIT?>",data:d1,lines: { show: true }},
-     {label:"<?php echo $MSG_AC?>",data:d2,bars:{show:true}} ],{
-       grid: {
-        backgroundColor: { colors: ["#fff", "#eee"] }
-      },   
+    $.plot($("#submission"),[
+       {label:"<?php echo $MSG_SUBMIT?>",data:d1,lines:{steps:1,show:true},color:'red'},
+       {label:"<?php echo $MSG_AC?>",data:d2,bars:{show:true,lineWidth:5},points:{show:true},color:'green'}
+     ],
+     {
+      grid: {
+        show:true,
+        color: 'black',
+        backgroundColor: { colors: ["#fefefe","#417dbb"] }
+      },
       xaxis: {
         mode: "time",
+        minBorderMargin:1,
         max:(new Date()).getTime(),
-        min:(new Date()).getTime()-100*24*3600*1000
+        min:(new Date()).getTime()-100*24*3600*1000,
       }
     });
   });
-      //alert((new Date()).getTime());
-    </script>
+  </script>
   </head>
   <body>
     <div id="wrapper">
       <?php require_once("oj-header.php");?>
       <div id=main>
         <center>
-          <div id=submission style="width:600px;height:300px" ></div>
+          <div id=submission style="width:1000px;height:300px" ></div>
         </center>
         <br>
         <?php echo $view_news?>
