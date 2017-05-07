@@ -128,6 +128,7 @@ public class Main{
   <li><font color=green>__int64</font> 不是ANSI标准定义，只能在VC使用, 但是可以使用<font color=blue>long long</font>声明64位整数。<br>如果用了__int64,试试提交前加一句#define __int64 long long
 </ul>
 <hr>
+<!--
 <font color=green>Q</font>:系统返回信息都是什么意思?<br>
 <font color=red>A</font>:详见下述:<br>
 <p><font color=blue>Pending</font> : 系统忙，你的答案在排队等待. </p>
@@ -154,6 +155,7 @@ public class Main{
   <br>
 </p>
 <hr>
+-->
 <font color=green>Q</font>:如何参加考试?<br>
 <font color=red>A</font>:<a href=registerpage.php>注册</a> 一个帐号，然后就可以练习，点击考试选项就可以看到正在进行的考试并参加。<br>
 <br>

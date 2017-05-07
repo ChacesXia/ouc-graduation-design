@@ -13,7 +13,7 @@
 <h4>
 <ol>
   <li>
-    <a class='btn btn-primary' href="watch.php" target="main"><b><?php echo $MSG_SEEOJ?></b></a>
+    <a class='btn btn-primary' href="../status.php" target="main"><b><?php echo $MSG_SEEOJ?></b></a>
 <?php if (isset($_SESSION['administrator'])){
   ?>
   <li>
@@ -44,10 +44,13 @@ if (isset($_SESSION['administrator'])||isset($_SESSION['contest_creator'])){
 <?php }
 if (isset($_SESSION['administrator'])){
 ?>
-<li>
+<!-- <li>
   <a class='btn btn-primary' href="team_generate.php" target="main"><b><?php echo $MSG_TEAMGENERATOR?></b></a>
+</li> -->
+
 <li>
   <a class='btn btn-primary' href="setmsg.php" target="main"><b><?php echo $MSG_SETMESSAGE?></b></a>
+  </li>
 <?php }
 if (isset($_SESSION['administrator'])||isset( $_SESSION['password_setter'] )){
 ?><li>

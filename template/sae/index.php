@@ -32,7 +32,7 @@
       grid: {
         show:true,
         color: 'black',
-        backgroundColor: { colors: ["#fefefe","#417dbb"] }
+        backgroundColor: { colors: ["#417dbb","#fefefe"] }
       },
       xaxis: {
         mode: "time",
