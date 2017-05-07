@@ -23,11 +23,11 @@ if(isset($_POST['do'])){
   else echo "No such user! or He/Her is an administrator!";
 }
 ?>
+<center><h2>更改用户密码</h2></center>
 <form action='changepass.php' method=post>
-  <b>Change Password:</b><br />
   User:<input type=text size=10 name="user_id"><br />
   Pass:<input type=text size=10 name="passwd"><br />
   <?php require_once("../include/set_post_key.php");?>
   <input type='hidden' name='do' value='do'>
-  <input type=submit value='Change'>
+  <input class="btn btn-success" type=submit value='Change'>
 </form>

@@ -8,33 +8,27 @@
   require_once("../include/const.inc.php");
 
 $description="";
- if (isset($_POST['syear']))
-{
-  
+ if (isset($_POST['syear'])){
   require_once("../include/check_post_key.php");
-  
   $starttime=intval($_POST['syear'])."-".intval($_POST['smonth'])."-".intval($_POST['sday'])." ".intval($_POST['shour']).":".intval($_POST['sminute']).":00";
   $endtime=intval($_POST['eyear'])."-".intval($_POST['emonth'])."-".intval($_POST['eday'])." ".intval($_POST['ehour']).":".intval($_POST['eminute']).":00";
   //  echo $starttime;
   //  echo $endtime;
+    $title=$_POST['title'];
+    $private=$_POST['private'];
+    $password=$_POST['password'];
+    $description=$_POST['description'];
+    if (get_magic_quotes_gpc ()){
+        $title = stripslashes ($title);
+        $private = stripslashes ($private);
+        $password = stripslashes ($password);
+        $description = stripslashes ($description);
+    }
 
-        $title=$_POST['title'];
-        $private=$_POST['private'];
-        $password=$_POST['password'];
-        $description=$_POST['description'];
-        if (get_magic_quotes_gpc ()){
-                $title = stripslashes ($title);
-                $private = stripslashes ($private);
-                $password = stripslashes ($password);
-                $description = stripslashes ($description);
-        }
-
-        $title=mysqli_real_escape_string($mysqli,$title);
-        $private=mysqli_real_escape_string($mysqli,$private);
-        $password=mysqli_real_escape_string($mysqli,$password);
-        $description=mysqli_real_escape_string($mysqli,$description);
-
-
+    $title=mysqli_real_escape_string($mysqli,$title);
+    $private=mysqli_real_escape_string($mysqli,$private);
+    $password=mysqli_real_escape_string($mysqli,$password);
+    $description=mysqli_real_escape_string($mysqli,$description);
     $lang=$_POST['lang'];
     $langmask=0;
     foreach($lang as $t){
@@ -43,9 +37,8 @@ $description="";
 $langmask=((1<<count($language_ext))-1)&(~$langmask);
   //echo $langmask;  
   
-        $sql="INSERT INTO `contest`(`title`,`start_time`,`end_time`,`private`,`langmask`,`description`,`password`)
-                VALUES('$title','$starttime','$endtime','$private',$langmask,'$description','$password')";
-  echo $sql;
+  $sql="INSERT INTO `contest`(`title`,`start_time`,`end_time`,`private`,`langmask`,`description`,`password`) VALUES('$title','$starttime','$endtime','$private',$langmask,'$description','$password')";
+  // echo $sql;
   mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
   $cid=mysqli_insert_id($mysqli);
   echo "Add Contest ".$cid;
@@ -80,7 +73,6 @@ $langmask=((1<<count($language_ext))-1)&(~$langmask);
   echo "<script>window.location.href=\"contest_list.php\";</script>";
 }
 else{
-  
    if(isset($_GET['cid'])){
        $cid=intval($_GET['cid']);
        $sql="select * from contest WHERE `contest_id`='$cid'";
@@ -124,9 +116,9 @@ else if(isset($_POST['problem2contest'])){
 }  
   include_once("kindeditor.php") ;
 ?>
-  
+  <h2 align=center>添加一次考试</h2>
   <form method=POST >
-  <p align=center><font size=4 color=#333399>Add a Contest</font></p>
+  
   <p align=left>Title:<input class=input-xxlarge  type=text name=title size=71 value="<?php echo isset($title)?$title:""?>"></p>
   <p align=left>Start Time:<br>&nbsp;&nbsp;&nbsp;
   Year:<input  class=input-mini type=text name=syear value=<?php echo date('Y')?> size=4 >
@@ -143,35 +135,29 @@ else if(isset($_POST['problem2contest'])){
   Minute:<input class=input-mini  type=text name=eminute value=00 size=2 ></p>
   Public:<select name=private><option value=0>Public</option><option value=1>Private</option></select>
   Password:<input type=text name=password value="">
-  Language:<select name="lang[]" multiple="multiple"    style="height:220px">
+  Language:<select name="lang[]" multiple="multiple" style="height:220px">
   <?php
-$lang_count=count($language_ext);
-
- $langmask=$OJ_LANGMASK;
-
- for($i=0;$i<$lang_count;$i++){
-                 echo "<option value=$i selected>
-                        ".$language_name[$i]."
-                 </option>";
-  }
-
-?>
-
-
-        </select>
+    $lang_count=count($language_ext);
+    $langmask=$OJ_LANGMASK;
+    for($i=0;$i<$lang_count;$i++){
+       echo "<option value=$i selected>
+              ".$language_name[$i]."
+       </option>";
+    }
+  ?>
+  </select>
   <?php require_once("../include/set_post_key.php");?>
   <br>Problems:<input class=input-xxlarge type=text size=60 name=cproblem value="<?php echo isset($plist)?$plist:""?>">
   <br>
   <p align=left>Description:<br><textarea class=kindeditor rows=13 name=description cols=80></textarea>
-
-
   Users:<textarea name="ulist" rows="20" cols="20"></textarea>
   <br />
-  *可以将学生学号从Excel整列复制过来，然后要求他们用学号做UserID注册,就能进入Private的比赛作为作业和测验。
-  <p><input type=submit value=Submit name=submit><input type=reset value=Reset name=reset></p>
+  <p>*可以将学生学号从Excel整列复制过来，然后要求他们用学号做UserID注册,就能进入Private的比赛作为作业和测验。
+  </p>
+  <input class="btn btn-success" type=submit value=Submit name=submit>
+  <input class="btn btn-private" type=reset value=Reset name=reset>
   </form>
 <?php }
 require_once("../oj-footer.php");
-
 ?>
 

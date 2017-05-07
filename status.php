@@ -82,7 +82,6 @@ if (isset($_GET['problem_id'])&&$_GET['problem_id']!=""){
     $num=strpos($PID,$problem_id);
     $sql=$sql."AND `num`='".$num."' ";
     $str2=$str2."&problem_id=".$problem_id;
-
   }else{
     $problem_id=strval(intval($_GET['problem_id']));
     if ($problem_id!='0'){
@@ -155,9 +154,7 @@ if ($start_first){
   $row_start=$rows_cnt-1;
   $row_add=-1;
 }
-
 $view_status=Array();
-
 $last=0;
 for ($i=0;$i<$rows_cnt;$i++){
   if($OJ_MEMCACHE)
@@ -232,14 +229,16 @@ for ($i=0;$i<$rows_cnt;$i++){
   }else{
     $view_status[$i][4]= "---";
     $view_status[$i][5]= "---";
-
   }
-        //echo $row['result'];
-  // 查询当前用户是不是管理员
+  //echo $row['result'];
+  // 查询当前用户是不是管理员 或者 老师
   $user = $_SESSION['user_id'];
-  $sql = "select * from privilege where user_id = $user and rightstr = administrator";
-  // 
-  if (!(isset($_SESSION['user_id'])&&strtolower($row['user_id'])==strtolower($_SESSION['user_id']) || isset($_SESSION['source_browser']))){
+  $sql = "select * from privilege where user_id = $user and rightstr in ('administrator','teacher')";
+  $rrs=mysqli_query($mysqli,$sql);
+  $havePrivate=(mysqli_num_rows($rrs)>0);
+  // echo $havePrivate."---";
+  // !(isset($_SESSION['user_id'])&&strtolower($row['user_id'])==strtolower($_SESSION['user_id']) || isset($_SESSION['source_browser']))
+  if (!$havePrivate && strtolower($row['user_id'])!=strtolower($_SESSION['user_id'])){
     $view_status[$i][6]=$language_name[$row['language']];
   }else{
     $view_status[$i][6]= "<a target=_blank href=showsource.php?id=".$row['solution_id'].">".$language_name[$row['language']]."</a>";
@@ -252,7 +251,6 @@ for ($i=0;$i<$rows_cnt;$i++){
     }
   }
   $view_status[$i][7]= $row['code_length']." Byte";
-
 }else
 {
   $view_status[$i][4]="----";

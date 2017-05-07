@@ -34,21 +34,19 @@ if (!(isset($_SESSION['administrator']))){
     echo "<script>location.href='$url';</script>";
   }
   if($OJ_REDIS){
-           $redis = new Redis();
-           $redis->connect($OJ_REDISSERVER, $OJ_REDISPORT);
-
-                $sql="select solution_id from solution where result=1 and problem_id>0";
-                 $result=mysqli_query($mysqli,$sql);
-                while ($row=mysqli_fetch_object($result)){
-                        echo $row->solution_id."\n";
-                        $redis->lpush($OJ_REDISQNAME,$row->solution_id);
-                }
-                mysqli_free_result($result);
-        }
-
+    $redis = new Redis();
+    $redis->connect($OJ_REDISSERVER, $OJ_REDISPORT);
+    $sql="select solution_id from solution where result=1 and problem_id>0";
+     $result=mysqli_query($mysqli,$sql);
+    while ($row=mysqli_fetch_object($result)){
+            echo $row->solution_id."\n";
+            $redis->lpush($OJ_REDISQNAME,$row->solution_id);
+    }
+    mysqli_free_result($result);
+  }
 }
 ?>
-<b>Rejudge</b>
+  <center><h2>重判题目</h2></center>
   <ol>
   <li>Problem
   <form action='rejudge.php' method=post>
@@ -68,3 +66,4 @@ if (!(isset($_SESSION['administrator']))){
     <input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">
     <input type=submit value=submit>
   </form>
+  </ol>

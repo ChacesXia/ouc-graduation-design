@@ -5,8 +5,11 @@
   <script charset="utf-8" src="../kindeditor/lang/zh_CN.js"></script>
   <script charset="utf-8" src="../kindeditor/plugins/code/prettify.js"></script>
   <script>
+    //http://kindeditor.net/doc.php
     KindEditor.ready(function(K) {
       var editor1 = K.create('textarea[class="kindeditor"]', {
+        width:"700",
+        height:"250",
         cssPath : '../kindeditor/plugins/code/prettify.css',
         uploadJson : '../kindeditor/php/upload_json.php',
         fileManagerJson : '../kindeditor/php/file_manager_json.php',

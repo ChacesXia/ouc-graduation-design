@@ -12,19 +12,19 @@ if (!(isset($_SESSION['administrator']))){
   exit(1);
 }
    $maxfile=min(ini_get("upload_max_filesize"),ini_get("post_max_size"));
-
 ?>
-Import FPS data ,please make sure you file is smaller than [<?php echo $maxfile?>] <br/>
-or set upload_max_filesize and post_max_size in PHP.ini<br/>
-if you fail on import big files[10M+],try enlarge your [memory_limit]  setting in php.ini.<br>
+导入 FPS 数据,请确保你的文件小于[<?php echo $maxfile?>]<br>
+或者修改php的配置文件[PHP.ini]中upload_max_filesize 和 post_max_size<br>
+如果你导入超过10M的文件,请修改php.in中的 [memory_limit] <br>
+
 <?php 
     $show_form=true;
    if(!isset($OJ_SAE)||!$OJ_SAE){
      if(!writable($OJ_DATA)){
-       echo " You need to add  $OJ_DATA into your open_basedir setting of php.ini,<br>
-          or you need to execute:<br>
+       echo "你目前需要将 $OJ_DATA 添加进你的open_basedir中 @ php.ini<br>
+          或者你需要执行如下命令:<br>
              <b>chmod 775 -R $OJ_DATA && chgrp -R www-data $OJ_DATA</b><br>
-          you can't use import function at this time.<br>"; 
+          ";
       $show_form=false;
      }
      if(!file_exists("../upload"))mkdir("../upload");
@@ -45,10 +45,6 @@ if you fail on import big files[10M+],try enlarge your [memory_limit]  setting i
     <input type=submit value='Import'>
 </form>
 <?php 
-  
      }
-   
 ?>
 <br>
-
-free problem set FPS-xml can be download at <a href=http://code.google.com/p/freeproblemset/downloads/list>FPS-Googlecode</a>

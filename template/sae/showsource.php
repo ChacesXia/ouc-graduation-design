@@ -38,8 +38,8 @@
 
 <?php
    if ($ok==true){
-    if($view_user_id!=$_SESSION['user_id'])
-      echo "<a href='mail.php?to_user=$view_user_id&title=$MSG_SUBMIT $id'>Mail the auther</a>";
+    // if($view_user_id!=$_SESSION['user_id'])
+    //   echo "<a href='mail.php?to_user=$view_user_id&title=$MSG_SUBMIT $id'>Mail the auther</a>";
     $brush=strtolower($language_name[$slanguage]);
     if ($brush=='pascal') $brush='delphi';
     if ($brush=='obj-c') $brush='c';
@@ -58,7 +58,6 @@
     ob_end_clean();
     // 
     echo htmlentities(str_replace("\n\r","\n",$view_source),ENT_QUOTES,"UTF-8")."\n".$auth."</pre>";
-    
   }else{
     echo "I am sorry, You could not view this code!";
   }
@@ -70,15 +69,22 @@
     select solution.problem_id from solution where solution.solution_id =".$solution_id."
     )";
   $result=mysqli_query($mysqli,$sql) or die("Error! ".mysqli_error($mysqli));
+  $problem_user = mysqli_fetch_object($result)->user_id;
 
-  $to_user = mysqli_fetch_object($result)->user_id;
+  if($user == $problem_user ){
+    $sql = "select user_id from solution where solution_id =".$solution_id;
+    $result=mysqli_query($mysqli,$sql) or die("Error! ".mysqli_error($mysqli));
+    $to_user = mysqli_fetch_object($result)->user_id;
+  }else{
+    $to_user = $problem_user;
+  }
 ?>
 <!-- // 聊天展示界面 -->
-<table style="width:50%; margin:auto; border:'6'; clear: both">
+<table style="width:70%">
   <thead style="background-color: '#417dbb'">
   <tr align=center class='toprow'>
     <td style="text-align:center;">
-      与老师聊天窗口
+      与出题老师聊天窗口
     </td>
     <td style="text-align:center;">
       当前时间：<span id=nowdate></span>
@@ -105,13 +111,13 @@
       echo "
             <tr>
               <td></td>
-              <td>".$row->message." @".$row->time."</td>
+              <td style='background-color:#c2cf8a'>".$row->message."<<<br><p style='font-size:2;color:#A09D9D' align='right'>@".$row->time."</p></td>
             </tr>
           ";
     }else if($row->to_user == $user){
       echo "
             <tr>
-              <td>".$row->message." @".$row->time."</td>
+              <td style='background-color:#fddd9b'>>>".$row->message." <br><p style='font-size:2;color:#A09D9D' align='right'>@".$row->time."</p></td>
               <td></td>
             </tr>
           ";
@@ -125,9 +131,9 @@
 ?>
 </tbody>
 </table>
-
+<br>
 <?php if (isset($_SESSION['user_id'])){?>
-  <div>
+  <center >
     <form class="form-horizontal" action="include/chatpost.php" method=post >
       <div class="control-group">
         <div class="input-append">
@@ -139,7 +145,7 @@
         </div>
       </div>
     </form>
-  </div>
+  </center>
 <?php }
 ?>
 

@@ -69,11 +69,11 @@ if(isset($_GET['search'])&&trim($_GET['search'])!=""){
  $filter_sql="  `problem_id`>='".strval($pstart)."' AND `problem_id`<'".strval($pend)."' ";
 }
 if (isset($_SESSION['administrator'])){
-  $sql="SELECT `problem_id`,`title`,`source`,`submit`,`accepted`,`in_date` FROM `problem` WHERE $filter_sql ";
+  $sql="SELECT `problem_id`,`title`,`source`,`submit`,`accepted`,`in_date`,`user_id` FROM `problem` WHERE $filter_sql ";
 }
 else{
   $now=strftime("%Y-%m-%d %H:%M",time());
-  $sql="SELECT `problem_id`,`title`,`source`,`submit`,`accepted`,`in_date` FROM `problem` ".
+  $sql="SELECT `problem_id`,`title`,`source`,`submit`,`accepted`,`in_date`,`user_id`FROM `problem` ".
   "WHERE `defunct`='N' and $filter_sql AND `problem_id` NOT IN(
   SELECT `problem_id` FROM `contest_problem` WHERE `contest_id` IN (
   SELECT `contest_id` FROM `contest` WHERE 
@@ -96,7 +96,7 @@ while ($row=mysqli_fetch_object($result)){
   $view_problemset[$i][1]="<div class='left'>".$row->problem_id."</div>";
   $view_problemset[$i][2]="<div class='left'><a href='problem.php?id=".$row->problem_id."'>".$row->title."</a></div>";
   $view_problemset[$i][3]="<div class='left'>".mb_substr($row->in_date, 0,10)."</div>";
-  $view_problemset[$i][4]="<div class='left'><nobr>".mb_substr($row->source,0,8,'utf8')."</nobr></div >";
+  $view_problemset[$i][4]="<div class='left'><nobr>".$row->user_id."</nobr></div >";
   $view_problemset[$i][5]="<div class='center'><a href='status.php?problem_id=".$row->problem_id."&jresult=4'>".$row->accepted."</a></div>";
   $view_problemset[$i][6]="<div class='center'><a href='status.php?problem_id=".$row->problem_id."'>".$row->submit."</a></div>";
   $i++;

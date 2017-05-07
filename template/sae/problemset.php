@@ -53,7 +53,7 @@
               <th width='15%'><?php echo 'ID↕'?></th>
               <th><?php echo $MSG_TITLE.'↕'?></th>
               <th width='10%'><?php echo '添加时间↕' ?></th>
-              <th width='10%'><?php echo $MSG_SOURCE.'↕' ?></th>
+              <th width='10%'><?php echo '出题老师↕' ?></th>
               <!-- <th style="cursor:hand"  width=60 ><?php echo $MSG_AC.'↕' ?></th> -->
               <th width=60 ><?php echo $MSG_AC.'↕' ?></th>
               <th width=60 ><?php echo $MSG_SUBMIT.'↕' ?></th>

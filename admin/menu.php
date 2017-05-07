@@ -5,13 +5,18 @@
 ?>
 <html>
 <head>
-<title><?php echo $MSG_ADMIN?></title>
+  <title><?php echo $MSG_ADMIN?></title>
+  <style type="text/css">
+    li{
+      margin-top: 4;
+    }
+  </style>
 </head>
 
 <body>
 <hr>
 <h4>
-<ol>
+<ol >
   <li>
     <a class='btn btn-primary' href="../status.php" target="main"><b><?php echo $MSG_SEEOJ?></b></a>
 <?php if (isset($_SESSION['administrator'])){
@@ -48,17 +53,18 @@ if (isset($_SESSION['administrator'])){
   <a class='btn btn-primary' href="team_generate.php" target="main"><b><?php echo $MSG_TEAMGENERATOR?></b></a>
 </li> -->
 
-<li>
+<!-- <li>
   <a class='btn btn-primary' href="setmsg.php" target="main"><b><?php echo $MSG_SETMESSAGE?></b></a>
-  </li>
+  </li> -->
 <?php }
 if (isset($_SESSION['administrator'])||isset( $_SESSION['password_setter'] )){
 ?><li>
   <a class='btn btn-primary' href="changepass.php" target="main"><b><?php echo $MSG_SETPASSWORD?></b></a>
 <?php }
 if (isset($_SESSION['administrator'])){
-?><li>
-  <a class='btn btn-primary' href="rejudge.php" target="main"><b><?php echo $MSG_REJUDGE?></b></a>
+?>
+<!-- <li>
+  <a class='btn btn-primary' href="rejudge.php" target="main"><b><?php echo $MSG_REJUDGE?></b></a> -->
 <?php }
 if (isset($_SESSION['administrator'])){
 ?><li>
@@ -69,31 +75,38 @@ if (isset($_SESSION['administrator'])){
   <a class='btn btn-primary' href="privilege_list.php" target="main"><b><?php echo $MSG_PRIVILEGE.$MSG_LIST?></b></a>
 <?php }
 if (isset($_SESSION['administrator'])){
-?><li>
-  <a class='btn btn-primary' href="source_give.php" target="main"><b><?php echo $MSG_GIVESOURCE?></b></a>
+?>
+<!-- <li>
+  <a class='btn btn-primary' href="source_give.php" target="main"><b><?php echo $MSG_GIVESOURCE?></b></a> -->
 <?php }
 if (isset($_SESSION['administrator'])){
-?><li>
+?>
+<li>
   <a class='btn btn-primary' href="problem_export.php" target="main"><b><?php echo $MSG_EXPORT.$MSG_PROBLEM?></b></a>
 <?php }
 if (isset($_SESSION['administrator'])){
-?><li>
-  <a class='btn btn-primary' href="problem_import.php" target="main"><b><?php echo $MSG_IMPORT.$MSG_PROBLEM?></b></a>
+?>
+<!-- <li>
+  <a class='btn btn-primary' href="problem_import.php" target="main"><b><?php echo $MSG_IMPORT.$MSG_PROBLEM?></b></a> -->
 <?php }
 if (isset($_SESSION['administrator'])){
-?><li>
-  <a class='btn btn-primary' href="update_db.php" target="main"><b><?php echo $MSG_UPDATE_DATABASE?></b></a>
+?>
+<!-- <li>
+  <a class='btn btn-primary' href="update_db.php" target="main"><b><?php echo $MSG_UPDATE_DATABASE?></b></a> -->
 <?php }
 if (isset($OJ_ONLINE)&&$OJ_ONLINE){
-?><li>
-  <a class='btn btn-primary' href="../online.php" target="main"><b><?php echo $MSG_ONLINE?></b></a>
+?>
+<!-- <li>
+  <a class='btn btn-primary' href="../online.php" target="main"><b><?php echo $MSG_ONLINE?></b></a> -->
 <?php }
 ?>
+  </li>
+  <li><a class='btn btn-info' href=".." target="_blank"><b>返回首页</b></a></li>
 </ol>
 <?php if (isset($_SESSION['administrator'])&&!$OJ_SAE){
 ?>
-  <a href="problem_copy.php" target="main" title="Create your own data"><font color="eeeeee">CopyProblem</font></a> <br>
-  <a href="problem_changeid.php" target="main" title="Danger,Use it on your own risk"><font color="eeeeee">ReOrderProblem</font></a>
+<!--   <a href="problem_copy.php" target="main" title="Create your own data"><font color="eeeeee">CopyProblem</font></a> <br>
+  <a href="problem_changeid.php" target="main" title="Danger,Use it on your own risk"><font color="eeeeee">ReOrderProblem</font></a> -->
    
 <?php }
 ?>

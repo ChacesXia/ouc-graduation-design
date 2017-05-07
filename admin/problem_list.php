@@ -28,7 +28,7 @@ if (isset($_GET['page'])){
 $pstart=1000+$page_cnt*intval($page-1);
 $pend=$pstart+$page_cnt;
 echo "<title>Problem List</title>";
-echo "<center><h2>Problem List</h2></center>";
+echo "<center><h2>问题列表</h2></center>";
 echo "<form action=problem_list.php>";
 echo "<select class='input-mini' onchange=\"location.href='problem_list.php?page='+this.value;\">";
 for ($i=1;$i<=$cnt;$i++){
@@ -39,17 +39,19 @@ for ($i=1;$i<=$cnt;$i++){
         echo "**</option>";
 }
 echo "</select>";
+
 $sql="select `problem_id`,`title`,`in_date`,`defunct` FROM `problem` where problem_id>=$pstart and problem_id<=$pend order by `problem_id` desc";
 //echo $sql;
 if($keyword) $sql="select `problem_id`,`title`,`in_date`,`defunct` FROM `problem` where title like '%$keyword%' or source like '%$keyword%'";
 $result=mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
 ?>
-<form action=problem_list.php><input name=keyword><input type=submit value="<?php echo $MSG_SEARCH?>" ></form>
+<form action=problem_list.php><input name=keyword><input type=submit value="<?php echo $MSG_SEARCH?>" >
+</form>
 
 <?php
 echo "<center><table class='table table-striped' width=90% border=1>";
 echo "<form method=post action=contest_add.php>";
-echo "<tr><td colspan=7><input type=submit name='problem2contest' value='CheckToNewContest'>";
+echo "<tr><td colspan=7><input class='btn btn-info' type=submit name='problem2contest' value='输入到考试'>";
 echo "<tr><td>PID<td>Title<td>Date";
 if(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
         if(isset($_SESSION['administrator']))   echo "<td>Status<td>Delete";
@@ -57,7 +59,7 @@ if(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
 }
 for (;$row=mysqli_fetch_object($result);){
         echo "<tr>";
-        echo "<td>".$row->problem_id;
+        echo "<td>".$row->problem_id."&nbsp";
         echo "<input type=checkbox name='pid[]' value='$row->problem_id'>";
         echo "<td><a href='../problem.php?id=$row->problem_id'>".$row->title."</a>";
         echo "<td>".$row->in_date;
@@ -79,19 +81,18 @@ for (;$row=mysqli_fetch_object($result);){
         }
         echo "</tr>";
 }
-echo "<tr><td colspan=7><input type=submit name='problem2contest' value='CheckToNewContest'>";
+echo "<tr><td colspan=7><input class='btn btn-info' type=submit name='problem2contest' value='输入到考试'>";
 echo "</tr></form>";
 echo "</table></center>";
 ?>
 <script src='../template/bs3/jquery.min.js' ></script>
 <script>
 function phpfm(pid){
-        //alert(pid);
-        $.post("phpfm.php",{'frame':3,'pid':pid,'pass':''},function(data,status){
-                if(status=="success"){
-                        document.location.href="phpfm.php?frame=3&pid="+pid;
-                }
-        });
+    $.post("phpfm.php",{'frame':3,'pid':pid,'pass':''},function(data,status){
+            if(status=="success"){
+                    document.location.href="phpfm.php?frame=3&pid="+pid;
+            }
+    });
 }
 </script>
 <?php

@@ -1,12 +1,10 @@
-<?php require("admin-header.php");
-
-        if(isset($OJ_LANG)){
-                require_once("../lang/$OJ_LANG.php");
-        }
-
-
+<?php 
+require("admin-header.php");
+if(isset($OJ_LANG)){
+        require_once("../lang/$OJ_LANG.php");
+}
 echo "<title>Problem List</title>";
-echo "<center><h2>Contest List</h2></center>";
+echo "<center><h2>考试列表</h2></center>";
 require_once("../include/set_get_key.php");
 $sql="SELECT max(`contest_id`) as upid, min(`contest_id`) as btid  FROM `contest`";
 $page_cnt=50;
