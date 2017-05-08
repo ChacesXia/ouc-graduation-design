@@ -53,6 +53,7 @@
       echo "\tTime:".$stime." ms\n";
       echo "\tMemory:".$smemory." kb\n";
     }
+    echo "\tscore:".$sscore." 分\n";
     echo "****************************************************************/\n\n";
     $auth=ob_get_contents();
     ob_end_clean();
@@ -79,6 +80,28 @@
     $to_user = $problem_user;
   }
 ?>
+<!-- 给分情况判定 -->
+
+<?php 
+  $curr_user = $_SESSION['user_id'];
+  $sql = "select * from privilege where user_id = $user and rightstr in ('administrator','teacher')";
+  $rrs=mysqli_query($mysqli,$sql);
+  $havePrivate=(mysqli_num_rows($rrs)>0);
+  if ($havePrivate){ ?>
+  <center >
+    <form class="form-horizontal" action="include/scorepost.php" method=post >
+      <div class="control-group">
+        <div class="input-append">
+          <input type=hidden name=solution_id value=<?php echo $solution_id; ?>>
+          <input class="span" type="text" placeholder="请输入分数,默认为60分" name=score style="height: inherit;">
+          <button class="btn btn-success"  type="submit" style="margin-left: -3;">确定</button>
+        </div>
+      </div>
+    </form>
+  </center>
+<?php }
+?>
+
 <!-- // 聊天展示界面 -->
 <table style="width:70%">
   <thead style="background-color: '#417dbb'">

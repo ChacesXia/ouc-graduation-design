@@ -50,9 +50,7 @@ if (isset($_GET['cid'])){
    }else{
      $lock=false;
     }
-        //require_once("contest-header.php");
 }else{
-        //require_once("oj-header.php");
   if(isset($_SESSION['administrator'])
     ||isset($_SESSION['source_browser'])
     ||(isset($_SESSION['user_id'])
@@ -61,7 +59,7 @@ if (isset($_GET['cid'])){
     if ($_SESSION['user_id']!="guest")
       $sql="SELECT * FROM `solution` WHERE contest_id is null ";
   }else{
-    $sql="SELECT * FROM `solution` WHERE problem_id>0 and contest_id is null ";
+    $sql="SELECT * FROM `solution` WHERE problem_id>=0 and contest_id is null ";
   }
 }
 $start_first=true;
@@ -130,7 +128,7 @@ if($OJ_SIM){
     on old.old_s_id=sim_s_id WHERE  old_user_id!=user_id and sim_s_id!=solution_id ";
     $str2.="&showsim=$showsim";
   }
-        //$sql=$sql.$order_str." LIMIT 20";
+  //$sql=$sql.$order_str." LIMIT 20";
 }
 $sql=$sql.$order_str." LIMIT 20";
 //echo $sql;
@@ -170,9 +168,7 @@ for ($i=0;$i<$rows_cnt;$i++){
   isset($_SESSION['source_browser']) ||
   isset($_SESSION['administrator']) || 
   (isset($_SESSION['user_id'])&&!strcmp($row['user_id'],$_SESSION['user_id']));
-
   $cnt=1-$cnt;
-
   $view_status[$i][0]=$row['solution_id'];
   if ($row['contest_id']>0) {
     $view_status[$i][1]= "<a href='contestrank.php?cid=".$row['contest_id']."&user_id=".$row['user_id']."#".$row['user_id']."'>".$row['user_id']."</a>";
@@ -240,26 +236,26 @@ for ($i=0;$i<$rows_cnt;$i++){
   // !(isset($_SESSION['user_id'])&&strtolower($row['user_id'])==strtolower($_SESSION['user_id']) || isset($_SESSION['source_browser']))
   if (!$havePrivate && strtolower($row['user_id'])!=strtolower($_SESSION['user_id'])){
     $view_status[$i][6]=$language_name[$row['language']];
-  }else{
-    $view_status[$i][6]= "<a target=_blank href=showsource.php?id=".$row['solution_id'].">".$language_name[$row['language']]."</a>";
-    if($row["problem_id"]>0){
-      if (isset($cid)) {
-        $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?cid=".$cid."&pid=".$row['num']."&sid=".$row['solution_id']."\">Edit</a>";
-      }else{
-        $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?id=".$row['problem_id']."&sid=".$row['solution_id']."\">Edit</a>";
+    }else{
+      $view_status[$i][6]= "<a target=_blank href=showsource.php?id=".$row['solution_id'].">".$language_name[$row['language']]."</a>";
+      if($row["problem_id"]>0){
+        if (isset($cid)) {
+          $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?cid=".$cid."&pid=".$row['num']."&sid=".$row['solution_id']."\">Edit</a>";
+        }else{
+          $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?id=".$row['problem_id']."&sid=".$row['solution_id']."\">Edit</a>";
+        }
       }
     }
+    $view_status[$i][7]= $row['code_length']." Byte";
+    }else{
+      $view_status[$i][4]="----";
+      $view_status[$i][5]="----";
+      $view_status[$i][6]="----";
+      $view_status[$i][7]="----";
   }
-  $view_status[$i][7]= $row['code_length']." Byte";
-}else
-{
-  $view_status[$i][4]="----";
-  $view_status[$i][5]="----";
-  $view_status[$i][6]="----";
-  $view_status[$i][7]="----";
-}
-  $view_status[$i][8]= $row['in_date'];
-  $view_status[$i][9]= $row['judger'];
+  $view_status[$i][8]= $row['score'];
+  $view_status[$i][9]= $row['in_date'];
+  $view_status[$i][10]= $row['judger'];
 }
   if(!$OJ_MEMCACHE && $result)mysqli_free_result($result);
 ?>

@@ -21,6 +21,7 @@ $slanguage=$row->language;
 $sresult=$row->result;
 $stime=$row->time;
 $smemory=$row->memory;
+$sscore = $row->score;
 $sproblem_id=$row->problem_id;
 $view_user_id=$suser_id=$row->user_id;
 $contest_id=$row->contest_id;

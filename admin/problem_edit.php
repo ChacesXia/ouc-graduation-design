@@ -18,14 +18,13 @@ if (!(isset($_SESSION['administrator'])
 <?php
 include_once("kindeditor.php") ;
 ?>
-<p align="center"><font color="#333399" size="4">Welcome To Administrator's Page of Judge Online of ACM ICPC, <?php echo $OJ_NAME?>.</font>
+<center><h2>编辑问题</h2></center>
 <td width="100"></td>
 </center>
 <hr>
 <?php if(isset($_GET['id'])){
 ;//  require_once("../include/check_get_key.php");
 ?>
-<h1>Edit problem</h1>
 <form method=POST action=problem_edit.php>
 <input type=hidden name=problem_id value=New Problem>
 <?php $sql="SELECT * FROM `problem` WHERE `problem_id`=".intval($_GET['id']);

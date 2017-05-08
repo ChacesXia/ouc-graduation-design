@@ -48,23 +48,21 @@
       }
       echo "</select>";
       ?>
-
-
       <?php if(isset($_SESSION['administrator'])||isset($_SESSION['source_browser'])){
         if(isset($_GET['showsim']))
           $showsim=intval($_GET['showsim']);
         else
           $showsim=0;
-        echo "SIM:
-        <select id=\"appendedInputButton\"  class=\"input-mini\" name=showsim onchange=\"document.getElementById('simform').submit();\">
-          <option value=0 ".($showsim==0?'selected':'').">All</option>
-          <option value=50 ".($showsim==50?'selected':'').">50</option>
-          <option value=60 ".($showsim==60?'selected':'').">60</option>
-          <option value=70 ".($showsim==70?'selected':'').">70</option>
-          <option value=80 ".($showsim==80?'selected':'').">80</option>
-          <option value=90 ".($showsim==90?'selected':'').">90</option>
-          <option value=100 ".($showsim==100?'selected':'').">100</option>
-        </select>";
+        // echo "SIM:
+        // <select id=\"appendedInputButton\"  class=\"input-mini\" name=showsim onchange=\"document.getElementById('simform').submit();\">
+        //   <option value=0 ".($showsim==0?'selected':'').">All</option>
+        //   <option value=50 ".($showsim==50?'selected':'').">50</option>
+        //   <option value=60 ".($showsim==60?'selected':'').">60</option>
+        //   <option value=70 ".($showsim==70?'selected':'').">70</option>
+        //   <option value=80 ".($showsim==80?'selected':'').">80</option>
+        //   <option value=90 ".($showsim==90?'selected':'').">90</option>
+        //   <option value=100 ".($showsim==100?'selected':'').">100</option>
+        // </select>";
 /*      if (isset($_GET['cid'])) 
                 echo "<input type=hidden name=cid value='".$_GET['cid']."'>";
         if (isset($_GET['language'])) 
@@ -75,9 +73,6 @@
                 echo "<input type=hidden name=problem_id value='".$_GET['problem_id']."'>";
         //echo "<input type=submit>";
 */
-
-
-
               }
               echo "<input type=submit class='input'  value='$MSG_SEARCH'></form>";
               ?>
@@ -86,7 +81,7 @@
         <div id=center>
           <table id=result-tab class="table table-striped content-box-header" align=center width=80%>
             <thead>
-              <tr class='success toprow' > 
+              <tr class='success toprow'>
                 <th ><?php echo $MSG_RUNID?> </th>
                 <th ><?php echo $MSG_USER?> </th>
                 <th ><?php echo $MSG_PROBLEM?> </th>
@@ -95,6 +90,7 @@
                 <th ><?php echo $MSG_TIME?></th>
                 <th ><?php echo $MSG_LANG?></th>
                 <th ><?php echo $MSG_CODE_LENGTH?></th>
+                <th ><?php echo '老师评分'?></th>
                 <th ><?php echo $MSG_SUBMIT_TIME?></th>
                 <th ><?php echo '判题机' ?></th>
               </tr>
