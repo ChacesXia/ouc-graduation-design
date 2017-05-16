@@ -4,7 +4,6 @@
   <title><?php echo $view_title?></title>
   <!-- <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <link rel=stylesheet href='./template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
-
 </head>
 <body>
 <div id="wrapper">
@@ -134,13 +133,13 @@
       echo "
             <tr>
               <td></td>
-              <td style='background-color:#c2cf8a'>".$row->message."<<<br><p style='font-size:2;color:#A09D9D' align='right'>@".$row->time."</p></td>
+              <td style='background-color:#c2cf8a'><span style='color:red'>我:</span>".$row->message."<br><p style='font-size:2;color:#A09D9D' align='right'>@".$row->time."</p></td>
             </tr>
           ";
     }else if($row->to_user == $user){
       echo "
             <tr>
-              <td style='background-color:#fddd9b'>>>".$row->message." <br><p style='font-size:2;color:#A09D9D' align='right'>@".$row->time."</p></td>
+            <td style='background-color:#fddd9b'>".$row->message." <br><p style='font-size:2;color:#A09D9D' align='right'>@".$row->time."</p></td>
               <td></td>
             </tr>
           ";

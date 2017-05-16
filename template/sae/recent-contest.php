@@ -27,7 +27,7 @@ $odd=true;
 </tbody>
 </table>
 </div>
-<div align=center>DataSource:http://contests.acmicpc.info/contests.json  Spider Author:<a href="http://contests.acmicpc.info" >doraemonok</a></div>
+<div align=center>DataSource:http://tests.acmicpc.info/tests.json  Spider Author:<a href="http://tests.acmicpc.info" >doraemonok</a></div>
 
 <div id=foot>
   <?php require_once("oj-footer.php");?>

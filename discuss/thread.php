@@ -13,13 +13,7 @@
 <center>
 <div style="margin:0 auto; text-align:left;"> 
 <div style="text-align:left;font-size:80%;float:left;">[ <a href="newpost.php">发新帖</a> ]</div>
-<?php if ($isadmin){
-  ?><div style="font-size:80%; float:right"> Change sticky level to<?php $adminurl = "threadadmin.php?target=thread&tid={$_REQUEST['tid']}&action=";
-  if ($row->top_level == 0) echo "[ <a href=\"{$adminurl}sticky&level=3\">Level Top</a> ] [ <a href=\"{$adminurl}sticky&level=2\">Level Mid</a> ] [ <a href=\"{$adminurl}sticky&level=1\">Level Low</a> ]"; else echo "[ <a href=\"{$adminurl}sticky&level=0\">Standard</a> ]";
-  ?> | <?php if ($row->status != 1) echo (" [ <a  href=\"{$adminurl}lock\">Lock</a> ]"); else echo(" [ <a href=\"{$adminurl}resume\">Resume</a> ]");
-  ?> | <?php echo (" [ <a href=\"{$adminurl}delete\">Delete</a> ]");
-  ?></div><?php }
-?>
+
 <table style="width:100%; clear:both">
   <thead>
   <tr align=center class='toprow'>
@@ -57,10 +51,10 @@
         <?php if ($row->status==0) echo $url."disable\">Disable";
         else echo $url."resume\">Resume";
         ?> </a> ]</span>
-      <span>[ <a href="#">Reply</a> ]</span> 
+      <!-- <span>[ <a href="#">Reply</a> ]</span>  -->
       <?php } ?>
       <!-- <span>[ <a href="#">Quote</a> ]</span> -->
-      <span>[ <a href="#">Edit</a> ]</span>
+      <!-- <span>[ <a href="#">Edit</a> ]</span> -->
       <span>[ <a 
       <?php if ($isuser || $isadmin) echo "href=".$url."delete";
       ?>

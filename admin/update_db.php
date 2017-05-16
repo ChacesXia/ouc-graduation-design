@@ -71,14 +71,14 @@ CREATE TABLE `mail` (
 $tsql[5]="ALTER TABLE `solution` MODIFY COLUMN `user_id` CHAR(48)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,  DROP COLUMN `className`,MODIFY COLUMN `ip` CHAR(15)  CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;";
 $csql[5]="";
 
-$tsql[6]="select langmask from contest limit 1;";
-$csql[6]="ALTER TABLE `contest` ADD COLUMN `langmask` TINYINT  NOT NULL DEFAULT 0 COMMENT 'bits for LANG to mask' AFTER `private`;";
+$tsql[6]="select langmask from test limit 1;";
+$csql[6]="ALTER TABLE `test` ADD COLUMN `langmask` TINYINT  NOT NULL DEFAULT 0 COMMENT 'bits for LANG to mask' AFTER `private`;";
 
 $tsql[7]="whatever;";
-$csql[7]="optimize table `compileinfo`,`contest` ,`contest_problem` ,`loginlog`,`news`,`privilege`,`problem` ,`solution`,`source_code`,`users`,`topic`,`reply`,`online`,`sim`,`mail`;";
+$csql[7]="optimize table `compileinfo`,`test` ,`test_problem` ,`loginlog`,`news`,`privilege`,`problem` ,`solution`,`source_code`,`users`,`topic`,`reply`,`online`,`sim`,`mail`;";
 
 $tsql[8]="whatever;";
-$csql[8]="ALTER TABLE `contest` MODIFY COLUMN `langmask` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'bits for LANG to mask';";
+$csql[8]="ALTER TABLE `test` MODIFY COLUMN `langmask` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'bits for LANG to mask';";
 $tsql[9]="select 1 from runtimeinfo limit 1";
 $csql[9]="CREATE TABLE  `runtimeinfo` (
   `solution_id` int(11) NOT NULL DEFAULT '0',
@@ -111,9 +111,9 @@ $tsql[15]="whatever;";
 $csql[15]="ALTER TABLE `news` MODIFY COLUMN `user_id` varchar(48) NOT NULL DEFAULT ''  COMMENT 'user_id';";
 $tsql[16]="ALTER TABLE `sim` ADD INDEX `Index_sim_id`(`sim_s_id`);";
 $csql[16]="";
-$tsql[17]="ALTER TABLE `contest_problem` ADD INDEX `Index_contest_id`(`contest_id`);";
+$tsql[17]="ALTER TABLE `test_problem` ADD INDEX `Index_test_id`(`test_id`);";
 $csql[17]="";
-$tsql[18]="ALTER TABLE `contest_problem` ADD INDEX `Index_problem_id`(`problem_id`);";
+$tsql[18]="ALTER TABLE `test_problem` ADD INDEX `Index_problem_id`(`problem_id`);";
 $csql[18]="";
 
 $tsql[18]="select 1 from custominput limit 1;";
@@ -121,8 +121,8 @@ $csql[18]="CREATE TABLE  `custominput` (  `solution_id` int(11) NOT NULL DEFAULT
 
 $tsql[19]="ALTER TABLE `loginlog` ADD INDEX `user_time_index`(`user_id`, `time`);";
 $csql[19]="";
-$tsql[20]="select `password` from contest limit 1 ";
-$csql[20]="ALTER TABLE `contest` ADD `password` CHAR( 16 ) NOT NULL DEFAULT '' AFTER `langmask` ";
+$tsql[20]="select `password` from test limit 1 ";
+$csql[20]="ALTER TABLE `test` ADD `password` CHAR( 16 ) NOT NULL DEFAULT '' AFTER `langmask` ";
 $tsql[21]="select * from source_code_user limit 1 ";
 $csql[21]="create TABLE `source_code_user` like source_code ";
 

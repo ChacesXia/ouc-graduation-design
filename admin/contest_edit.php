@@ -30,21 +30,21 @@ if (isset($_POST['syear']))
 
   $cid=intval($_POST['cid']);
   if(!(isset($_SESSION["m$cid"])||isset($_SESSION['administrator']))) exit();
-  $sql="UPDATE `contest` set `title`='$title',description='$description',`start_time`='$starttime',`end_time`='$endtime',`private`='$private',`langmask`=$langmask  ,password='$password' WHERE `contest_id`=$cid";
+  $sql="UPDATE `test` set `title`='$title',description='$description',`start_time`='$starttime',`end_time`='$endtime',`private`='$private',`langmask`=$langmask  ,password='$password' WHERE `test_id`=$cid";
   //echo $sql;
   mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
-  $sql="DELETE FROM `contest_problem` WHERE `contest_id`=$cid";
+  $sql="DELETE FROM `test_problem` WHERE `test_id`=$cid";
   mysqli_query($mysqli,$sql);
   $plist=trim($_POST['cproblem']);
   $pieces = explode(',', $plist);
   if (count($pieces)>0 && strlen($pieces[0])>0){
-    $sql_1="INSERT INTO `contest_problem`(`contest_id`,`problem_id`,`num`) 
+    $sql_1="INSERT INTO `test_problem`(`test_id`,`problem_id`,`num`) 
       VALUES ('$cid','$pieces[0]',0)";
     for ($i=1;$i<count($pieces);$i++)
       $sql_1=$sql_1.",('$cid','$pieces[$i]',$i)";
-    mysqli_query($mysqli,"update solution set num=-1 where contest_id=$cid");
+    mysqli_query($mysqli,"update solution set num=-1 where test_id=$cid");
     for ($i=0;$i<count($pieces);$i++){
-      $sql_2="update solution set num='$i' where contest_id='$cid' and problem_id='$pieces[$i]';";
+      $sql_2="update solution set num='$i' where test_id='$cid' and problem_id='$pieces[$i]';";
       mysqli_query($mysqli,$sql_2);
     }
     //echo $sql_1;
@@ -67,15 +67,15 @@ if (isset($_POST['syear']))
     mysqli_query($mysqli,$sql_1) or die(mysqli_error($mysqli));
   }
   
-  echo "<script>window.location.href=\"contest_list.php\";</script>";
+  echo "<script>window.location.href=\"test_list.php\";</script>";
   exit();
 }else{
   $cid=intval($_GET['cid']);
-  $sql="SELECT * FROM `contest` WHERE `contest_id`=$cid";
+  $sql="SELECT * FROM `test` WHERE `test_id`=$cid";
   $result=mysqli_query($mysqli,$sql);
   if (mysqli_num_rows($result)!=1){
     mysqli_free_result($result);
-    echo "No such Contest!";
+    echo "No such test!";
     exit(0);
   }
   $row=mysqli_fetch_assoc($result);
@@ -88,7 +88,7 @@ if (isset($_POST['syear']))
   $title=htmlentities($row['title'],ENT_QUOTES,"UTF-8");
   mysqli_free_result($result);
   $plist="";
-  $sql="SELECT `problem_id` FROM `contest_problem` WHERE `contest_id`=$cid ORDER BY `num`";
+  $sql="SELECT `problem_id` FROM `test_problem` WHERE `test_id`=$cid ORDER BY `num`";
   $result=mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
   for ($i=mysqli_num_rows($result);$i>0;$i--){
     $row=mysqli_fetch_row($result);
@@ -110,7 +110,7 @@ if (isset($_POST['syear']))
 
 <form method=POST >
 <?php require_once("../include/set_post_key.php");?>
-<p align=center><font size=4 color=#333399>Edit a Contest</font></p>
+<p align=center><font size=4 color=#333399>Edit a test</font></p>
 <input type=hidden name='cid' value=<?php echo $cid?>>
 <p align=left>Title:<input class=input-xxlarge type=text name=title size=71 value='<?php echo $title?>'></p>
 <p align=left>Start Time:<br>&nbsp;&nbsp;&nbsp;

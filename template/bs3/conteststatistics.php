@@ -25,7 +25,7 @@
     <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-<center><h3>Contest Statistics</h3>
+<center><h3>test Statistics</h3>
 <table id=cs width=90%>
 <thead>
 <tr class=toprow><th><th>AC<th>PE<th>WA<th>TLE<th>MLE<th>OLE<th>RE<th>CE<th><th>TR<th>Total

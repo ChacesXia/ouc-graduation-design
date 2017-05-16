@@ -9,7 +9,7 @@ if (!(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor']))){
 ?>
 <?php require_once ("../include/problem.php");
 ?>
-<?php // contest_id
+<?php // test_id
 $title = $_POST ['title'];
 $time_limit = $_POST ['time_limit'];
 $memory_limit = $_POST ['memory_limit'];

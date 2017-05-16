@@ -4,7 +4,7 @@
         }
 require_once("../include/set_get_key.php");
 if (!(isset($_SESSION['administrator'])
-                ||isset($_SESSION['contest_creator'])
+                ||isset($_SESSION['test_creator'])
                 ||isset($_SESSION['problem_editor'])
                 )){
         echo "<a href='../loginpage.php'>Please Login First!</a>";
@@ -50,8 +50,8 @@ $result=mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
 
 <?php
 echo "<center><table class='table table-striped' width=90% border=1>";
-echo "<form method=post action=contest_add.php>";
-echo "<tr><td colspan=7><input class='btn btn-info' type=submit name='problem2contest' value='输入到考试'>";
+echo "<form method=post action=test_add.php>";
+echo "<tr><td colspan=7><input class='btn btn-info' type=submit name='problem2test' value='输入到考试'>";
 echo "<tr><td>PID<td>Title<td>Date";
 if(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
         if(isset($_SESSION['administrator']))   echo "<td>Status<td>Delete";
@@ -81,7 +81,7 @@ for (;$row=mysqli_fetch_object($result);){
         }
         echo "</tr>";
 }
-echo "<tr><td colspan=7><input class='btn btn-info' type=submit name='problem2contest' value='输入到考试'>";
+echo "<tr><td colspan=7><input class='btn btn-info' type=submit name='problem2test' value='输入到考试'>";
 echo "</tr></form>";
 echo "</table></center>";
 ?>

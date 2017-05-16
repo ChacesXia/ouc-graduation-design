@@ -10,7 +10,7 @@ $("document").ready(function (){
 
 </script>
 <?php if (!(isset($_SESSION['administrator'])||
-      isset($_SESSION['contest_creator'])||
+      isset($_SESSION['test_creator'])||
       isset($_SESSION['problem_editor']))){
   echo "<a href='../loginpage.php'>Please Login First!</a>";
   exit(1);

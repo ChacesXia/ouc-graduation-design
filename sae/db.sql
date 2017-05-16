@@ -7,8 +7,8 @@ CREATE TABLE  `compileinfo` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE  `contest` (
-  `contest_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE  `test` (
+  `test_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
@@ -16,12 +16,12 @@ CREATE TABLE  `contest` (
   `description` text,
   `private` tinyint(4) NOT NULL DEFAULT '0',
   `langmask` int NOT NULL DEFAULT '0' COMMENT 'bits for LANG to mask',
-  PRIMARY KEY (`contest_id`)
+  PRIMARY KEY (`test_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 
-CREATE TABLE  `contest_problem` (
+CREATE TABLE  `test_problem` (
   `problem_id` int(11) NOT NULL DEFAULT '0',
-  `contest_id` int(11) DEFAULT NULL,
+  `test_id` int(11) DEFAULT NULL,
   `title` char(200) NOT NULL DEFAULT '',
   `num` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -118,7 +118,7 @@ CREATE TABLE  `solution` (
   `result` smallint(6) NOT NULL DEFAULT '0',
   `language` INT UNSIGNED NOT NULL DEFAULT '0',
   `ip` char(15) NOT NULL,
-  `contest_id` int(11) DEFAULT NULL,
+  `test_id` int(11) DEFAULT NULL,
   `valid` tinyint(4) NOT NULL DEFAULT '1',
   `num` tinyint(4) NOT NULL DEFAULT '-1',
   `code_length` int(11) NOT NULL DEFAULT '0',
@@ -128,7 +128,7 @@ CREATE TABLE  `solution` (
   KEY `uid` (`user_id`),
   KEY `pid` (`problem_id`),
   KEY `res` (`result`),
-  KEY `cid` (`contest_id`)
+  KEY `cid` (`test_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
 
 CREATE TABLE  `source_code` (

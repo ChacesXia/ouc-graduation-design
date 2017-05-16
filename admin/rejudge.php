@@ -27,10 +27,10 @@ if (!(isset($_SESSION['administrator']))){
     echo "<script>location.href='$url';</script>";
   }else if (isset($_POST['rjcid'])){
     $rjcid=intval($_POST['rjcid']);
-    $sql="UPDATE `solution` SET `result`=1 WHERE `contest_id`=".$rjcid;
+    $sql="UPDATE `solution` SET `result`=1 WHERE `test_id`=".$rjcid;
     mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
     $url="../status.php?cid=".($rjcid);
-    echo "Rejudged Contest id :".$rjcid;
+    echo "Rejudged test id :".$rjcid;
     echo "<script>location.href='$url';</script>";
   }
   if($OJ_REDIS){
@@ -60,7 +60,7 @@ if (!(isset($_SESSION['administrator']))){
     <input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">
     <input type=submit value=submit>
   </form>
-  <li>Contest
+  <li>test
   <form action='rejudge.php' method=post>
     <input type=input name='rjcid'>  <input type='hidden' name='do' value='do'>
     <input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">

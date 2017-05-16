@@ -7,9 +7,9 @@
 </head>
 <body>
 <div id="wrapper">
-  <?php require_once("contest-header.php");?>
+  <?php require_once("test-header.php");?>
 <div id=main>
-<center><h3>Contest Statistics</h3>
+<center><h3>test Statistics</h3>
 <table width=90%>
 <tr align=center class=toprow><td><td>AC<td>PE<td>WA<td>TLE<td>MLE<td>OLE<td>RE<td>CE<td>Total<td><td>C<td>C++<td>Pascal<td>Java<td>Ruby<td>Bash<td>Python<td>PHP<td>Perl<td>C#<td>Obj-c</tr>
 <?php

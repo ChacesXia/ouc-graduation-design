@@ -19,48 +19,48 @@ if (isset($_GET['id'])){
    // practice
     $id=intval($_GET['id']);
   //require("oj-header.php");
-    if(!isset($_SESSION['administrator']) && $id!=1000&&!isset($_SESSION['contest_creator'])){
+    if(!isset($_SESSION['administrator']) && $id!=1000&&!isset($_SESSION['test_creator'])){
         $sql="SELECT * FROM `problem` WHERE `problem_id`=$id AND `defunct`='N' AND `problem_id`    NOT IN (
-                SELECT `problem_id` FROM `contest_problem` WHERE `contest_id` IN(
-                SELECT `contest_id` FROM `contest` WHERE `end_time`>'$now' or `private`='1'))
+                SELECT `problem_id` FROM `test_problem` WHERE `test_id` IN(
+                SELECT `test_id` FROM `test` WHERE `end_time`>'$now' or `private`='1'))
         ";}
     else{
         $sql="SELECT * FROM `problem` WHERE `problem_id`=$id";}
     $pr_flag=true;
   }else if (isset($_GET['cid']) && isset($_GET['pid'])){
-    // contest
+    // test
     $cid=intval($_GET['cid']);
     $pid=intval($_GET['pid']);
 
     if (!isset($_SESSION['administrator']))
-        $sql="SELECT langmask,private,defunct FROM `contest` WHERE `defunct`='N' AND `contest_id`=$cid AND `start_time`<='$now'";
+        $sql="SELECT langmask,private,defunct FROM `test` WHERE `defunct`='N' AND `test_id`=$cid AND `start_time`<='$now'";
     else
-        $sql="SELECT langmask,private,defunct FROM `contest` WHERE `defunct`='N' AND `contest_id`=$cid";
+        $sql="SELECT langmask,private,defunct FROM `test` WHERE `defunct`='N' AND `test_id`=$cid";
     $result=mysqli_query($mysqli,$sql);
     $rows_cnt=mysqli_num_rows($result);
     $row=mysqli_fetch_row($result);
-    $contest_ok=true;
-    if ($row[1] && !isset($_SESSION['c'.$cid])) $contest_ok=false;
-    if ($row[2]=='Y') $contest_ok=false;
-    if (isset($_SESSION['administrator'])) $contest_ok=true;
+    $test_ok=true;
+    if ($row[1] && !isset($_SESSION['c'.$cid])) $test_ok=false;
+    if ($row[2]=='Y') $test_ok=false;
+    if (isset($_SESSION['administrator'])) $test_ok=true;
 
     $ok_cnt=$rows_cnt==1;              
     $langmask=$row[0];
     mysqli_free_result($result);
     if ($ok_cnt!=1){
                 // not started
-        $view_errors=  "No such Contest!";
+        $view_errors=  "No such test!";
 
         require("template/".$OJ_TEMPLATE."/error.php");
         exit(0);
     }else{
         // started
         $sql="SELECT * FROM `problem` WHERE `defunct`='N' AND `problem_id`=(
-        SELECT `problem_id` FROM `contest_problem` WHERE `contest_id`=$cid AND `num`=$pid
+        SELECT `problem_id` FROM `test_problem` WHERE `test_id`=$cid AND `num`=$pid
         )";
     }
     // public
-    if (!$contest_ok){
+    if (!$test_ok){
         $view_errors= "Not Invited!";
         require("template/".$OJ_TEMPLATE."/error.php");
         exit(0);
@@ -78,14 +78,14 @@ if (mysqli_num_rows($result)!=1){
  if(isset($_GET['id'])){
     $id=intval($_GET['id']);
     mysqli_free_result($result);
-    $sql="SELECT  contest.`contest_id` , contest.`title`,contest_problem.num FROM `contest_problem`,`contest` WHERE contest.contest_id=contest_problem.contest_id and `problem_id`=$id and defunct='N'  ORDER BY `num`";
+    $sql="SELECT  test.`test_id` , test.`title`,test_problem.num FROM `test_problem`,`test` WHERE test.test_id=test_problem.test_id and `problem_id`=$id and defunct='N'  ORDER BY `num`";
              //echo $sql;
     $result=mysqli_query($mysqli,$sql);
     if($i=mysqli_num_rows($result)){
-        $view_errors.= "This problem is in Contest(s) below:<br>";
+        $view_errors.= "This problem is in test(s) below:<br>";
         for (;$i>0;$i--){
           $row=mysqli_fetch_row($result);
-          $view_errors.= "<a href=problem.php?cid=$row[0]&pid=$row[2]>Contest $row[0]:$row[1]</a><br>";
+          $view_errors.= "<a href=problem.php?cid=$row[0]&pid=$row[2]>test $row[0]:$row[1]</a><br>";
         }
     }else{
       $view_title= "<title>$MSG_NO_SUCH_PROBLEM!</title>";

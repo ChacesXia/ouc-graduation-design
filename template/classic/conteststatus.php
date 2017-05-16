@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="wrapper">
-  <?php require_once("contest-header.php");?>
+  <?php require_once("test-header.php");?>
 <div id=main>
 
 

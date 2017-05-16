@@ -39,7 +39,7 @@ $user_id=mysqli_real_escape_string($mysqli,$user_id);
   $result=mysqli_query($mysqli,$sql);
   if (mysqli_num_rows($result)!=1){
     mysqli_free_result($result);
-    echo "No such Contest!";
+    echo "No such test!";
     exit(0);
   }
   $row=mysqli_fetch_assoc($result);
@@ -52,7 +52,7 @@ $user_id=mysqli_real_escape_string($mysqli,$user_id);
 ?>
 <?php include("kindeditor.php")?>
 <form method=POST action='news_edit.php'>
-<p align=center><font size=4 color=#333399>Edit a Contest</font></p>
+<p align=center><font size=4 color=#333399>Edit a test</font></p>
 <input type=hidden name='news_id' value=<?php echo $news_id?>>
 <p align=left>Title:<input type=text name=title size=71 value='<?php echo $title?>'></p>
 

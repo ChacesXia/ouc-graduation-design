@@ -72,10 +72,10 @@ if ($start+$sz>$acuser) $sz=$acuser-$start;
 
 
 
-// check whether the problem in a contest
+// check whether the problem in a test
 $now=strftime("%Y-%m-%d %H:%M",time());
-$sql="SELECT 1 FROM `contest_problem` WHERE `problem_id`=$id AND `contest_id` IN (
-        SELECT `contest_id` FROM `contest` WHERE `start_time`<'$now' AND `end_time`>'$now')";
+$sql="SELECT 1 FROM `test_problem` WHERE `problem_id`=$id AND `test_id` IN (
+        SELECT `test_id` FROM `test` WHERE `start_time`<'$now' AND `end_time`>'$now')";
 $rrs=mysqli_query($mysqli,$sql);
 $flag=!(mysqli_num_rows($rrs)>0);
 

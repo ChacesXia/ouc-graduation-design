@@ -32,20 +32,20 @@ if (isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
   <li>
     <a class='btn btn-primary' href="problem_add_page.php" target="main"><b><?php echo $MSG_ADD.$MSG_PROBLEM?></b></a>
 <?php }
-if (isset($_SESSION['administrator'])||isset($_SESSION['contest_creator'])||isset($_SESSION['problem_editor'])){
+if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])||isset($_SESSION['problem_editor'])){
 ?>
   <li>
     <a class='btn btn-primary' href="problem_list.php" target="main"><b><?php echo $MSG_PROBLEM.$MSG_LIST?></b></a>
 <?php }
-if (isset($_SESSION['administrator'])||isset($_SESSION['contest_creator'])){
+if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])){
 ?>    
 <li>
-  <a class='btn btn-primary' href="contest_add.php" target="main"><b><?php echo $MSG_ADD.$MSG_CONTEST?></b></a>
+  <a class='btn btn-primary' href="test_add.php" target="main"><b><?php echo $MSG_ADD.$MSG_test?></b></a>
 <?php }
-if (isset($_SESSION['administrator'])||isset($_SESSION['contest_creator'])){
+if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])){
 ?>
 <li>
-  <a class='btn btn-primary' href="contest_list.php" target="main"><b><?php echo $MSG_CONTEST.$MSG_LIST?></b></a>
+  <a class='btn btn-primary' href="test_list.php" target="main"><b><?php echo $MSG_test.$MSG_LIST?></b></a>
 <?php }
 if (isset($_SESSION['administrator'])){
 ?>

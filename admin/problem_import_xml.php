@@ -247,7 +247,7 @@ if ($_FILES ["fps"] ["error"] > 0) {
 
   if($spid>0){
     require_once("../include/set_get_key.php");
-    echo "<br><a class=blue href=contest_add.php?spid=$spid&getkey=".$_SESSION['getkey'].">Use these problems to create a contest.</a>";
+    echo "<br><a class=blue href=test_add.php?spid=$spid&getkey=".$_SESSION['getkey'].">Use these problems to create a test.</a>";
    }
 }
 

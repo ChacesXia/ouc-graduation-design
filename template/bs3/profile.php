@@ -30,7 +30,7 @@ header("Pragma: no-cache");
         $mail=checkmail();
         if ($mail)
           $profile.= "&nbsp;<i class=icon-envelope></i><li><a href=".$path_fix."mail.php>$mail</a></li>";
-              $profile.="&nbsp;<li><a href='".$path_fix."contest.php?my'><span id=red>$MSG_MY_CONTESTS</span></a></li>";
+              $profile.="&nbsp;<li><a href='".$path_fix."test.php?my'><span id=red>$MSG_MY_testS</span></a></li>";
               $profile.="&nbsp;<li><a href='".$path_fix."status.php?user_id=$sid'><span id=red>$MSG_MY_SUBMISSIONS</span></a></li>";
                                 
                                 
@@ -50,7 +50,7 @@ header("Pragma: no-cache");
           $profile.= "<li><a href=".$path_fix."registerpage.php>$MSG_REGISTER</a></li>&nbsp;";
         }
       }
-      if (isset($_SESSION['administrator'])||isset($_SESSION['contest_creator'])||isset($_SESSION['problem_editor'])){
+      if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])||isset($_SESSION['problem_editor'])){
            $profile.= "<li><a href=".$path_fix."admin/>$MSG_ADMIN</a></li>&nbsp;";
       
       }

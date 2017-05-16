@@ -1,11 +1,11 @@
-<?php function checkcontest($MSG_CONTEST){
-  global $mysqli,$MSG_CONTEST;
+<?php function checktest($MSG_test){
+  global $mysqli,$MSG_test;
       $now=strftime("%Y-%m-%d %H:%M",time());
-    $sql="SELECT count(*) FROM `contest` WHERE `end_time`>'$now' AND `defunct`='N'";
+    $sql="SELECT count(*) FROM `test` WHERE `end_time`>'$now' AND `defunct`='N'";
     $result=mysqli_query($mysqli,$sql);
     $row=mysqli_fetch_row($result);
-    if (intval($row[0])==0) $retmsg=$MSG_CONTEST;
-    else $retmsg=$row[0]."<span class=red>&nbsp;$MSG_CONTEST</span>";
+    if (intval($row[0])==0) $retmsg=$MSG_test;
+    else $retmsg=$row[0]."<span class=red>&nbsp;$MSG_test</span>";
     mysqli_free_result($result);
     return $retmsg;
   }

@@ -27,7 +27,7 @@
       <div class="jumbotron">
 <center>
 <div>
-<h3>Contest<?php echo $view_cid?> - <?php echo $view_title ?></h3>
+<h3>test<?php echo $view_cid?> - <?php echo $view_title ?></h3>
 <p><?php echo $view_description?></p>
 <br>Start Time: <font color=#993399><?php echo $view_start_time?></font>
 End Time: <font color=#993399><?php echo $view_end_time?></font><br>
@@ -48,8 +48,8 @@ echo "&nbsp;&nbsp;<span class=red>Private</font>";
 ?>
 <br>
 [<a href='status.php?cid=<?php echo $view_cid?>'>Status</a>]
-[<a href='contestrank.php?cid=<?php echo $view_cid?>'>Standing</a>]
-[<a href='conteststatistics.php?cid=<?php echo $view_cid?>'>Statistics</a>]
+[<a href='testrank.php?cid=<?php echo $view_cid?>'>Standing</a>]
+[<a href='teststatistics.php?cid=<?php echo $view_cid?>'>Statistics</a>]
 </div>
 <table id='problemset' class='table table-striped'  width='90%'>
 <thead>

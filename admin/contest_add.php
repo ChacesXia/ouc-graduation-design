@@ -1,6 +1,6 @@
 <?php require_once("admin-header.php");?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Add a contest</title>
+<title>Add a test</title>
 
 <?php
   require_once("../include/db_info.inc.php");
@@ -37,16 +37,16 @@ $description="";
 $langmask=((1<<count($language_ext))-1)&(~$langmask);
   //echo $langmask;  
   
-  $sql="INSERT INTO `contest`(`title`,`start_time`,`end_time`,`private`,`langmask`,`description`,`password`) VALUES('$title','$starttime','$endtime','$private',$langmask,'$description','$password')";
+  $sql="INSERT INTO `test`(`title`,`start_time`,`end_time`,`private`,`langmask`,`description`,`password`) VALUES('$title','$starttime','$endtime','$private',$langmask,'$description','$password')";
   // echo $sql;
   mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
   $cid=mysqli_insert_id($mysqli);
-  echo "Add Contest ".$cid;
-  $sql="DELETE FROM `contest_problem` WHERE `contest_id`=$cid";
+  echo "Add test ".$cid;
+  $sql="DELETE FROM `test_problem` WHERE `test_id`=$cid";
   $plist=trim($_POST['cproblem']);
   $pieces = explode(",",$plist );
   if (count($pieces)>0 && strlen($pieces[0])>0){
-    $sql_1="INSERT INTO `contest_problem`(`contest_id`,`problem_id`,`num`) 
+    $sql_1="INSERT INTO `test_problem`(`test_id`,`problem_id`,`num`) 
       VALUES ('$cid','$pieces[0]',0)";
     for ($i=1;$i<count($pieces);$i++){
       $sql_1=$sql_1.",('$cid','$pieces[$i]',$i)";
@@ -70,18 +70,18 @@ $langmask=((1<<count($language_ext))-1)&(~$langmask);
     //echo $sql_1;
     mysqli_query($mysqli,$sql_1) or die(mysqli_error($mysqli));
   }
-  echo "<script>window.location.href=\"contest_list.php\";</script>";
+  echo "<script>window.location.href=\"test_list.php\";</script>";
 }
 else{
    if(isset($_GET['cid'])){
        $cid=intval($_GET['cid']);
-       $sql="select * from contest WHERE `contest_id`='$cid'";
+       $sql="select * from test WHERE `test_id`='$cid'";
        $result=mysqli_query($mysqli,$sql);
        $row=mysqli_fetch_object($result);
        $title=$row->title;
        mysqli_free_result($result);
       $plist="";
-      $sql="SELECT `problem_id` FROM `contest_problem` WHERE `contest_id`=$cid ORDER BY `num`";
+      $sql="SELECT `problem_id` FROM `test_problem` WHERE `test_id`=$cid ORDER BY `num`";
       $result=mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
       for ($i=mysqli_num_rows($result);$i>0;$i--){
         $row=mysqli_fetch_row($result);
@@ -90,7 +90,7 @@ else{
       }
       mysqli_free_result($result);
    }
-else if(isset($_POST['problem2contest'])){
+else if(isset($_POST['problem2test'])){
      $plist="";
      //echo $_POST['pid'];
      sort($_POST['pid']);

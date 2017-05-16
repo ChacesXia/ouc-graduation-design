@@ -25,7 +25,7 @@
     <?php include("template/$OJ_TEMPLATE/nav.php");?>      
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-<center><form method=post action=contest.php >
+<center><form method=post action=test.php >
   <?php echo $MSG_SEARCH;?>
   <input name=keyword type=text >
   <input type=submit>
@@ -37,7 +37,7 @@
 <tbody>
 <?php
 $cnt=0;
-foreach($view_contest as $row){
+foreach($view_test as $row){
 if ($cnt)
 echo "<tr class='oddrow'>";
 else

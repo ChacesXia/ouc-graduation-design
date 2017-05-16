@@ -20,7 +20,7 @@ if(isset($_POST['do'])){
   Privilege:
   <select name="rightstr">
 <?php
-$rightarray=array("administrator","teacher","problem_editor","source_browser","contest_creator","http_judge","password_setter");
+$rightarray=array("administrator","teacher","problem_editor","source_browser","test_creator","http_judge","password_setter");
 while(list($key, $val)=each($rightarray)) {
   if (isset($rightstr) && ($rightstr == $val)) {
     echo '<option value="'.$val.'" selected>'.$val.'</option>';
@@ -35,7 +35,7 @@ while(list($key, $val)=each($rightarray)) {
 <center><h2>添加用户考试权限</h2></center>
 <form method=post>
   User:<input type=text size=10 name="user_id"><br />
-  Contest:<input type=text size=10 name="rightstr">t1000 for Contest1000<br />
+  test:<input type=text size=10 name="rightstr">t1000 for test1000<br />
   <input type='hidden' name='do' value='do'>
   <input type=submit value='Add'>
   <input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">

@@ -139,7 +139,7 @@ public class Main{
   <br>
   <font color=blue>Presentation Error</font> : Your output format is not exactly the same as the judge's output, although your answer to the problem is correct. Check your output for spaces, blank lines,etc against the problem output specification.<br>
   <br>
-  <font color=blue>Wrong Answer</font> : Correct solution not reached for the inputs. The inputs and outputs that we use to test the programs are not public (it is recomendable to get accustomed to a true contest dynamic ;-).<br>
+  <font color=blue>Wrong Answer</font> : Correct solution not reached for the inputs. The inputs and outputs that we use to test the programs are not public (it is recomendable to get accustomed to a true test dynamic ;-).<br>
   <br>
   <font color=blue>Time Limit Exceeded</font> : Your program tried to run during too much time.<br>
   <br>
@@ -153,8 +153,8 @@ public class Main{
   <br>
 </p>
 <hr>
-<font color=green>Q</font>:How to attend Online Contests?<br>
-<font color=red>A</font>:Can you submit programs for any practice problems on this Online Judge? If you can, then that is the account you use in an online contest.
+<font color=green>Q</font>:How to attend Online tests?<br>
+<font color=red>A</font>:Can you submit programs for any practice problems on this Online Judge? If you can, then that is the account you use in an online test.
 If you can't, then please <a href=registerpage.php>register</a> an id with password first.<br>
 <br>
 <hr>

@@ -8,7 +8,7 @@ if (!(isset($_SESSION['administrator']))){
 <?php require_once ("../include/db_info.inc.php");
 ?>
 
-<?php // contest_id
+<?php // test_id
 
 
 $title = $_POST ['title'];

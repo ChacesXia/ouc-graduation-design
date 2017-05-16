@@ -10,7 +10,7 @@
   if(isset($_GET['id']))
     require_once("oj-header.php");
   else
-    require_once("contest-header.php");
+    require_once("test-header.php");
   
   ?>
 <div id=main>

@@ -1,4 +1,4 @@
-<?php
+s<?php
 @session_start ();
 require_once ("../include/db_info.inc.php");
 
@@ -191,12 +191,12 @@ if (isset($_POST ['do'])||isset($_GET['cid'])) {
    }else if (isset($_GET['cid'])){
     require_once("../include/check_get_key.php");
     $cid=intval( $_GET['cid'] );
-      $sql= "select title from contest where contest_id='$cid'";
+      $sql= "select title from test where test_id='$cid'";
       $result = mysqli_query($mysqli, $sql ) or die ( mysqli_error ($mysqli) );
       $row = mysqli_fetch_object ( $result );
       $filename='-'.$row->title;
       mysqli_free_result ( $result );
-      $sql = "select * from problem where problem_id in(select problem_id from contest_problem where contest_id=$cid)";
+      $sql = "select * from problem where problem_id in(select problem_id from test_problem where test_id=$cid)";
     
    }else{
      require_once("../include/check_post_key.php");

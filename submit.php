@@ -12,12 +12,12 @@ $user_id=$_SESSION['user_id'];
 if (isset($_POST['cid'])){
   $pid=intval($_POST['pid']);
   $cid=intval($_POST['cid']);
-  $sql="SELECT `problem_id` from `contest_problem` 
-        where `num`='$pid' and contest_id=$cid";
+  $sql="SELECT `problem_id` from `test_problem` 
+        where `num`='$pid' and test_id=$cid";
 }else{
   $id=intval($_POST['id']);
-  $sql="SELECT `problem_id` from `problem` where `problem_id`='$id' and problem_id not in (select distinct problem_id from contest_problem where `contest_id` IN (
-      SELECT `contest_id` FROM `contest` WHERE 
+  $sql="SELECT `problem_id` from `problem` where `problem_id`='$id' and problem_id not in (select distinct problem_id from test_problem where `test_id` IN (
+      SELECT `test_id` FROM `test` WHERE 
       (`end_time`>'$now' or private=1)and `defunct`='N'
       ))";
   if(!isset($_SESSION['administrator']))
@@ -44,11 +44,11 @@ if (isset($_POST['id'])) {
         $test_run=($cid<0);
   if($test_run) $cid=-$cid;
   // check user if private
-  $sql="SELECT `private` FROM `contest` WHERE `contest_id`='$cid' AND `start_time`<='$now' AND `end_time`>'$now'";
+  $sql="SELECT `private` FROM `test` WHERE `test_id`='$cid' AND `start_time`<='$now' AND `end_time`>'$now'";
   $result=mysqli_query($mysqli,$sql);
   $rows_cnt=mysqli_num_rows($result);
   if ($rows_cnt!=1){
-    echo "You Can't Submit Now Because Your are not invited by the contest or the contest is not running!!";
+    echo "You Can't Submit Now Because Your are not invited by the test or the test is not running!!";
     mysqli_free_result($result);
     require_once("oj-footer.php");
     exit(0);
@@ -69,7 +69,7 @@ if (isset($_POST['id'])) {
       }
     }
   }
-  $sql="SELECT `problem_id` FROM `contest_problem` WHERE `contest_id`='$cid' AND `num`='$pid'";
+  $sql="SELECT `problem_id` FROM `test_problem` WHERE `test_id`='$cid' AND `num`='$pid'";
   $result=mysqli_query($mysqli,$sql);
   $rows_cnt=mysqli_num_rows($result);
   if ($rows_cnt!=1){
@@ -163,7 +163,7 @@ if(isset($_SESSION['store_id'])) $store_id=$_SESSION['store_id'];
   $sql="INSERT INTO solution(problem_id,user_id,in_date,language,ip,code_length)
     VALUES('$id','$user_id',NOW(),'$language','$ip','$len')";
   }else{
-  $sql="INSERT INTO solution(problem_id,user_id,in_date,language,ip,code_length,contest_id,num)
+  $sql="INSERT INTO solution(problem_id,user_id,in_date,language,ip,code_length,test_id,num)
     VALUES('$id','$user_id',NOW(),'$language','$ip','$len','$cid','$pid')";
   }
   mysqli_query($mysqli,$sql);

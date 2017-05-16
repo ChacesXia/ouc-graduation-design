@@ -54,9 +54,9 @@ backgroundColor: { colors: ["#fff", "#333"] }
 </head>
 <body>
 <div id="wrapper">
-<?php require_once("contest-header.php");?>
+<?php require_once("test-header.php");?>
 <div id=main>
-<center><h3>Contest Statistics</h3>
+<center><h3>test Statistics</h3>
 <table id=cs width=90%>
 <thead>
 <tr align=center class=toprow><th><th>AC<th>PE<th>WA<th>TLE<th>MLE<th>OLE<th>RE<th>CE<th>Total<th><th>C<th>C++<th>Pascal<th>Java<th>Ruby<th>Bash<th>Python<th>PHP<th>Perl<th>C#<th>Obj-c<th>FreeBasic</tr>

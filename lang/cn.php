@@ -5,8 +5,8 @@
   $MSG_PROBLEMS="问题";
   $MSG_STATUS="状态";
   $MSG_RANKLIST="排名";
-  $MSG_CONTEST="考试";
-    $MSG_RECENT_CONTEST="名校联赛";
+  $MSG_test="考试";
+    $MSG_RECENT_test="名校联赛";
   $MSG_LOGOUT="注销";
   $MSG_LOGIN="登录";
   $MSG_LOST_PASSWORD="忘记密码";
@@ -123,7 +123,7 @@ $MSG_Compile_OK="人品问题-愚人节快乐";
   $MSG_EXPORT="导出";
   $MSG_UPDATE_DATABASE="更新数据库";
   $MSG_ONLINE="在线";
-  //contest
+  //test
   $MSG_PRIVATE_WARNING="比赛尚未开始或私有，不能查看题目。";
   $MSG_WATCH_RANK="点击这里查看做题排名。";
   $MSG_Public="公开";
@@ -143,5 +143,5 @@ $MSG_Compile_OK="人品问题-愚人节快乐";
   $MSG_BLOCKLY_OPEN="可视化"; 
   $MSG_BLOCKLY_TEST="翻译运行"; 
   $MSG_MY_SUBMISSIONS="我的提交"; 
-  $MSG_MY_CONTESTS="我的$MSG_CONTEST"; 
+  $MSG_MY_testS="我的$MSG_test"; 
 ?>

@@ -26,9 +26,9 @@ $lock_time=date("Y-m-d H:i:s",time());
 $sql="SELECT * FROM `solution` WHERE problem_id>0 ";
 if (isset($_GET['cid'])){
   $cid=intval($_GET['cid']);
-  $sql=$sql." AND `contest_id`='$cid' and num>=0 ";
+  $sql=$sql." AND `test_id`='$cid' and num>=0 ";
   $str2=$str2."&cid=$cid";
-  $sql_lock="SELECT `start_time`,`title`,`end_time` FROM `contest` WHERE `contest_id`='$cid'";
+  $sql_lock="SELECT `start_time`,`title`,`end_time` FROM `test` WHERE `test_id`='$cid'";
   $result=mysqli_query($mysqli,$sql_lock) or die(mysqli_error($mysqli));
   $rows_cnt=mysqli_num_rows($result);
   $start_time=0;
@@ -57,9 +57,9 @@ if (isset($_GET['cid'])){
       &&(isset($_GET['user_id'])&&$_GET['user_id']==$_SESSION['user_id']))
     ){
     if ($_SESSION['user_id']!="guest")
-      $sql="SELECT * FROM `solution` WHERE contest_id is null ";
+      $sql="SELECT * FROM `solution` WHERE test_id is null ";
   }else{
-    $sql="SELECT * FROM `solution` WHERE problem_id>=0 and contest_id is null ";
+    $sql="SELECT * FROM `solution` WHERE problem_id>=0 and test_id is null ";
   }
 }
 $start_first=true;
@@ -70,7 +70,6 @@ if (isset($_GET['top'])){
   $top=strval(intval($_GET['top']));
   if ($top!=-1) $sql=$sql."AND `solution_id`<='".$top."' ";
 }
-
 // check the problem arg
 $problem_id="";
 if (isset($_GET['problem_id'])&&$_GET['problem_id']!=""){
@@ -164,19 +163,19 @@ for ($i=0;$i<$rows_cnt;$i++){
   
   if ($top==-1) $top=$row['solution_id'];
   $bottom=$row['solution_id'];
-  $flag=(!is_running(intval($row['contest_id']))) ||
+  $flag=(!is_running(intval($row['test_id']))) ||
   isset($_SESSION['source_browser']) ||
   isset($_SESSION['administrator']) || 
   (isset($_SESSION['user_id'])&&!strcmp($row['user_id'],$_SESSION['user_id']));
   $cnt=1-$cnt;
   $view_status[$i][0]=$row['solution_id'];
-  if ($row['contest_id']>0) {
-    $view_status[$i][1]= "<a href='contestrank.php?cid=".$row['contest_id']."&user_id=".$row['user_id']."#".$row['user_id']."'>".$row['user_id']."</a>";
+  if ($row['test_id']>0) {
+    $view_status[$i][1]= "<a href='testrank.php?cid=".$row['test_id']."&user_id=".$row['user_id']."#".$row['user_id']."'>".$row['user_id']."</a>";
   }else{
     $view_status[$i][1]= "<a href='userinfo.php?user=".$row['user_id']."'>".$row['user_id']."</a>";
   }
-  if ($row['contest_id']>0) {
-    $view_status[$i][2]= "<div class=center><a href='problem.php?cid=".$row['contest_id']."&pid=".$row['num']."'>";
+  if ($row['test_id']>0) {
+    $view_status[$i][2]= "<div class=center><a href='problem.php?cid=".$row['test_id']."&pid=".$row['num']."'>";
     if(isset($cid)){
       $view_status[$i][2].= $PID[$row['num']];
     }else{
@@ -263,7 +262,7 @@ for ($i=0;$i<$rows_cnt;$i++){
 <?php
   /////////////////////////Template
   if (isset($_GET['cid']))
-    require("template/".$OJ_TEMPLATE."/conteststatus.php");
+    require("template/".$OJ_TEMPLATE."/teststatus.php");
   else
     require("template/".$OJ_TEMPLATE."/status.php");
   /////////////////////////Common foot

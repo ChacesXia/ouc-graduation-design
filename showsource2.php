@@ -23,12 +23,12 @@ $stime=$row->time;
 $smemory=$row->memory;
 $sproblem_id=$row->problem_id;
 $view_user_id=$suser_id=$row->user_id;
-$contest_id=$row->contest_id;
+$test_id=$row->test_id;
 
 mysqli_free_result($result);
 
-if(isset($OJ_EXAM_CONTEST_ID)){
-  if($contest_id<$OJ_EXAM_CONTEST_ID&&!isset($_SESSION['source_browser'])){
+if(isset($OJ_EXAM_test_ID)){
+  if($test_id<$OJ_EXAM_test_ID&&!isset($_SESSION['source_browser'])){
   header("Content-type: text/html; charset=utf-8");
    echo $MSG_SOURCE_NOT_ALLOWED_FOR_EXAM;
    exit();

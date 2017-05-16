@@ -55,15 +55,15 @@ include_once("kindeditor.php") ;
     </p>
     <p>SpecialJudge: N<input type=radio name=spj value='0' checked>Y<input type=radio name=spj value='1'></p>
     <p align=left>Source:<textarea name=source rows=1 cols=70></textarea></p>
-    <p align=left>contest:
-      <select name=contest_id>
-      <?php $sql="SELECT `contest_id`,`title` FROM `contest` WHERE `start_time`>NOW() order by `contest_id`";
+    <p align=left>test:
+      <select name=test_id>
+      <?php $sql="SELECT `test_id`,`title` FROM `test` WHERE `start_time`>NOW() order by `test_id`";
         $result=mysqli_query($mysqli,$sql);
         echo "<option value=''>none</option>";
         if (mysqli_num_rows($result)==0){
         }else{
           for (;$row=mysqli_fetch_object($result);)
-            echo "<option value='$row->contest_id'>$row->contest_id $row->title</option>";
+            echo "<option value='$row->test_id'>$row->test_id $row->title</option>";
         }
       ?>
       </select>

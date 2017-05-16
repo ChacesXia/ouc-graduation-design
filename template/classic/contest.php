@@ -6,14 +6,14 @@
 </head>
 <body>
 <div id="wrapper">
-  <?php require_once("contest-header.php");?>
+  <?php require_once("test-header.php");?>
 <div id=main>
 <script src="include/sortTable.js"></script>
 
 
 <center>
     <div>
-  <h3>Contest<?php echo $view_cid?> - <?php echo $view_title ?></h3>
+  <h3>test<?php echo $view_cid?> - <?php echo $view_title ?></h3>
           
             <p><?php echo $view_description?></p>
             <br>Start Time: <font color=#993399><?php echo $view_start_time?></font>
@@ -35,8 +35,8 @@
       ?>
         <br>
         [<a href='status.php?cid=<?php echo $view_cid?>'>Status</a>]
-        [<a href='contestrank.php?cid=<?php echo $view_cid?>'>Standing</a>]
-        [<a href='conteststatistics.php?cid=<?php echo $view_cid?>'>Statistics</a>]
+        [<a href='testrank.php?cid=<?php echo $view_cid?>'>Standing</a>]
+        [<a href='teststatistics.php?cid=<?php echo $view_cid?>'>Statistics</a>]
   
   
   

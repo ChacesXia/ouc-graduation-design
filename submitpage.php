@@ -18,7 +18,7 @@
   }else if (isset($_GET['cid'])&&isset($_GET['pid'])){
     $cid=intval($_GET['cid']);
     $pid=intval($_GET['pid']);
-    $sample_sql="select sample_input,sample_output,problem_id from problem where problem_id in (select problem_id from contest_problem where contest_id=$cid and num=$pid)";
+    $sample_sql="select sample_input,sample_output,problem_id from problem where problem_id in (select problem_id from test_problem where test_id=$cid and num=$pid)";
   }else{
     $view_errors=  "<h2>No Such Problem!</h2>";
     require("template/".$OJ_TEMPLATE."/error.php");

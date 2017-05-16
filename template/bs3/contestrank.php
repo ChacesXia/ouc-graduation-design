@@ -28,12 +28,12 @@
 <?php
 $rank=1;
 ?>
-<center><h3>Contest RankList -- <?php echo $title?></h3>
-<a href="contestrank.xls.php?cid=<?php echo $cid?>" >Download</a>
+<center><h3>test RankList -- <?php echo $title?></h3>
+<a href="testrank.xls.php?cid=<?php echo $cid?>" >Download</a>
 <?php
 if($OJ_MEMCACHE){
   ?>
-<a href="contestrank2.php?cid=<?php echo $cid?>" >Replay</a>
+<a href="testrank2.php?cid=<?php echo $cid?>" >Replay</a>
 
 <?php
 }

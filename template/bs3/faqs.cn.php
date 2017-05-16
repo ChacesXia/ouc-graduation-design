@@ -157,7 +157,7 @@ public class Main{
 </p>
 <hr>
 <font color=green>Q</font>:如何参加在线比赛?<br>
-<font color=red>A</font>:<a href=registerpage.php>注册</a> 一个帐号，然后就可以练习，点击比赛列表Contests可以看到正在进行的比赛并参加。<br>
+<font color=red>A</font>:<a href=registerpage.php>注册</a> 一个帐号，然后就可以练习，点击比赛列表tests可以看到正在进行的比赛并参加。<br>
 <br>
 <hr>
 <center>

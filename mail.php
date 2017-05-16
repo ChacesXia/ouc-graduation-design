@@ -6,7 +6,7 @@
   require_once('./include/my_func.inc.php');
   require_once('./include/setlang.php');
    
-  if(isset($OJ_EXAM_CONTEST_ID)&&$OJ_EXAM_CONTEST_ID>0){
+  if(isset($OJ_EXAM_test_ID)&&$OJ_EXAM_test_ID>0){
     header("Content-type: text/html; charset=utf-8");
     echo $MSG_MAIL_NOT_ALLOWED_FOR_EXAM;
     exit ();

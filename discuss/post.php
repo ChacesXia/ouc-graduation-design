@@ -35,11 +35,11 @@
                         $sql="INSERT INTO `topic` (`title`, `author_id`, `cid`, `pid`) SELECT '".mysqli_real_escape_string($mysqli,$_POST['title'])."', '".mysqli_real_escape_string($mysqli,$_SESSION['user_id'])."', $cid, '".mysqli_real_escape_string($mysqli,$pid)."'";
                         if($pid!=0)
                                 if($cid!='NULL')
-                                        $sql.=" FROM `contest_problem` WHERE `contest_id` = $cid AND `problem_id` = '".mysqli_real_escape_string($mysqli,$pid)."'";
+                                        $sql.=" FROM `test_problem` WHERE `test_id` = $cid AND `problem_id` = '".mysqli_real_escape_string($mysqli,$pid)."'";
                                 else
                                         $sql.=" FROM `problem` WHERE `problem_id` = '".mysqli_real_escape_string($mysqli,$pid)."'";
                         else if($cid!='NULL')
-                                $sql.=" FROM `contest` WHERE `contest_id` = $cid";
+                                $sql.=" FROM `test` WHERE `test_id` = $cid";
                         $sql.=" LIMIT 1";
                         mysqli_query($mysqli,$sql) or die (mysqli_error($mysqli));
                         if(mysqli_affected_rows($mysqli)<=0)

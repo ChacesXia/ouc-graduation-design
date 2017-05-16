@@ -18,10 +18,10 @@ if (isset($_GET['pid']))
 <table width=100% class=toprow><tr align=center>
   <td width=15%><a class=hd href='../'><?php echo $MSG_HOME?></a>
   <td width=15%><a class=hd href='../bbs.php?cid=<?php echo $cid?>'><?php echo $MSG_BBS?></a>
-  <td width=15%><a class=hd href='../contest.php?cid=<?php echo $cid?>'><?php echo $MSG_PROBLEMS?></a>
-  <td width=15%><a class=hd href='../contestrank.php?cid=<?php echo $cid?>'><?php echo $MSG_STANDING?></a>
+  <td width=15%><a class=hd href='../test.php?cid=<?php echo $cid?>'><?php echo $MSG_PROBLEMS?></a>
+  <td width=15%><a class=hd href='../testrank.php?cid=<?php echo $cid?>'><?php echo $MSG_STANDING?></a>
   <td width=15%><a class=hd href='../status.php?cid=<?php echo $cid?>'><?php echo $MSG_STATUS?></a>
-  <td width=15%><a class=hd href='../conteststatistics.php?cid=<?php echo $cid?>'><?php echo $MSG_STATISTICS?></a>
+  <td width=15%><a class=hd href='../teststatistics.php?cid=<?php echo $cid?>'><?php echo $MSG_STATISTICS?></a>
 </tr></table>
 
 <div id=broadcast>
@@ -34,12 +34,12 @@ if (isset($_GET['pid']))
 ?>
 </div><!--end broadcast-->
 <?php
-$contest_ok=true;
-$str_private="SELECT count(*) FROM `contest` WHERE `contest_id`='$cid' && `private`='1'";
+$test_ok=true;
+$str_private="SELECT count(*) FROM `test` WHERE `test_id`='$cid' && `private`='1'";
 $result=mysqli_query($mysqli,$str_private);
 $row=mysqli_fetch_row($result);
 mysqli_free_result($result);
-if ($row[0]=='1' && !isset($_SESSION['c'.$cid])) $contest_ok=false;
-if (isset($_SESSION['administrator'])) $contest_ok=true;
+if ($row[0]=='1' && !isset($_SESSION['c'.$cid])) $test_ok=false;
+if (isset($_SESSION['administrator'])) $test_ok=true;
 ?>
 <div id=main>

@@ -8,11 +8,11 @@ function problem_exist($pid,$cid){
     $cid='NULL';
   if($pid!=0)
     if($cid!='NULL')
-      $sql="SELECT 1 FROM `contest_problem` WHERE `contest_id` = $cid AND `problem_id` = '".intval($pid)."'";
+      $sql="SELECT 1 FROM `test_problem` WHERE `test_id` = $cid AND `problem_id` = '".intval($pid)."'";
     else
       $sql="SELECT 1 FROM `problem` WHERE `problem_id` = ".intval($pid)."";
   else if($cid!='NULL')
-    $sql="SELECT 1 FROM `contest` WHERE `contest_id` = $cid";
+    $sql="SELECT 1 FROM `test` WHERE `test_id` = $cid";
   else
     return true;
   $sql.=" LIMIT 1";

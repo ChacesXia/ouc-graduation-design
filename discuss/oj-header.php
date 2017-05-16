@@ -5,13 +5,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href='../template/<?php echo $OJ_TEMPLATE?>/<?php echo isset($OJ_CSS)?$OJ_CSS:"hoj.css" ?>' type='text/css'>
-<?php function checkcontest($MSG_CONTEST){
+<?php function checktest($MSG_test){
     require_once("../include/db_info.inc.php");
-    $sql="SELECT count(*) FROM `contest` WHERE `end_time`>NOW() AND `defunct`='N'";
+    $sql="SELECT count(*) FROM `test` WHERE `end_time`>NOW() AND `defunct`='N'";
     $result=mysqli_query($mysqli,$sql);
     $row=mysqli_fetch_row($result);
-    if (intval($row[0])==0) $retmsg=$MSG_CONTEST;
-    else $retmsg=$row[0]."<font color=red>&nbsp;$MSG_CONTEST</font>";
+    if (intval($row[0])==0) $retmsg=$MSG_test;
+    else $retmsg=$row[0]."<font color=red>&nbsp;$MSG_test</font>";
     mysqli_free_result($result);
     return $retmsg;
   }
@@ -66,11 +66,11 @@
     <a class='btn <?php if ($url=="ranklist.php") echo "  $ACTIVE";?>' href="../ranklist.php">
     <i class="icon-signal"></i><?php echo $MSG_RANKLIST?></a>
     
-    <a class='btn <?php if ($url=="contest.php") echo "  $ACTIVE";?>'  href="../contest.php">
-    <i class="icon-fire"></i><?php echo checkcontest($MSG_CONTEST)?></a>
+    <a class='btn <?php if ($url=="test.php") echo "  $ACTIVE";?>'  href="../test.php">
+    <i class="icon-fire"></i><?php echo checktest($MSG_test)?></a>
     
-<!--     <a class='btn <?php if ($url=="recent-contest.php") echo " $ACTIVE";?>' href="../recent-contest.php">
-    <i class="icon-share"></i><?php echo "$MSG_RECENT_CONTEST"?></a> -->
+<!--     <a class='btn <?php if ($url=="recent-test.php") echo " $ACTIVE";?>' href="../recent-test.php">
+    <i class="icon-share"></i><?php echo "$MSG_RECENT_test"?></a> -->
     
     <a class='btn <?php if ($url==(isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php")) echo " $ACTIVE";?>' href="../<?php echo isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php"?>">
                 <i class="icon-info-sign"></i><?php echo "$MSG_FAQ"?></a>
@@ -98,7 +98,7 @@
         print "<a href=../loginpage.php>$MSG_LOGIN</a>";
         print "<a href=../registerpage.php>$MSG_REGISTER</a>";
       }
-      if (isset($_SESSION['administrator'])||isset($_SESSION['contest_creator'])){
+      if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])){
         print "<a href=../admin>$MSG_ADMIN</a>";
       
       }

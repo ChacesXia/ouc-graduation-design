@@ -121,7 +121,7 @@ on the Program, the distribution of the whole must be on the terms of
 this License, whose permissions for other licensees extend to the
 entire whole, and thus to each and every part regardless of who wrote it.
 
-Thus, it is not the intent of this section to claim rights or contest
+Thus, it is not the intent of this section to claim rights or test
 your rights to work written entirely by you; rather, the intent is to
 exercise the right to control the distribution of derivative or
 collective works based on the Program.
@@ -213,7 +213,7 @@ apply and the section as a whole is intended to apply in other
 circumstances.
 
 It is not the purpose of this section to induce you to infringe any
-patents or other property right claims or to contest validity of any
+patents or other property right claims or to test validity of any
 such claims; this section has the sole purpose of protecting the
 integrity of the free software distribution system, which is
 implemented by public license practices.  Many people have made

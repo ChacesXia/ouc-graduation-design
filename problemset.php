@@ -75,8 +75,8 @@ else{
   $now=strftime("%Y-%m-%d %H:%M",time());
   $sql="SELECT `problem_id`,`title`,`source`,`submit`,`accepted`,`in_date`,`user_id`FROM `problem` ".
   "WHERE `defunct`='N' and $filter_sql AND `problem_id` NOT IN(
-  SELECT `problem_id` FROM `contest_problem` WHERE `contest_id` IN (
-  SELECT `contest_id` FROM `contest` WHERE 
+  SELECT `problem_id` FROM `test_problem` WHERE `test_id` IN (
+  SELECT `test_id` FROM `test` WHERE 
   (`end_time`>'$now' or private=1)and `defunct`='N')) ";
 }
 $sql.=" ORDER BY `problem_id`";

@@ -44,7 +44,7 @@ if (isset($_SESSION['user_id'])){
     $profile.= "<a href=./registerpage.php>$MSG_REGISTER</a>&nbsp;";
   }
 }
-if (isset($_SESSION['administrator'])||isset($_SESSION['contest_creator'])||isset($_SESSION['problem_editor'])){
+if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])||isset($_SESSION['problem_editor'])){
  $profile.= "<a href=./admin/>$MSG_ADMIN</a>&nbsp;";
  
 }

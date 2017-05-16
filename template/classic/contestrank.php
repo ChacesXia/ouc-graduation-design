@@ -8,11 +8,11 @@
 <body>
 <div id="wrapper">
 <div id=main>
-  <?php require_once("contest-header.php");?>
+  <?php require_once("test-header.php");?>
 <?php
 $rank=1;
 ?>
-<center><h3>Contest RankList -- <?php echo $title?></h3><a href="contestrank.xls.php?cid=<?php echo $cid?>" >Download</a></center>
+<center><h3>test RankList -- <?php echo $title?></h3><a href="testrank.xls.php?cid=<?php echo $cid?>" >Download</a></center>
 <table id=rank><tr class=toprow align=center><td width=5%>Rank<td width=10%>User<td width=10%>Nick<td width=5%>Solved<td width=5%>Penalty
 <?php
 for ($i=0;$i<$pid_cnt;$i++)

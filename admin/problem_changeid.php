@@ -35,7 +35,7 @@ function writable($path){
          rename("$OJ_DATA/$to","$OJ_DATA/$from");
          exit(1);
       }
-      $sql="UPDATE `contest_problem` SET `problem_id`=$to WHERE `problem_id`=".$from;
+      $sql="UPDATE `test_problem` SET `problem_id`=$to WHERE `problem_id`=".$from;
       if(!mysqli_query($mysqli,$sql)){
          rename("$OJ_DATA/$to","$OJ_DATA/$from");
          exit(1);

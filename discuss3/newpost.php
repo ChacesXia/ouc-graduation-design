@@ -11,7 +11,7 @@
 
 <center>
 <div style="width:90%; text-align:left">
-<h2 style="margin:0px 10px">Post New Thread<?php if (array_key_exists('cid',$_REQUEST) && $_REQUEST['cid']!='') echo ' For Contest '.intval($_REQUEST['cid']);?></h2>
+<h2 style="margin:0px 10px">Post New Thread<?php if (array_key_exists('cid',$_REQUEST) && $_REQUEST['cid']!='') echo ' For test '.intval($_REQUEST['cid']);?></h2>
 <form action="post.php?action=new" method=post>
 <input type=hidden name=cid value="<?php if (array_key_exists('cid',$_REQUEST)) echo intval($_REQUEST['cid']);?>">
 <div style="margin:0px 10px">Problem : </div>

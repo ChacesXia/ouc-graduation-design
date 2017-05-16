@@ -6,8 +6,8 @@
   $MSG_PROBLEMS="ProblemSet";
   $MSG_STATUS="Status";
   $MSG_RANKLIST="Ranklist";
-  $MSG_CONTEST="Contest";
-    $MSG_RECENT_CONTEST="Recent";
+  $MSG_test="test";
+    $MSG_RECENT_test="Recent";
   $MSG_LOGOUT="Logout";
   $MSG_LOGIN="Login";
   $MSG_LOST_PASSWORD="Lost Password";
@@ -114,9 +114,9 @@ $MSG_TEST_RUN="Test Running Done";
   $MSG_UPDATE_DATABASE="UpdateDatabase";
   $MSG_ONLINE="Online";
    
-  //contest.php
-  $MSG_PRIVATE_WARNING="This is a private contest which you don't have privilege。";
-  $MSG_WATCH_RANK="Click HERE to watch contest rank.";
+  //test.php
+  $MSG_PRIVATE_WARNING="This is a private test which you don't have privilege。";
+  $MSG_WATCH_RANK="Click HERE to watch test rank.";
 
   $MSG_Public="Public";
   $MSG_Private="Private";
@@ -138,5 +138,5 @@ $MSG_TEST_RUN="Test Running Done";
   $MSG_BLOCKLY_TEST="Blockly Test Run"; 
 
   $MSG_MY_SUBMISSIONS="My Submissions"; 
-  $MSG_MY_CONTESTS="My Contests"; 
+  $MSG_MY_testS="My tests"; 
  ?>

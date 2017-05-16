@@ -28,7 +28,7 @@ if ($prob_exist){?>
 </div>
 <div style="float:left;text-align:left;font-size:80%">
   Location : 
-  <?php if ($cid!=null) echo "<a href=\"discuss.php?cid=".$cid."\">Contest ".$cid."</a>"; else echo "<a href=\"discuss.php\">广场</a>";
+  <?php if ($cid!=null) echo "<a href=\"discuss.php?cid=".$cid."\">test ".$cid."</a>"; else echo "<a href=\"discuss.php\">广场</a>";
   if ($pid!=null && $pid!=0) echo " > <a href=\"discuss.php?pid=".$pid."&cid=".$cid."\">Problem ".$pid."</a>";?>
 </div>
 
