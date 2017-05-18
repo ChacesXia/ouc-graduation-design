@@ -86,7 +86,7 @@ mysqli_query($mysqli,$sql);
 if( mysqli_affected_rows($mysqli)==0) {
   print "<script language='javascript'>\n";
   print "alert('注册失败!\\n');\n";
-  print "history.go(-1);\n</script>";
+  print "history.go(-2);\n</script>";
   exit(0);
 }
 
