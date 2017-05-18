@@ -27,7 +27,7 @@ if ($prob_exist){?>
   ">发帖</a> ]
 </div>
 <div style="float:left;text-align:left;font-size:80%">
-  Location : 
+  当前位置 : 
   <?php if ($cid!=null) echo "<a href=\"discuss.php?cid=".$cid."\">test ".$cid."</a>"; else echo "<a href=\"discuss.php\">广场</a>";
   if ($pid!=null && $pid!=0) echo " > <a href=\"discuss.php?pid=".$pid."&cid=".$cid."\">Problem ".$pid."</a>";?>
 </div>

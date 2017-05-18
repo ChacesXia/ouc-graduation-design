@@ -46,7 +46,7 @@
 <body>
 <div id="wrapper">
 <div id=head>
-<h2><img id=logo width=160 src=../image/logo.png><font color="red"> <?php echo $OJ_NAME?> </font></h2>
+<h2><img id=logo width=160 src=../image/logo.png><span style="color: #417dbb"><?php echo $OJ_NAME?></span></h2>
 </div><!--end head-->
 <div id=subhead> 
 <div id=menu class=navbar>
@@ -87,9 +87,9 @@
 
 <?php if (isset($_SESSION['user_id'])){
         $sid=$_SESSION['user_id'];
-        print "&nbsp;<a href=../modifypage.php>$MSG_USERINFO
+        print "<i class=icon-user></i>&nbsp;<a href=../modifypage.php>$MSG_USERINFO
           </a><a href='../userinfo.php?user=$sid'>
-        <font color=red>$sid</font></a>";
+        <font>$sid</font></a>&nbsp;";
         $mail=checkmail();
         if ($mail)
           print "<a href=../mail.php>$mail</a>";
@@ -99,8 +99,7 @@
         print "<a href=../registerpage.php>$MSG_REGISTER</a>";
       }
       if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])){
-        print "<a href=../admin>$MSG_ADMIN</a>";
-      
+        // print "<a href=../admin>$MSG_ADMIN</a>";
       }
     ?>
 

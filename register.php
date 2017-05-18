@@ -77,14 +77,15 @@ $nick=mysqli_real_escape_string($mysqli,htmlentities ($nick,ENT_QUOTES,"UTF-8"))
 $school=mysqli_real_escape_string($mysqli,htmlentities ($school,ENT_QUOTES,"UTF-8"));
 $email=mysqli_real_escape_string($mysqli,htmlentities ($email,ENT_QUOTES,"UTF-8"));
 $ip=$_SERVER['REMOTE_ADDR'];
+
 $sql="INSERT INTO `users`("
 ."`user_id`,`email`,`ip`,`accesstime`,`password`,`reg_time`,`nick`,`school`)"
 ."VALUES('".$user_id."','".$email."','".$_SERVER['REMOTE_ADDR']."',NOW(),'".$password."',NOW(),'".$nick."','".$school."')";
-mysqli_query($mysqli,$sql);// or die("Insert Error!\n");
+mysqli_query($mysqli,$sql);
 
 if( mysqli_affected_rows($mysqli)==0) {
-         print "<script language='javascript'>\n";
-  print "alert('Username robbed!\\n');\n";
+  print "<script language='javascript'>\n";
+  print "alert('注册失败!\\n');\n";
   print "history.go(-1);\n</script>";
   exit(0);
 }

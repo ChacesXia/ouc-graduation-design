@@ -16,11 +16,11 @@
 
 <table style="width:100%; clear:both">
   <thead>
-  <tr align=center class='toprow'>
+  <tr align=center class='toprow' style="background-color: #417dbb">
     <td style="text-align:left">
     <a href="discuss.php<?php if ($row->pid!=0 && $row->cid!=null) echo "?pid=".$row->pid."&cid=".$row->cid;
     else if ($row->pid!=0) echo"?pid=".$row->pid; else if ($row->cid!=null) echo"?cid=".$row->cid;?>">
-    <?php if ($row->pid!=0) echo "Problem ".$row->pid; else echo "MainBoard";?></a> >>  <?php echo nl2br(htmlentities($row->title,ENT_QUOTES,"UTF-8"));?></td>
+    <?php if ($row->pid!=0) echo "问题编号 ".$row->pid; else echo "广场";?></a> >>&nbsp; &nbsp;<?php echo nl2br(htmlentities($row->title,ENT_QUOTES,"UTF-8"));?></td>
   </tr>
 </thead>
 <?php
@@ -63,7 +63,7 @@
       <span style="width:5em;text-align:right;display:inline-block;font-weight:bold;margin:0 10px">
       <?php echo $i+1;?>楼</span>
     </div>
-    <div class=content style="text-align:left; clear:both;">
+    <div class=content style="font-size:12; text-align:left; clear:both; background-color: white;border-bottom: 1;">
       <?php if ($row->status == 0) echo nl2br(htmlentities($row->content,ENT_QUOTES,"UTF-8"));
           else {
             if (!$isuser || $isadmin)echo "<div style=\"border-left:10px solid gray\"><font color=red><i>Notice : This reply is blocked by administrator.</i></font></div>";

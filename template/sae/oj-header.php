@@ -1,6 +1,6 @@
 <div id=head>
     <h2><img width=160 id=logo src="<?php echo "template/".$OJ_TEMPLATE?>/image/logo.png">
-        <span class="red"><?php echo $OJ_NAME?></span>
+        <span style="color: #417dbb"><?php echo $OJ_NAME?></span>
     </h2>
 </div><!--end head-->
 <div id=subhead>
@@ -20,7 +20,7 @@
     <i class="icon-pencil"></i><?php echo "编辑器"?></a> -->
     
     <a  class='btn <?php if ($url=="status.php") echo "  $ACTIVE";?>' href="status.php">
-    <i class="icon-check"></i><?php echo $MSG_STATUS?></a>
+    <i class="icon-check"></i>运行结果</a>
     
     <a class='btn <?php if ($url=="ranklist.php") echo "  $ACTIVE";?>' href="ranklist.php">
     <i class="icon-signal"></i><?php echo $MSG_RANKLIST?></a>
@@ -32,7 +32,7 @@
     <i class="icon-share"></i><?php echo "$MSG_RECENT_test"?></a> -->
     
     <a class='btn <?php if ($url==(isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php")) echo " $ACTIVE";?>' href="<?php echo isset($OJ_FAQ_LINK)?$OJ_FAQ_LINK:"faqs.php"?>">
-    <i class="icon-info-sign"></i><?php echo "$MSG_FAQ"?></a>
+    <i class="icon-info-sign"></i>FAQ</a>
     
     <?php if(isset($OJ_DICT)&&$OJ_DICT&&$OJ_LANG=="cn"){ ?>
             

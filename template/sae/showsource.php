@@ -32,6 +32,18 @@
   SyntaxHighlighter.config.source =false;
   SyntaxHighlighter.config.collapse = false;
   SyntaxHighlighter.config.gutter = 1;
+  SyntaxHighlighter.config.strings = {
+            expandSource : '展开代码',
+            viewSource : '查看代码',
+            copyToClipboard : '复制代码',
+            copyToClipboardConfirmation : '代码复制成功',
+            print : '打印',
+            help: '?',
+            alert: '语法高亮\n\n',
+            noBrush: '不能找到刷子: ',
+            brushNotHtmlScript: '刷子没有配置html-script选项',
+            aboutDialog: '<div></div>'
+        };
   SyntaxHighlighter.all('code');
 </script>
 

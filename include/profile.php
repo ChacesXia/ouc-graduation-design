@@ -25,8 +25,8 @@ if (isset($_SESSION['user_id'])){
   $profile.= "<i class=icon-user></i><a href=./modifypage.php>$MSG_USERINFO</a>&nbsp;<a href='./userinfo.php?user=$sid'><span id=red>$sid</span></a>";
   $mail=checkmail();
   if ($mail)
-    $profile.= "&nbsp;<i class=icon-envelope></i><a href=./mail.php>$mail</a>";
-  $profile.="&nbsp;<a href='./status.php?user_id=$sid'><span id=red>Recent</span></a>";
+  $profile.= "&nbsp;<i class=icon-envelope></i><a href=./mail.php>$mail</a>";
+  // $profile.="&nbsp;<a href='./status.php?user_id=$sid'><span id=red>Recent</span></a>";
   
   $profile.= "&nbsp;<a href='./logout.php' target='_top' >$MSG_LOGOUT</a>&nbsp;";
 }else{
@@ -45,8 +45,7 @@ if (isset($_SESSION['user_id'])){
   }
 }
 if (isset($_SESSION['administrator'])||isset($_SESSION['test_creator'])||isset($_SESSION['problem_editor'])){
- $profile.= "<a href=./admin/>$MSG_ADMIN</a>&nbsp;";
- 
+ // $profile.= "<a href=./admin/>$MSG_ADMIN</a>&nbsp;";
 }
 ?>
 document.write("<?php echo ( $profile);?>");

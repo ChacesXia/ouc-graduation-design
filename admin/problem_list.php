@@ -28,6 +28,9 @@ if (isset($_GET['page'])){
 $pstart=1000+$page_cnt*intval($page-1);
 $pend=$pstart+$page_cnt;
 echo "<title>Problem List</title>";
+
+echo "<body style='padding:10'>";
+
 echo "<center><h2>问题列表</h2></center>";
 echo "<form action=problem_list.php>";
 echo "<select class='input-mini' onchange=\"location.href='problem_list.php?page='+this.value;\">";
@@ -84,6 +87,7 @@ for (;$row=mysqli_fetch_object($result);){
 echo "<tr><td colspan=7><input class='btn btn-info' type=submit name='problem2test' value='输入到考试'>";
 echo "</tr></form>";
 echo "</table></center>";
+echo "</body>"
 ?>
 <script src='../template/bs3/jquery.min.js' ></script>
 <script>

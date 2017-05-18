@@ -23,6 +23,7 @@ if(isset($_POST['do'])){
   else echo "No such user! or He/Her is an administrator!";
 }
 ?>
+<body style='padding:10'>
 <center><h2>更改用户密码</h2></center>
 <form action='changepass.php' method=post>
   User:<input type=text size=10 name="user_id"><br />

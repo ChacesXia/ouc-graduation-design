@@ -13,11 +13,12 @@ if(isset($_POST['do'])){
   else echo "No such user!";
 }
 ?>
+<body style='padding:10'>
 <center><h2>添加用户管理权限</h2></center>
 <form method=post>
 <?php require("../include/set_post_key.php");?>
-  User:<input type=text size=10 name="user_id"><br />
-  Privilege:
+  用户ID:<input type=text size=10 name="user_id"><br />
+  权限:
   <select name="rightstr">
 <?php
 $rightarray=array("administrator","teacher","problem_editor","source_browser","test_creator","http_judge","password_setter");
@@ -30,13 +31,13 @@ while(list($key, $val)=each($rightarray)) {
 }
 ?></select><br />
   <input type='hidden' name='do' value='do'>
-  <input type=submit value='Add'>
+  <input class="btn btn-success" type=submit value='添加'>
 </form>
 <center><h2>添加用户考试权限</h2></center>
 <form method=post>
-  User:<input type=text size=10 name="user_id"><br />
-  test:<input type=text size=10 name="rightstr">t1000 for test1000<br />
+  用户ID:<input type=text size=10 name="user_id"><br />
+  考试编号:<input type=text size=10 name="rightstr"><br>t1000 for test1000<br />
   <input type='hidden' name='do' value='do'>
-  <input type=submit value='Add'>
+  <input class="btn btn-success" type=submit value='添加'>
   <input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">
 </form>

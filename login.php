@@ -19,20 +19,17 @@ if (get_magic_quotes_gpc ()) {
 $sql="SELECT `rightstr` FROM `privilege` WHERE `user_id`='".mysqli_real_escape_string($mysqli,$user_id)."'";
 $login=check_login($user_id,$password);
 
-if ($login)
-{
+if ($login){
   $_SESSION['user_id']=$login;
   $result=mysqli_query($mysqli,$sql);
-
   while ($result&&$row=mysqli_fetch_assoc($result))
     $_SESSION[$row['rightstr']]=true;
   echo "<script language='javascript'>\n";
   echo "history.go(-2);\n";
   echo "</script>";
 }else{
-  
   echo "<script language='javascript'>\n";
-  echo "alert('UserName or Password Wrong!');\n";
+  echo "alert('用户名或密码错误!');\n";
   echo "history.go(-1);\n";
   echo "</script>";
 }

@@ -5,7 +5,8 @@ if (!(isset($_SESSION['administrator']))){
   exit(1);
 }
 echo "<title>Privilege List</title>"; 
-echo "<center><h2>Privilege List</h2></center>";
+echo "<center><h2>权限列表</h2></center>";
+echo "<body style='padding:10'>";
 $sql="select * FROM privilege where rightstr in ('administrator','source_browser','test_creator','http_judge','problem_editor') ";
 $result=mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
 echo "<center><table class='table table-striped' width=60% border=1>";

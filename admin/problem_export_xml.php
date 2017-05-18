@@ -220,8 +220,8 @@ if (isset($_POST ['do'])||isset($_GET['cid'])) {
   
   ?>
    
-<fps version="1.2" url="https://github.com/zhblue/freeproblemset/">
-  <generator name="HUSTOJ" url="https://github.com/zhblue/hustoj/"/>
+<fps>
+  <generator name="ouc" url="https://github.com/chacesxia/"/>
   <?php
   while ( $row = mysqli_fetch_object ( $result ) ) {
     

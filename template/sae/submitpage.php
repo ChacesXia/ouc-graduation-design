@@ -28,9 +28,11 @@ editAreaLoader.init({
                 id: "source",
                 start_highlight: true,
                 allow_resize: "both",
-                allow_toggle: true,
+                is_multi_files:false,
+                // allow_toggle: true,
                 word_wrap: true,
-                language: "en",
+                language: "zh",
+                allow_toggle:false,
                 syntax: "c",
                 font_size: "10",
                 syntax_selection_allow: "c,cpp,java,python,pas,perl,php,ruby",
@@ -45,7 +47,7 @@ editAreaLoader.init({
 <?php }?>
  >
 <?php if (isset($id)){?>
-Problem <span class=blue><b><?php echo $id?></b></span>
+问题编号： <span class=blue><b><?php echo $id?></b></span>
 <input id=problem_id type='hidden'  value='<?php echo $id?>' name="id" ><br>
 <?php }else{
 $PID="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -80,15 +82,16 @@ if(isset($_COOKIE['lastlang'])) $lastlang=$_COOKIE['lastlang'];
 <textarea style="width:80%" cols=180 rows=20 id="source" name="source"><?php echo $view_src?></textarea><br>
 <?php echo $MSG_Input?>:<textarea style="width:30%" cols=40 rows=5 id="input_text" name="input_text" ><?php echo $view_sample_input?></textarea>
 <?php echo $MSG_Output?>:
-  <textarea style="width:30%" cols=40 rows=5 id="out" name="out" >SHOULD BE:
+  <textarea style="width:30%" cols=40 rows=5 id="out" name="out" >
 <?php echo $view_sample_output?>
 </textarea>
 
 <br>
 
-<input id=Submit class="btn btn-info" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
-<input id=TestRun class="btn btn-info"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();><span  class="btn"  id=result>状态</span>
+<input id=Submit class="btn btn-success" type=button value="<?php echo $MSG_SUBMIT?>"  onclick=do_submit();>
+<input id=TestRun class="btn btn-primary"  type=button value="<?php echo $MSG_TR?>" onclick=do_test_run();>
 <input type=reset  class="btn btn-danger" value="重置">
+<span class="btn btn-info"  id=result>状态</span>
 </form>
 
 <iframe name=testRun width=0 height=0 src="about:blank"></iframe>
