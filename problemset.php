@@ -53,8 +53,8 @@ $acc_arr=Array();
 // 成功的题目
 if (isset($_SESSION['user_id'])){
   $sql="SELECT `problem_id` FROM `solution` WHERE `user_id`='".$_SESSION['user_id']."'".
-                                                                       //  " AND `problem_id`>='$pstart'".
-                                                                       //  " AND `problem_id`<'$pend'".
+     //  " AND `problem_id`>='$pstart'".
+     //  " AND `problem_id`<'$pend'".
   " AND `result`=4".
   " group by `problem_id`";
   $result=@mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
@@ -73,13 +73,13 @@ if (isset($_SESSION['administrator'])){
 }
 else{
   $now=strftime("%Y-%m-%d %H:%M",time());
-  $sql="SELECT `problem_id`,`title`,`source`,`submit`,`accepted`,`in_date`,`user_id`FROM `problem` ".
-  "WHERE `defunct`='N' and $filter_sql AND `problem_id` NOT IN(
+  $sql="SELECT `problem_id`,`title`,`source`,`submit`,`accepted`,`in_date`,`user_id`FROM `problem` "."WHERE `defunct`='N' and $filter_sql AND `problem_id` NOT IN(
   SELECT `problem_id` FROM `test_problem` WHERE `test_id` IN (
   SELECT `test_id` FROM `test` WHERE 
-  (`end_time`>'$now' or private=1)and `defunct`='N')) ";
+  (`end_time`>'$now' or private=1) and `defunct`='Y')) ";
 }
-$sql.=" ORDER BY `problem_id`";
+$sql.="and `defunct`='N' ORDER BY `problem_id`";
+// echo $sql;
 $result=mysqli_query($mysqli,$sql) or die(mysqli_error($mysqli));
 $view_total_page=$cnt+1;
 $cnt=0;

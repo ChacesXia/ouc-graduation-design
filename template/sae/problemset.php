@@ -17,17 +17,6 @@
         } 
         ); 
       </script>
-
-      <!-- 当前页码显示 -->
-      <h3 align='center'>
-        <?php
-        for ($i=1;$i<=$view_total_page;$i++){
-          if ($i>1) echo '&nbsp;';
-          if ($i==$page) echo "<span class=red>$i</span>";
-          else echo "<a href='problemset.php?page=".$i."'>".$i."</a>";
-        }
-        ?>
-      </h3>
       <center>
         <table>
           <tr align='center' class='evenrow'><td width='5'></td>
@@ -74,6 +63,16 @@
           </tbody>
         </table>
       </center>
+      <!-- 当前页码显示 -->
+      <p align='center'>
+        <?php
+        for ($i=1;$i<=$view_total_page;$i++){
+          if ($i>1) echo '&nbsp;';
+          if ($i==$page) echo "<span>第".$i."页.</span>";
+          else echo "<a href='problemset.php?page=".$i."'>".$i."</a>";
+        }
+        ?>
+      </p>
       <div id=foot>
         <?php require_once("oj-footer.php");?>
       </div><!--end foot-->
