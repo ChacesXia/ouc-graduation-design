@@ -7,7 +7,7 @@
 
 // 数据库连接配置
 static   $DB_HOST="10.1.1.101";
-static   $DB_NAME="jol1";
+static   $DB_NAME="jol";
 static   $DB_USER="root";
 static   $DB_PASS="123";
 
