@@ -95,7 +95,7 @@
 
 <?php 
   $curr_user = $_SESSION['user_id'];
-  $sql = "select * from privilege where user_id = $user and rightstr in ('administrator','teacher')";
+  $sql = "select * from privilege where user_id = '$user' and rightstr in ('administrator','teacher')";
   $rrs=mysqli_query($mysqli,$sql);
   $havePrivate=(mysqli_num_rows($rrs)>0);
   if ($havePrivate){ ?>
@@ -127,9 +127,9 @@
 </thead>
 <tbody>
 <?php
-  $sql="SELECT * FROM `chatlog` WHERE `solution_id`=".$solution_id ." and (`to_user`=".$user." or `from_user`=".$user.") ORDER BY `time`";
+  $sql="SELECT * FROM `chatlog` WHERE `solution_id`=".$solution_id ." and (`to_user`='".$user."' or `from_user`='".$user."') ORDER BY `time`";
   // echo $sql;
-  $chatlist=mysqli_query($mysqli,$sql) or die("Error! ".mysqli_error($mysqli));
+  $chatlist=mysqli_query($mysqli,$sql) or die("Error!@chat ".mysqli_error($mysqli));
   $rows_cnt = mysqli_num_rows($chatlist);
   $cnt=0;
   for ($i=0;$i<$rows_cnt;$i++){

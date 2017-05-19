@@ -228,9 +228,10 @@ for ($i=0;$i<$rows_cnt;$i++){
   //echo $row['result'];
   // 查询当前用户是不是管理员 或者 老师
   $user = $_SESSION['user_id'];
-  $sql = "select * from privilege where user_id = $user and rightstr in ('administrator','teacher')";
+  $sql = "select * from privilege where user_id ='$user' and rightstr in ('administrator','teacher')";
   $rrs=mysqli_query($mysqli,$sql);
   $havePrivate=(mysqli_num_rows($rrs)>0);
+
   // echo $havePrivate."---";
   // !(isset($_SESSION['user_id'])&&strtolower($row['user_id'])==strtolower($_SESSION['user_id']) || isset($_SESSION['source_browser']))
   if ($havePrivate || strtolower($row['user_id'])==strtolower($_SESSION['user_id'])){
