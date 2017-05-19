@@ -7,7 +7,7 @@ if (!(isset($_SESSION['administrator']))){
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>News Edit</title>
-
+<body style="padding: 10">
 <?php require_once("../include/db_info.inc.php");
 if (isset($_POST['news_id']))
 {
@@ -39,7 +39,7 @@ $user_id=mysqli_real_escape_string($mysqli,$user_id);
   $result=mysqli_query($mysqli,$sql);
   if (mysqli_num_rows($result)!=1){
     mysqli_free_result($result);
-    echo "No such test!";
+    echo "没有找到该新闻!";
     exit(0);
   }
   $row=mysqli_fetch_assoc($result);
@@ -52,7 +52,7 @@ $user_id=mysqli_real_escape_string($mysqli,$user_id);
 ?>
 <?php include("kindeditor.php")?>
 <form method=POST action='news_edit.php'>
-<p align=center><font size=4 color=#333399>Edit a test</font></p>
+<p align=center><font size=4 color=#333399>编辑新闻</font></p>
 <input type=hidden name='news_id' value=<?php echo $news_id?>>
 <p align=left>Title:<input type=text name=title size=71 value='<?php echo $title?>'></p>
 
@@ -60,7 +60,8 @@ $user_id=mysqli_real_escape_string($mysqli,$user_id);
 <textarea class=kindeditor name=content ><?php echo htmlentities($content,ENT_QUOTES,"UTF-8")?></textarea>
 </p>
 <?php require_once("../include/set_post_key.php");?>
-<input type=submit>
+<input class="btn btn-success" type=submit>
 </form>
 <?php require_once("../oj-footer.php");?>
 
+</body>

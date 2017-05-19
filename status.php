@@ -233,17 +233,17 @@ for ($i=0;$i<$rows_cnt;$i++){
   $havePrivate=(mysqli_num_rows($rrs)>0);
   // echo $havePrivate."---";
   // !(isset($_SESSION['user_id'])&&strtolower($row['user_id'])==strtolower($_SESSION['user_id']) || isset($_SESSION['source_browser']))
-  if (!$havePrivate && strtolower($row['user_id'])!=strtolower($_SESSION['user_id'])){
-    $view_status[$i][6]=$language_name[$row['language']];
-    }else{
-      $view_status[$i][6]= "<a target=_blank href=showsource.php?id=".$row['solution_id'].">".$language_name[$row['language']]."</a>";
-      if($row["problem_id"]>0){
-        if (isset($cid)) {
-          $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?cid=".$cid."&pid=".$row['num']."&sid=".$row['solution_id']."\">Edit</a>";
-        }else{
-          $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?id=".$row['problem_id']."&sid=".$row['solution_id']."\">Edit</a>";
-        }
+  if ($havePrivate || strtolower($row['user_id'])==strtolower($_SESSION['user_id'])){
+    $view_status[$i][6]= "<a target=_blank href=showsource.php?id=".$row['solution_id'].">".$language_name[$row['language']]."</a>";
+    if($row["problem_id"]>0){
+      if (isset($cid)) {
+        $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?cid=".$cid."&pid=".$row['num']."&sid=".$row['solution_id']."\">Edit</a>";
+      }else{
+        $view_status[$i][6].= "/<a target=_self href=\"submitpage.php?id=".$row['problem_id']."&sid=".$row['solution_id']."\">Edit</a>";
       }
+    }
+    }else{
+      $view_status[$i][6]=$language_name[$row['language']];
     }
     $view_status[$i][7]= $row['code_length']." Byte";
     }else{
