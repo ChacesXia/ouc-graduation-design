@@ -120,23 +120,24 @@ else if(isset($_POST['problem2test'])){
   <h2 align=center>添加考试</h2>
   <form method=POST >
   
-  <p align=left>Title:<input class=input-xxlarge  type=text name=title size=71 value="<?php echo isset($title)?$title:""?>"></p>
-  <p align=left>Start Time:<br>&nbsp;&nbsp;&nbsp;
+  <p align=left>考试科目:<input class=input-xxlarge  type=text name=title size=71 value="<?php echo isset($title)?$title:""?>"></p>
+  <p align=left>开始时间设置:<br>&nbsp;&nbsp;&nbsp;
   Year:<input  class=input-mini type=text name=syear value=<?php echo date('Y')?> size=4 >
   Month:<input class=input-mini  type=text name=smonth value=<?php echo date('m')?> size=2 >
   Day:<input class=input-mini type=text name=sday size=2 value=<?php echo date('d')?> >&nbsp;
   Hour:<input class=input-mini    type=text name=shour size=2 value=<?php echo date('H')?>>&nbsp;
   Minute:<input class=input-mini    type=text name=sminute value=00 size=2 ></p>
-  <p align=left>End Time:<br>&nbsp;&nbsp;&nbsp;
+  <p align=left>结束时间设置:<br>&nbsp;&nbsp;&nbsp;
   Year:<input class=input-mini    type=text name=eyear value=<?php echo date('Y')?> size=4 >
   Month:<input class=input-mini    type=text name=emonth value=<?php echo date('m')?> size=2 >
   
   Day:<input class=input-mini  type=text name=eday size=2 value=<?php echo date('d')+(date('H')+4>23?1:0)?>>&nbsp;
   Hour:<input class=input-mini  type=text name=ehour size=2 value=<?php echo (date('H')+4)%24?>>&nbsp;
   Minute:<input class=input-mini  type=text name=eminute value=00 size=2 ></p>
-  Public:<select name=private><option value=0>Public</option><option value=1>Private</option></select>
-  Password:<input type=text name=password value="">
-  Language:<select name="lang[]" multiple="multiple" style="height:220px">
+  是否公开:<select name=private><option value=0>Public</option><option value=1>Private</option></select>
+  <br >
+  进入密码:<input type=text name=password value="">
+  所用语言:<select name="lang[]" multiple="multiple" style="height:220px">
   <?php
     $lang_count=count($language_ext);
     $langmask=$OJ_LANGMASK;
@@ -148,10 +149,10 @@ else if(isset($_POST['problem2test'])){
   ?>
   </select>
   <?php require_once("../include/set_post_key.php");?>
-  <br>Problems:<input class=input-xxlarge type=text size=60 name=cproblem value="<?php echo isset($plist)?$plist:""?>">
+  <br>试题集编号:<input class=input-xxlarge type=text size=60 name=cproblem value="<?php echo isset($plist)?$plist:""?>"><span style="color: red; font-size: 2;">&nbsp; *用空格分割</span>
   <br>
-  <p align=left>Description:<br><textarea class=kindeditor rows=13 name=description cols=80></textarea>
-  Users:<textarea name="ulist" rows="20" cols="20"></textarea>
+  <p align=left>描述信息:<br><textarea class=kindeditor rows=13 name=description cols=80></textarea>
+  学生学号集合:<textarea name="ulist" rows="20" cols="20"></textarea>
   <br />
   <p>*可以将学生学号从Excel整列复制过来，然后要求他们用学号做UserID注册,就能进入Private的比赛作为作业和测验。
   </p>
